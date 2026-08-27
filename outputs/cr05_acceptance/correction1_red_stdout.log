@@ -1,0 +1,144 @@
+.....FF.FF..F.                                                           [100%]
+================================== FAILURES ===================================
+__ test_same_root_same_id_runs_allocate_disjoint_attempts_without_overwrite ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/correction1_red_tmp/test_same_root_same_id_runs_al0')
+
+    def test_same_root_same_id_runs_allocate_disjoint_attempts_without_overwrite(tmp_path):
+        frozen = build_network_module.preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        output_root = tmp_path / "runs"
+        first = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=output_root, frozen_network=frozen)
+        first_hashes = {
+            str(path.relative_to(first.output_dir)): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in first.output_dir.rglob("*")
+            if path.is_file()
+        }
+    
+        second = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=output_root, frozen_network=frozen)
+    
+>       assert first.output_dir.name == "attempt_0001"
+E       AssertionError: assert 'main1200_ram...eed0_8bc00193' == 'attempt_0001'
+E         
+E         - attempt_0001
+E         + main1200_ramp120_none_seed0_8bc00193
+
+tests\test_env_runner.py:131: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 5ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+_________ test_attempt_allocator_retries_an_injected_atomic_collision _________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/correction1_red_tmp/test_attempt_allocator_retries0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025A46793830>
+
+    def test_attempt_allocator_retries_an_injected_atomic_collision(tmp_path, monkeypatch):
+        allocator = getattr(env_module, "_allocate_attempt_dir", None)
+>       assert allocator is not None, "CR-05 requires atomic attempt allocation"
+E       AssertionError: CR-05 requires atomic attempt allocation
+E       assert None is not None
+
+tests\test_env_runner.py:144: AssertionError
+____ test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates ____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/correction1_red_tmp/test_frozen_mismatch_after_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025A46793800>
+
+    def test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates(tmp_path, monkeypatch):
+        frozen = build_network_module.preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        real_verify = env_module.verify_frozen_network
+        calls = {"count": 0}
+    
+        def fail_second_verification(value):
+            calls["count"] += 1
+            if calls["count"] == 2:
+                raise build_network_module.FrozenNetworkMismatchError("injected post-run frozen mismatch")
+            return real_verify(value)
+    
+        monkeypatch.setattr(env_module, "verify_frozen_network", fail_second_verification)
+>       with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="post-run"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE FrozenNetworkMismatchError
+
+tests\test_env_runner.py:185: Failed
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (1ms ~= 1000.00*RT, ~8000.00UPS, TraCI: 2ms, vehicles TOT 8 ACT 8 BUF 0)      
+
+
+___________ test_run_additional_rejects_path_traversal_detector_id ____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/correction1_red_tmp/test_run_additional_rejects_pa0')
+
+    def test_run_additional_rejects_path_traversal_detector_id(tmp_path):
+        tree = ET.parse(build_network_module.NETWORK_DIR / "merge.add.xml")
+        tree.getroot()[0].set("id", "../escaped_detector")
+        malicious_template = tmp_path / "malicious.add.xml"
+        tree.write(malicious_template, encoding="utf-8", xml_declaration=True)
+        run_dir = tmp_path / "run"
+    
+>       with pytest.raises(ValueError, match="detector"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_env_runner.py:203: Failed
+_____ test_scan_directory_allocation_is_collision_safe_for_same_timestamp _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/correction1_red_tmp/test_scan_directory_allocation0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025A48878F20>
+
+    def test_scan_directory_allocation_is_collision_safe_for_same_timestamp(tmp_path, monkeypatch):
+        class FixedNow:
+            def strftime(self, _format):
+                return "20260807_120000"
+    
+        class FixedDatetime:
+            @classmethod
+            def now(cls):
+                return FixedNow()
+    
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        frozen = object()
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            summary = EpisodeSummary(
+                experiment_id="fake", controller=controller, seed=seed,
+                mainline_vph=demand.mainline_vph, ramp_vph=demand.ramp_vph,
+                valid=True, failure_reason="", total_time_spent_s=0.0,
+                mean_speed_mps=0.0, bottleneck_throughput_veh=0,
+                max_ramp_queue_veh=0, breakdown_start_s=0,
+                congestion_duration_s=0, recovered=True, teleports=0,
+            )
+            return SimpleNamespace(experiment_id="fake", valid=True, output_dir=Path(output_root) / "fake", failure_reason="", summary=summary)
+    
+        from pathlib import Path
+        monkeypatch.setattr(scan_demand_module, "datetime", FixedDatetime)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: frozen)
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        first = scan_demand_module.scan_demand(config, output_root=tmp_path / "scan", controllers=("none",), resume=False)
+        second = scan_demand_module.scan_demand(config, output_root=tmp_path / "scan", controllers=("none",), resume=False)
+    
+        assert first.name == "20260807_120000"
+>       assert second.name == "20260807_120000_0001"
+E       AssertionError: assert '20260807_120000' == '20260807_120000_0001'
+E         
+E         - 20260807_120000_0001
+E         ?                -----
+E         + 20260807_120000
+
+tests\test_scan_demand.py:101: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_env_runner.py::test_same_root_same_id_runs_allocate_disjoint_attempts_without_overwrite
+FAILED tests/test_env_runner.py::test_attempt_allocator_retries_an_injected_atomic_collision
+FAILED tests/test_env_runner.py::test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates
+FAILED tests/test_env_runner.py::test_run_additional_rejects_path_traversal_detector_id
+FAILED tests/test_scan_demand.py::test_scan_directory_allocation_is_collision_safe_for_same_timestamp
+5 failed, 9 passed in 5.69s

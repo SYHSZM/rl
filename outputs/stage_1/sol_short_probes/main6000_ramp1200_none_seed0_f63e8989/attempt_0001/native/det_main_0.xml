@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-07T20:42:29.535779+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_preflight\merge.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\merge.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\run.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="360"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\sumo_error.log"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="63582"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="0"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="30.00" id="det_main_0" nVehContrib="5" flow="600.00" occupancy="2.75" speed="30.44" harmonicMeanSpeed="30.33" length="5.00" nVehEntered="5"/>
+    <interval begin="30.00" end="60.00" id="det_main_0" nVehContrib="13" flow="1560.00" occupancy="9.66" speed="22.57" harmonicMeanSpeed="22.43" length="5.00" nVehEntered="13"/>
+    <interval begin="60.00" end="90.00" id="det_main_0" nVehContrib="12" flow="1440.00" occupancy="8.84" speed="23.06" harmonicMeanSpeed="22.63" length="5.00" nVehEntered="12"/>
+    <interval begin="90.00" end="120.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.17" speed="29.02" harmonicMeanSpeed="29.01" length="5.00" nVehEntered="9"/>
+    <interval begin="120.00" end="150.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.44" speed="27.61" harmonicMeanSpeed="27.58" length="5.00" nVehEntered="9"/>
+    <interval begin="150.00" end="180.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.39" speed="27.93" harmonicMeanSpeed="27.85" length="5.00" nVehEntered="9"/>
+    <interval begin="180.00" end="210.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.22" speed="28.75" harmonicMeanSpeed="28.73" length="5.00" nVehEntered="9"/>
+    <interval begin="210.00" end="240.00" id="det_main_0" nVehContrib="8" flow="960.00" occupancy="4.73" speed="28.22" harmonicMeanSpeed="28.18" length="5.00" nVehEntered="8"/>
+    <interval begin="240.00" end="270.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.55" speed="27.08" harmonicMeanSpeed="27.01" length="5.00" nVehEntered="9"/>
+    <interval begin="270.00" end="300.00" id="det_main_0" nVehContrib="10" flow="1200.00" occupancy="6.23" speed="26.98" harmonicMeanSpeed="26.77" length="5.00" nVehEntered="10"/>
+    <interval begin="300.00" end="330.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="8.63" speed="25.75" harmonicMeanSpeed="17.38" length="5.00" nVehEntered="9"/>
+    <interval begin="330.00" end="360.00" id="det_main_0" nVehContrib="9" flow="1080.00" occupancy="5.42" speed="27.70" harmonicMeanSpeed="27.68" length="5.00" nVehEntered="9"/>
+</detector>

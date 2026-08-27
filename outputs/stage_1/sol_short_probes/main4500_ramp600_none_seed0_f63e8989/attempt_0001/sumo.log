@@ -1,0 +1,17 @@
+***Starting server on port 49230 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_preflight\merge.net.xml' ... done (2ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main4500_ramp600_none_seed0_f63e8989\attempt_0001\run.add.xml' ... done (9ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main4500_ramp600_none_seed0_f63e8989\attempt_0001\merge.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 360.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 0.75s
+ TraCI-Duration: 0.34s
+ Real time factor: 480
+ UPS: 104685.333333
+Vehicles:
+ Inserted: 509
+ Running: 342
+ Waiting: 0

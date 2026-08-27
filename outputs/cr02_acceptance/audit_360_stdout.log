@@ -1,0 +1,39 @@
+Step #0.00 (1ms ~= 1000.00*RT, ~2000.00UPS, TraCI: 2ms, vehicles TOT 2 ACT 2 BUF 0)       
+Step #100.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 38 ACT 37 BUF 0)                   
+Step #200.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 74 ACT 67 BUF 0)                   
+Step #300.00 (1ms ~= 1000.00*RT, ~73000.00UPS, TraCI: 1ms, vehicles TOT 112 ACT 73 BUF 0) 
+Step #360.00 (1ms ~= 1000.00*RT, ~73000.00UPS, TraCI: 6ms, vehicles TOT 132 ACT 73 BUF 0) 
+
+{
+  "artifact_terminal_matches_summary": true,
+  "completed_plus_terminal_s": 18817.0,
+  "completed_tripinfo_duration_s": 11302.0,
+  "completed_vehicle_exposure_s": 11302.0,
+  "first_window": {
+    "bottleneck_flow_veh": 0,
+    "bottleneck_occupancy": 0.0,
+    "mean_speed_mps": 33.1209244658188,
+    "ramp_vehicle_max_veh": 1,
+    "ramp_vehicle_mean_veh": 0.4666666666666667,
+    "upstream_speed_mps": null
+  },
+  "frozen_reconciliation_passed": true,
+  "legacy_total_time_spent_s": 19530.0,
+  "loaded_departed_arrived": [
+    132,
+    132,
+    59
+  ],
+  "native_xml_count": 8,
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr02_acceptance\\audit_run\\main1200_ramp120_none_seed0_f63e8989\\attempt_0001",
+  "real_workspace_network_unchanged": true,
+  "run_valid": true,
+  "terminal_in_network_count": 73,
+  "terminal_in_network_exposure_s": 7515.0,
+  "terminal_pending_count": 0,
+  "total_time_spent_s": 18817.0,
+  "tts_in_network_s": 18817.0,
+  "tts_pending_s": 0.0,
+  "tts_system_s": 18817.0,
+  "window_count": 12
+}

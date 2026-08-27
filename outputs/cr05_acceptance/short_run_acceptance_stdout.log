@@ -1,0 +1,18 @@
+Step #0.00 (1ms ~= 1000.00*RT, ~2000.00UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)       
+Step #60.00 (0ms ?*RT. ?UPS, TraCI: 6ms, vehicles TOT 22 ACT 22 BUF 0)                    
+
+Step #0.00 (1ms ~= 1000.00*RT, ~2000.00UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)       
+Step #60.00 (0ms ?*RT. ?UPS, TraCI: 5ms, vehicles TOT 22 ACT 22 BUF 0)                    
+
+{
+  "first_valid": true,
+  "first_windows": 2,
+  "native_counts": [
+    8,
+    8
+  ],
+  "network_source_unchanged": true,
+  "second_valid": true,
+  "second_windows": 2,
+  "two_run_isolated": true
+}

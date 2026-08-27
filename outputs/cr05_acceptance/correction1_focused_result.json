@@ -1,0 +1,16 @@
+{
+  "captured_utc": "2026-08-07T10:31:13.387785+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_build_network.py",
+    "tests/test_env_runner.py",
+    "tests/test_scan_demand.py",
+    "-q",
+    "--basetemp",
+    "outputs\\cr05_acceptance\\correction1_focused_tmp"
+  ],
+  "exit_code": 0
+}

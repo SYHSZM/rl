@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "--junitxml",
+    "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_junit.xml"
+  ],
+  "exit_code": 0
+}

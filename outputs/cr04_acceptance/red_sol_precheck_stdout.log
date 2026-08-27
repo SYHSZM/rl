@@ -1,0 +1,218 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_____ test_artifact_manifest_write_failure_does_not_mask_frozen_mismatch ______
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-30/test_artifact_manifest_write_f0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000242DBC502C0>
+
+    def test_artifact_manifest_write_failure_does_not_mask_frozen_mismatch(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, []))
+    
+        def mismatch(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            output_dir, _ = _allocate_fake_attempt(output_root, experiment_id(config, demand, controller, seed))
+            _write_attempt(
+                output_dir, status="failed", valid=False, stage="post_run_verify",
+                failure_type="FrozenNetworkMismatchError", message="original frozen mismatch",
+            )
+            exc = build_network_module.FrozenNetworkMismatchError("original frozen mismatch")
+            exc.failure_context = {
+                "failure_stage": "post_run_verify",
+                "failure_type": "FrozenNetworkMismatchError",
+                "failure_message": "original frozen mismatch",
+                "retryable": False,
+                "output_dir": str(output_dir),
+                "attempt": 1,
+                "experiment_id": output_dir.parent.name,
+            }
+            raise exc
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", mismatch)
+        monkeypatch.setattr(
+            scan_demand_module, "_write_artifact_manifest",
+            lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+        )
+    
+        with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="original frozen mismatch"):
+>           scan_demand_module.scan_demand(
+                config, tmp_path / "scan", controllers=("none",), resume=False,
+            )
+
+tests\test_scan_demand.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scan_demand.py:621: in scan_demand
+    _write_artifact_manifest(attempt_dir, planned_identity)
+tests\test_scan_demand.py:599: in <lambda>
+    lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x00000242DBC56E60>
+
+>       lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+    )
+E   OSError: manifest disk full
+
+tests\test_scan_demand.py:599: OSError
+___ test_artifact_manifest_write_failure_does_not_mask_ordinary_run_failure ___
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-30/test_artifact_manifest_write_f1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000242DA2CB800>
+
+    def test_artifact_manifest_write_failure_does_not_mask_ordinary_run_failure(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, []))
+    
+        def fail_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            output_dir, _ = _allocate_fake_attempt(output_root, experiment_id(config, demand, controller, seed))
+            _write_attempt(
+                output_dir, status="failed", valid=False, stage="run_loop",
+                failure_type="RuntimeError", message="original run failure",
+            )
+            raise _contextual_error("original run failure", "run_loop", output_dir=output_dir)
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fail_run)
+        monkeypatch.setattr(
+            scan_demand_module, "_write_artifact_manifest",
+            lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+        )
+    
+>       scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=False,
+        )
+
+tests\test_scan_demand.py:629: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scan_demand.py:629: in scan_demand
+    _write_artifact_manifest(Path(str(context["output_dir"])), planned_identity)
+tests\test_scan_demand.py:626: in <lambda>
+    lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x00000242DBC587C0>
+
+>       lambda *args, **kwargs: (_ for _ in ()).throw(OSError("manifest disk full")),
+    )
+E   OSError: manifest disk full
+
+tests\test_scan_demand.py:626: OSError
+_____ test_incomplete_windows_time_grid_is_invalid_and_retried_on_resume ______
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-30/test_incomplete_windows_time_g0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000242DBC5BAA0>
+
+    def test_incomplete_windows_time_grid_is_invalid_and_retried_on_resume(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        preflight_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        first_calls = []
+        incomplete_times = range(
+            config.metrics_interval_s,
+            config.simulation_duration_s,
+            config.metrics_interval_s,
+        )
+        monkeypatch.setattr(
+            scan_demand_module,
+            "run_experiment",
+            _complete_runner({("none", 0): {"window_times": incomplete_times}}, first_calls),
+        )
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=False, scan_id="window_grid",
+        )
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            first_index = list(csv.DictReader(handle))
+>       assert first_index[0]["status"] == "invalid"
+E       AssertionError: assert 'valid' == 'invalid'
+E         
+E         - invalid
+E         ? --
+E         + valid
+
+tests\test_scan_demand.py:743: AssertionError
+____________ test_resume_preserves_all_cr02_episode_summary_fields ____________
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-30/test_resume_preserves_all_cr020')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000242DBC9E090>
+
+    def test_resume_preserves_all_cr02_episode_summary_fields(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        summary_overrides = {
+            "loaded_veh": 111,
+            "departed_veh": 101,
+            "arrived_veh": 91,
+            "actual_departure_ratio": 0.91,
+            "completion_ratio": 0.82,
+            "tts_system_s": 1234.5,
+            "tts_pending_s": 234.5,
+            "tts_in_network_s": 1000.0,
+            "mainline_system_exposure_s": 700.0,
+            "ramp_system_exposure_s": 300.0,
+            "unknown_system_exposure_s": 5.0,
+            "completed_vehicle_exposure_s": 950.0,
+            "terminal_in_network_count": 7,
+            "terminal_pending_count": 3,
+            "terminal_in_network_ids": "veh-a|veh-b",
+            "terminal_pending_ids": "veh-c",
+            "terminal_in_network_exposure_s": 40.0,
+            "terminal_pending_exposure_s": 20.0,
+            "terminal_censoring": True,
+            "legacy_total_time_spent_s": 999.0,
+        }
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, []))
+    
+        def first_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            return _write_complete_attempt(
+                config, demand, controller, seed, output_root, frozen_network,
+                summary_overrides=summary_overrides,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", first_run)
+        scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=False, scan_id="summary_resume",
+        )
+    
+        captured = []
+        monkeypatch.setattr(
+            scan_demand_module, "run_experiment",
+            lambda *args, **kwargs: pytest.fail("valid matching attempt must be resumed"),
+        )
+        monkeypatch.setattr(
+            scan_demand_module, "preflight_network",
+            lambda *args, **kwargs: pytest.fail("resume must reuse frozen network"),
+        )
+    
+        def capture_classification(config, summaries):
+            captured.extend(summaries)
+            return []
+    
+        monkeypatch.setattr(scan_demand_module, "_classify_scan", capture_classification)
+        scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=True, scan_id="summary_resume",
+        )
+    
+        assert len(captured) == 1
+        restored = asdict(captured[0])
+        for field, expected in summary_overrides.items():
+>           assert restored[field] == expected
+E           assert 0 == 111
+
+tests\test_scan_demand.py:816: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_scan_demand.py::test_artifact_manifest_write_failure_does_not_mask_frozen_mismatch
+FAILED tests/test_scan_demand.py::test_artifact_manifest_write_failure_does_not_mask_ordinary_run_failure
+FAILED tests/test_scan_demand.py::test_incomplete_windows_time_grid_is_invalid_and_retried_on_resume
+FAILED tests/test_scan_demand.py::test_resume_preserves_all_cr02_episode_summary_fields
+4 failed in 0.67s

@@ -1,0 +1,77 @@
+{
+  "SUMO_HOME": "D:\\sumo-1.25.0",
+  "captured_utc": "2026-08-07T10:15:30.149744+00:00",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\cr05_acceptance_runner.py"
+  ],
+  "config": {
+    "alinea": {
+      "cycle_s": 30,
+      "gain": 70.0,
+      "initial_rate_vph": 900.0,
+      "max_rate_vph": 1200.0,
+      "min_rate_vph": 240.0,
+      "queue_override_ratio": 0.8,
+      "ramp_storage_veh": 80,
+      "target_occupancy": 0.22
+    },
+    "congestion_min_duration_s": 300,
+    "congestion_speed_ratio": 0.65,
+    "controllable_improvement_threshold": 0.05,
+    "demand_phases": [
+      {
+        "begin_s": 0,
+        "end_s": 60,
+        "multiplier": 1.0
+      }
+    ],
+    "free_flow_speed_mps": 33.33,
+    "free_flow_speed_ratio": 0.85,
+    "mainline_range": [
+      3000,
+      6000,
+      300
+    ],
+    "metrics_interval_s": 30,
+    "no_control_congestion_threshold": 0.8,
+    "ramp_range": [
+      300,
+      1200,
+      150
+    ],
+    "seeds": [
+      0
+    ],
+    "simulation_duration_s": 60,
+    "step_length_s": 1.0
+  },
+  "controller": "none",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "demand": {
+    "mainline_vph": 1200,
+    "ramp_vph": 120
+  },
+  "first_result": {
+    "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\short_run_root\\main1200_ramp120_none_seed0_320ff2bc",
+    "valid": true,
+    "windows": 2
+  },
+  "frozen_network": {
+    "path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\frozen\\merge.net.xml",
+    "sha256": "45eefcb42a027d34ffc9bc67b304bfdd793436e892923f1ca5dc2deb7fe4061c",
+    "source_sha256": {
+      "merge.add.xml": "3b40051ab4adfdf289cb114faa63f22c578930e1139ed9c5b38819e079534d24",
+      "merge.con.xml": "d995113ad3d227777de7883608a8c2320c0b9acd99d1eb436f272bc26db59df0",
+      "merge.edg.xml": "167be34b7a83030527eef0c409a386fa96dc1f7d75ecf37a02e45a065a78bdc3",
+      "merge.nod.xml": "c89908eb4941f670bb5c1e9ad91e3dc6abc93bb6c469ff98681382618341a812",
+      "merge.tll.xml": "439da1907fe3b07a618c05c10aa00f4610090635e611c073dcf9dfd7c6d3765b"
+    }
+  },
+  "second_result": {
+    "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\isolation_second_root\\main1200_ramp120_none_seed0_320ff2bc",
+    "valid": true,
+    "windows": 2
+  },
+  "seed": 0
+}

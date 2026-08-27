@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-07T19:42:06.768760+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\preflight\merge.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\merge.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\run.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="180"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\sumo_error.log"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="53487"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="0"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
+    <tripinfo id="ramp_0.0" depart="0.00" departLane="ramp_0_0" departPos="5.10" departSpeed="23.30" departDelay="0.00" arrival="100.00" arrivalLane="main_5_0" arrivalPos="1000.00" arrivalSpeed="33.33" duration="100.00" routeLength="2522.83" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="16.66" rerouteNo="0" devices="tripinfo_ramp_0.0" vType="Car" speedFactor="1.05" vaporized=""/>
+    <tripinfo id="ramp_0.1" depart="47.00" departLane="ramp_0_0" departPos="5.10" departSpeed="20.71" departDelay="0.85" arrival="152.00" arrivalLane="main_5_0" arrivalPos="1000.00" arrivalSpeed="31.06" duration="105.00" routeLength="2522.83" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="14.89" rerouteNo="0" devices="tripinfo_ramp_0.1" vType="Car" speedFactor="0.93" vaporized=""/>
+</tripinfos>

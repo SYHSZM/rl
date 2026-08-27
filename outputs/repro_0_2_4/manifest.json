@@ -1,0 +1,41 @@
+{
+  "task": "0.2-4",
+  "evidence": {
+    "source_lines": {
+      "env_failure_capture": "env.py:92-96, 220-237",
+      "scan_index_failure_fields": "scan_demand.py:34-49",
+      "classification_valid_filter": "classify.py:39-47"
+    },
+    "runner": "failure_semantics_runner.py",
+    "result": "result.json"
+  },
+  "checks": {
+    "invalid_summary_has_machine_readable_valid_false_and_reason": true,
+    "invalid_summary_is_written_by_run_experiment": true,
+    "invalid_run_index_has_status_and_failure_reason": true,
+    "invalid_runs_enter_temporary_summaries_list": true,
+    "invalid_runs_are_excluded_from_valid_seed_maps": true,
+    "invalid_runs_enter_tts_or_congestion_probability": false,
+    "invalid_only_pair_gets_classification_row": true,
+    "invalid_only_pair_preserves_original_failure_reason_in_classification": false,
+    "mixed_invalid_and_valid_seeds_use_only_valid_intersection": true
+  },
+  "observed_cases": {
+    "invalid_only_both_controllers": {
+      "label": "insufficient_valid_runs",
+      "valid_seed_count": 0,
+      "failure_reason": "no_valid_pairs"
+    },
+    "invalid_seed0_plus_valid_seed1": {
+      "label": "free_flow",
+      "valid_seed_count": 1,
+      "paired_tts_improvement": 0.1,
+      "failure_reason": ""
+    }
+  },
+  "issues_registered": [
+    "When all runs for a demand are invalid, _classify_scan still emits a classification row because it checks no_control or alinea before classify_demand_pair; the row is marked insufficient_valid_runs but the original failure reasons are lost and replaced by no_valid_pairs.",
+    "Initialization failures before env.py:54 (controller validation, network build, or TraCI import) are outside the try block and can abort scan_demand without a machine-readable RunResult, index row, or summary row.",
+    "The temporary semantic runner initially uses synthetic failure reasons; no research code was modified."
+  ]
+}

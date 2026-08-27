@@ -1,0 +1,14 @@
+{
+  "captured_utc": "2026-08-07T10:44:16.028443+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_env_runner.py::test_short_sumo_run_produces_windows",
+    "-q",
+    "--basetemp",
+    "outputs\\cr01_acceptance\\red_schema_tmp"
+  ],
+  "exit_code": 1
+}

@@ -1,0 +1,49 @@
+{
+  "config": {
+    "alinea": {
+      "cycle_s": 30,
+      "gain": 70.0,
+      "initial_rate_vph": 900.0,
+      "max_rate_vph": 1200.0,
+      "min_rate_vph": 240.0,
+      "queue_override_ratio": 0.8,
+      "ramp_storage_veh": 80,
+      "target_occupancy": 0.22
+    },
+    "congestion_min_duration_s": 300,
+    "congestion_speed_ratio": 0.65,
+    "controllable_improvement_threshold": 0.05,
+    "demand_phases": [
+      {
+        "begin_s": 0,
+        "end_s": 180,
+        "multiplier": 0.65
+      }
+    ],
+    "free_flow_speed_mps": 33.33,
+    "free_flow_speed_ratio": 0.85,
+    "mainline_range": [
+      1200,
+      1200,
+      1
+    ],
+    "metrics_interval_s": 30,
+    "no_control_congestion_threshold": 0.8,
+    "ramp_range": [
+      120,
+      120,
+      1
+    ],
+    "seeds": [
+      0
+    ],
+    "simulation_duration_s": 180,
+    "step_length_s": 1.0
+  },
+  "controller": "none",
+  "demand": {
+    "mainline_vph": 1200,
+    "ramp_vph": 120
+  },
+  "seed": 0
+}

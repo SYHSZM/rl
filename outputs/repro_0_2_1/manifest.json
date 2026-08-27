@@ -1,0 +1,49 @@
+{
+  "task": "0.2-1",
+  "recorded": "2026-08-07",
+  "test_command": "& 'C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe' -m pytest -q tests",
+  "test_result": "18 passed in 1.16s",
+  "software": {
+    "python": "3.12.13 (bundled runtime)",
+    "pytest": "9.1.1",
+    "sumo": "1.25.0",
+    "netconvert": "1.25.0",
+    "sumo_home": "D:\\sumo-1.25.0"
+  },
+  "scenario": {
+    "simulation_duration_s": 180,
+    "metrics_interval_s": 30,
+    "mainline_vph": 1200,
+    "ramp_vph": 120,
+    "seed": 0,
+    "controllers": ["none", "alinea"],
+    "demand_phase": {"begin_s": 0, "end_s": 180, "multiplier": 0.65}
+  },
+  "runs": [
+    {
+      "controller": "none",
+      "command_file": "none_command.txt",
+      "log": "none.log",
+      "config": "none/main1200_ramp120_none_seed0_1e3043f3/config.json",
+      "summary": "none/main1200_ramp120_none_seed0_1e3043f3/summary.csv",
+      "valid": true,
+      "config_sha256": "FE75988247F4809837875258A41ED79B8EB8532BCF46BC9A878D09E1991AD637",
+      "route_sha256": "08F28A53400229BA9812BA5E79995DE6519DCED3E3D7D341BD49E1C62EA2AB10"
+    },
+    {
+      "controller": "alinea",
+      "command_file": "alinea_command.txt",
+      "log": "alinea.log",
+      "config": "alinea/main1200_ramp120_alinea_seed0_1e3043f3/config.json",
+      "summary": "alinea/main1200_ramp120_alinea_seed0_1e3043f3/summary.csv",
+      "valid": true,
+      "config_sha256": "026C9B13C6BD5432A089848A085CD9373AC92D9221D7C98B79F188D7A7578C0B",
+      "route_sha256": "08F28A53400229BA9812BA5E79995DE6519DCED3E3D7D341BD49E1C62EA2AB10"
+    }
+  ],
+  "notes": [
+    "Both RunResult.valid values were True.",
+    "This is a 180-second smoke pair, not a 60-minute formal experiment.",
+    "No research code was modified; findings are recorded only."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "created_at": "2026-08-07T12:12:44.903276+00:00",
+  "frozen_network": {
+    "net_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr04_acceptance\\green_work_tmp\\test_explicit_scan_id_rejects_0\\scan\\fixed_scan\\preflight\\merge.net.xml",
+    "net_sha256": "9d6a064fb2248075588a97f3e7233521dadb5a5eabd1560a849c01b9f4b5c732",
+    "source_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr04_acceptance\\green_work_tmp\\test_explicit_scan_id_rejects_0\\network_source",
+    "source_sha256": {
+      "merge.add.xml": "b96db5e48228179d8af1a91d3a4dc1632f9b175f5ed41e609eb44d4ae13adce5",
+      "merge.con.xml": "25e60aa5b96b2ba607265463e140c9d0894ee31693d998a2d65a7f46806c67f6",
+      "merge.edg.xml": "83f019e5db9bf4caaca56c9b910973daa9db4db969d0f255ee8e9344036e3b11",
+      "merge.nod.xml": "8ad7bd81e7792f6b1bd611a91b999b9db01fb3ee01a9ce7ab28359ccff4ff900",
+      "merge.tll.xml": "fa0dc99edfbece42e60a3dc26db132a8d80f51c7f1d5af35124d165768a84d0f"
+    }
+  },
+  "identity": {
+    "code": {
+      "files": {
+        "build_network.py": "7a607ac223e71f0896cf7839819fc15a96d9282917271b77cccb0e734b77b70e",
+        "classify.py": "709fcdfafb95881dd8aa33953c86c33a02901e339a33b3008beada4645e36dd5",
+        "controllers.py": "352f6299ebbf7a6e685e4b80a46c02a062130f4708e2dc0afa267f3134d70ba3",
+        "env.py": "3b3598d6e127879833657cd792aea99533ebc22268bed8094641c3deaee5fb5d",
+        "experiment_config.py": "e3d681101bd1e7835c819538f64b8f21b3003341cdfc70bfd51ea4fa3279238c",
+        "metrics.py": "09bb27893ea82611138c3ff22b35171c49ae96306e2176d3e721a6fe8a8a9097",
+        "rou_generate.py": "a2cc7dda014392ec44294f0654098e58dbfdc47fae29fac02ddfce311b255800",
+        "scan_demand.py": "782917b13d0f47a74c58a87eea97b6f3a802d6789b119a30de0422b7caae1cdb"
+      },
+      "sha256": "95cf36d394c9174feca1f4adda684d5626aefa67b61828369756b897e5894dd5"
+    },
+    "config": {
+      "alinea": {
+        "cycle_s": 30,
+        "gain": 70.0,
+        "initial_rate_vph": 900.0,
+        "max_rate_vph": 1200.0,
+        "min_rate_vph": 240.0,
+        "queue_override_ratio": 0.8,
+        "ramp_storage_veh": 80,
+        "target_occupancy": 0.22
+      },
+      "congestion_min_duration_s": 300,
+      "congestion_speed_ratio": 0.65,
+      "controllable_improvement_threshold": 0.05,
+      "demand_phases": [
+        {
+          "begin_s": 0,
+          "end_s": 600,
+          "multiplier": 0.65
+        },
+        {
+          "begin_s": 600,
+          "end_s": 2400,
+          "multiplier": 1.0
+        },
+        {
+          "begin_s": 2400,
+          "end_s": 3600,
+          "multiplier": 0.7
+        }
+      ],
+      "free_flow_speed_mps": 33.33,
+      "free_flow_speed_ratio": 0.85,
+      "mainline_range": [
+        1200,
+        1200,
+        1
+      ],
+      "metrics_interval_s": 30,
+      "no_control_congestion_threshold": 0.8,
+      "ramp_range": [
+        120,
+        120,
+        1
+      ],
+      "seeds": [
+        0
+      ],
+      "simulation_duration_s": 3600,
+      "step_length_s": 1.0
+    },
+    "controllers": [
+      "none"
+    ],
+    "protocol": {
+      "path": "docs/experiment_protocol_v1.0.md",
+      "sha256": "31b9f6eec310b3d71b2333175759405bba398ab2e76c9415c99f443f07bef137",
+      "version": "1.0"
+    },
+    "scene": {
+      "files": {
+        "merge.add.xml": "3b40051ab4adfdf289cb114faa63f22c578930e1139ed9c5b38819e079534d24",
+        "merge.con.xml": "d995113ad3d227777de7883608a8c2320c0b9acd99d1eb436f272bc26db59df0",
+        "merge.edg.xml": "167be34b7a83030527eef0c409a386fa96dc1f7d75ecf37a02e45a065a78bdc3",
+        "merge.nod.xml": "c89908eb4941f670bb5c1e9ad91e3dc6abc93bb6c469ff98681382618341a812",
+        "merge.tll.xml": "439da1907fe3b07a618c05c10aa00f4610090635e611c073dcf9dfd7c6d3765b"
+      },
+      "sha256": "13ac8a6c8fb3fc4d1e6b1b934f9c00120606c6875e79662c405c15aab1ee07c3"
+    },
+    "schemas": {
+      "artifact_manifest": "cr04-artifact-manifest-v1",
+      "attempt": "cr03-attempt-v1",
+      "scan_manifest": "cr04-scan-manifest-v1",
+      "summary": "cr02-summary-v1",
+      "system_exposure": "cr02-system-exposure-v1",
+      "window": "cr02-window-v1"
+    }
+  },
+  "identity_sha256": "8c0ea7228ad05bc814b7ba325cd606bc253ac27481239350448ad210585c5d27",
+  "scan_id": "fixed_scan",
+  "schema_version": "cr04-scan-manifest-v1"
+}

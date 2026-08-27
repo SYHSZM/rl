@@ -1,0 +1,28 @@
+***Starting server on port 54709 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\osm.net.xml' ... done (20ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\mixed_demand_screen\main1925_ramp60\none_seed1\runtime_osm_control.add.xml' ... done (6ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\outputs\mixed_demand_screen\routes\main1925_ramp60.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Warning: Vehicle 'mainline_001685' performs emergency braking on lane '712595827_1' with decel=9.00, wished=4.50, severity=1.00, time=3353.00.
+Simulation ended at time: 4332.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 9.32s
+ TraCI-Duration: 3.74s
+ Real time factor: 464.957
+ UPS: 119466.888483
+Vehicles:
+ Inserted: 1985
+ Running: 0
+ Waiting: 0
+ Emergency Braking: 1
+Statistics (avg of 1985):
+ RouteLength: 7243.93
+ Speed: 14.33
+ Duration: 560.74
+ WaitingTime: 46.68
+ TimeLoss: 287.16
+ DepartDelay: 0.48
+DijkstraRouter answered 1985 queries and explored 11.88 edges on average.
+DijkstraRouter spent 0.01s answering queries (0.00ms on average).

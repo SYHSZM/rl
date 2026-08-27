@@ -1,0 +1,143 @@
+{
+  "schema": "stage4c-a-osm-paired-pilot-v1",
+  "valid": true,
+  "errors": [],
+  "formal_sumo_start_count": 6,
+  "runs_completed": 6,
+  "sumo_version": "Eclipse SUMO sumo 1.25.0\n Build features: Windows-10.0.17763 AMD64 MSVC 19.29.30133.0 Release FMI Proj GUI FMT Intl SWIG Parquet Eigen\n Copyright (C) 2001-2025 German Aerospace Center (DLR) and others; https://sumo.dlr.de\n\nEclipse SUMO sumo 1.25.0 is part of SUMO.\nThis program and the accompanying materials\nare made available under the terms of the Eclipse Public License v2.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v20.html\nThis program may also be made available under the following Secondary\nLicenses when the conditions for such availability set forth in the Eclipse\nPublic License 2.0 are satisfied: GNU General Public License, version 2\nor later which is available at\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later",
+  "traci_version": "not_recorded_during_formal_run",
+  "traci_version_source": "not_recorded_during_formal_run",
+  "input_hashes": {
+    "osm.net.xml": "856D22EC0E5D7FD13021557EBEBD2A3CD3BABD03385A208A2E801D3265B7FD99",
+    "control_adapter/osm_control.add.xml": "52844C6A95E17F2C10F44E52B3CED9ABE5A0C3FEC8ED13CE4674A3EC7B01362D",
+    "demand_delivery/fixed/600+60.rou.xml": "ECF07999D44C8EA4B2FB5FEED908066FF82088602DE6F59A5ABCF96EDEB250EB",
+    "demand_delivery/fixed/400+80.rou.xml": "D9E70ABEF4DFBC163E859F71F3FE87B8DE65700331909505B01B9EF8321BE887",
+    "demand_delivery/fixed/1000+50.rou.xml": "B28C03F19441559DFF2EAA9331B4A44293E07C882F125EA7BD6EDAB6FB0B0BDC"
+  },
+  "matrix": [
+    {
+      "scenario": {
+        "name": "600+60",
+        "mainline_vph": 600,
+        "ramp_vph": 60,
+        "nominal_veh": 660,
+        "route_sha256": "ECF07999D44C8EA4B2FB5FEED908066FF82088602DE6F59A5ABCF96EDEB250EB"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\600+60.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main600_ramp60\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "600+60",
+        "mainline_vph": 600,
+        "ramp_vph": 60,
+        "nominal_veh": 660,
+        "route_sha256": "ECF07999D44C8EA4B2FB5FEED908066FF82088602DE6F59A5ABCF96EDEB250EB"
+      },
+      "controller": "alinea",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\600+60.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main600_ramp60\\alinea_seed1"
+    },
+    {
+      "scenario": {
+        "name": "400+80",
+        "mainline_vph": 400,
+        "ramp_vph": 80,
+        "nominal_veh": 480,
+        "route_sha256": "D9E70ABEF4DFBC163E859F71F3FE87B8DE65700331909505B01B9EF8321BE887"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\400+80.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main400_ramp80\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "400+80",
+        "mainline_vph": 400,
+        "ramp_vph": 80,
+        "nominal_veh": 480,
+        "route_sha256": "D9E70ABEF4DFBC163E859F71F3FE87B8DE65700331909505B01B9EF8321BE887"
+      },
+      "controller": "alinea",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\400+80.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main400_ramp80\\alinea_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1000+50",
+        "mainline_vph": 1000,
+        "ramp_vph": 50,
+        "nominal_veh": 1050,
+        "route_sha256": "B28C03F19441559DFF2EAA9331B4A44293E07C882F125EA7BD6EDAB6FB0B0BDC"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\1000+50.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main1000_ramp50\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1000+50",
+        "mainline_vph": 1000,
+        "ramp_vph": 50,
+        "nominal_veh": 1050,
+        "route_sha256": "B28C03F19441559DFF2EAA9331B4A44293E07C882F125EA7BD6EDAB6FB0B0BDC"
+      },
+      "controller": "alinea",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\demand_delivery\\fixed\\1000+50.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4c_pilot\\main1000_ramp50\\alinea_seed1"
+    }
+  ],
+  "run_order": [
+    {
+      "scenario": "600+60",
+      "controller": "none",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "scenario": "600+60",
+      "controller": "alinea",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "scenario": "400+80",
+      "controller": "none",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "scenario": "400+80",
+      "controller": "alinea",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "scenario": "1000+50",
+      "controller": "none",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "scenario": "1000+50",
+      "controller": "alinea",
+      "seed": 1,
+      "valid": true,
+      "status": "valid"
+    }
+  ],
+  "protection_errors": [],
+  "traci_version_reason": "The formal run did not record a package-level TraCI version; no version is inferred from the protocol constant."
+}

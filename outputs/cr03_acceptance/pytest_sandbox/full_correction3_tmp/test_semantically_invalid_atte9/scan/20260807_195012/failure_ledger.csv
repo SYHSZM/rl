@@ -1,0 +1,2 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+1200,120,none,0,output_parse,ValueError,attempt record timestamps must include a timezone,False,2026-08-07T11:50:12.041683+00:00

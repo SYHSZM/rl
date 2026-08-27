@@ -1,0 +1,102 @@
+{
+  "schema_version": "stage4b-osm-sumo-smoke-v1",
+  "scenario": "600+60",
+  "seed": 1,
+  "controller": "alinea",
+  "begin_s": 0,
+  "end_s": 600,
+  "step_length_s": 1.0,
+  "valid": true,
+  "errors": [],
+  "failure_stage": "completed",
+  "environment": {
+    "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+    "sumo_binary": "D:\\sumo-1.25.0\\bin\\sumo.exe",
+    "sumo_version": "Eclipse SUMO sumo 1.25.0\n Build features: Windows-10.0.17763 AMD64 MSVC 19.29.30133.0 Release FMI Proj GUI FMT Intl SWIG Parquet Eigen\n Copyright (C) 2001-2025 German Aerospace Center (DLR) and others; https://sumo.dlr.de\n\nEclipse SUMO sumo 1.25.0 is part of SUMO.\nThis program and the accompanying materials\nare made available under the terms of the Eclipse Public License v2.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v20.html\nThis program may also be made available under the following Secondary\nLicenses when the conditions for such availability set forth in the Eclipse\nPublic License 2.0 are satisfied: GNU General Public License, version 2\nor later which is available at\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later\n",
+    "traci_module": "D:\\sumo-1.25.0\\tools\\traci\\__init__.py",
+    "traci_protocol_version": 22,
+    "SUMO_HOME": "D:\\sumo-1.25.0"
+  },
+  "input_sha256": {
+    "osm.net.xml": "856D22EC0E5D7FD13021557EBEBD2A3CD3BABD03385A208A2E801D3265B7FD99",
+    "600+60.rou.xml": "ECF07999D44C8EA4B2FB5FEED908066FF82088602DE6F59A5ABCF96EDEB250EB",
+    "osm_control.add.xml": "52844C6A95E17F2C10F44E52B3CED9ABE5A0C3FEC8ED13CE4674A3EC7B01362D"
+  },
+  "j5_roundtrip": {
+    "valid": true,
+    "commanded": [
+      "rr",
+      "GG"
+    ],
+    "observed": [
+      "rr",
+      "GG"
+    ]
+  },
+  "runtime": {
+    "controller_update_times": [
+      0,
+      30,
+      60,
+      90,
+      120,
+      150,
+      180,
+      210,
+      240,
+      270,
+      300,
+      330,
+      360,
+      390,
+      420,
+      450,
+      480,
+      510,
+      540,
+      570
+    ],
+    "state_mismatches": 0,
+    "mainline_departed": 100,
+    "ramp_departed": 10,
+    "arrived": 53,
+    "teleport": 0,
+    "collision": 0,
+    "steps": 600,
+    "detector_read_counts": {
+      "osm_det_main_down_1": 600,
+      "osm_det_main_down_2": 600,
+      "osm_det_ramp_queue": 600,
+      "osm_det_ramp_arrival": 600
+    },
+    "close_success": true
+  },
+  "log_counts": {
+    "fatal": 0,
+    "emergency_braking": 0,
+    "warning": 0
+  },
+  "detector_read_counts": {
+    "osm_det_main_down_1": 600,
+    "osm_det_main_down_2": 600,
+    "osm_det_ramp_queue": 600,
+    "osm_det_ramp_arrival": 600
+  },
+  "output_sha256": {
+    "detector_timeline.csv": "9D5016983B67E1A9599BB35004664D09C6BF370C6BDDDB0A27035E0D8950B299",
+    "native/osm_det_main_down_1.xml": "72B8E47D741F3EE8E7775D77D28952CA2910204FE56E986D63841369A5DED36F",
+    "native/osm_det_main_down_2.xml": "07F8F9B8C0C0A0A18CB8E3BB8D6EFE565A6ADB65E3CB70970A31B2D375201549",
+    "native/osm_det_ramp_arrival.xml": "A3399E59727DA98F28B829B8CD39CD2D941D66A81CA522254770B8259846F3AB",
+    "native/osm_det_ramp_queue.xml": "2CB60E825C3651E4EA9FC808761DB2B338F496DD3ED7DDD4801B195DFDD06095",
+    "ramp_queue_timeline.csv": "83BE4A7B479F37DCF88BFB9B375D3B21A287A23C23B7557170EE128CD54C3D92",
+    "runtime_osm_control.add.xml": "97F00E01D51331CFE61A898DB8F7F22492EDDE9F658677C0BC1C26C7506A40C7",
+    "signal_timeline.csv": "74A620A01D5DB5C0109362C60280ADF98EBD15E2CF366AB48D7F429E7173854A",
+    "sumo.log": "2E00005A8B193E4A66CDA4CAF2B32BDDD6521EEF832A598E73634A63B876F8C5",
+    "sumo_error.log": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "tripinfo.xml": "C1464DD3DC3527AAFD34B1776279445C43E5917EE40F533EA1ED4B3CE6EA9310"
+  },
+  "protection_errors_before": [],
+  "protection_errors_after": [],
+  "started_at": "2026-08-24T07:49:11.377064+00:00",
+  "finished_at": "2026-08-24T07:49:13.127839+00:00"
+}

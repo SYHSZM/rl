@@ -1,0 +1,37 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ test_unmanifested_attempt_file_is_invalid_and_retried_on_resume _______
+
+tmp_path = WindowsPath('C:/Users/Administrator/AppData/Local/Temp/pytest-of-Administrator/pytest-34/test_unmanifested_attempt_file0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002A2C7D34890>
+
+    def test_unmanifested_attempt_file_is_invalid_and_retried_on_resume(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        preflight_calls = []
+        run_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        monkeypatch.setattr(scan_demand_module, "run_experiment", _complete_runner({}, run_calls))
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=False, scan_id="extra_file",
+        )
+        first_attempt = next((scan_dir / "runs").glob("*/attempt_0001"))
+        (first_attempt / "unmanifested.txt").write_text("late mutation", encoding="utf-8")
+        run_calls.clear()
+    
+        scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=True, scan_id="extra_file",
+        )
+    
+>       assert run_calls == [("none", 0)]
+E       AssertionError: assert [] == [('none', 0)]
+E         
+E         Right contains one more item: ('none', 0)
+E         Use -v to get more diff
+
+tests\test_scan_demand.py:447: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_scan_demand.py::test_unmanifested_attempt_file_is_invalid_and_retried_on_resume
+1 failed in 0.34s

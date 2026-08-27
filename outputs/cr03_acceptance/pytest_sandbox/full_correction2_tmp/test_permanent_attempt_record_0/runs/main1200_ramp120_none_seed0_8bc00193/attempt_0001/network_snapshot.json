@@ -1,0 +1,12 @@
+{
+  "net_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\pytest_sandbox\\full_correction2_tmp\\test_permanent_attempt_record_0\\preflight\\merge.net.xml",
+  "net_sha256": "e43937ec119bffe77bbd051ade17f264276e1b4ecd077a4bbe5ec2cac40aff1b",
+  "source_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\pytest_sandbox\\project\\network",
+  "source_sha256": {
+    "merge.add.xml": "3b40051ab4adfdf289cb114faa63f22c578930e1139ed9c5b38819e079534d24",
+    "merge.con.xml": "d995113ad3d227777de7883608a8c2320c0b9acd99d1eb436f272bc26db59df0",
+    "merge.edg.xml": "167be34b7a83030527eef0c409a386fa96dc1f7d75ecf37a02e45a065a78bdc3",
+    "merge.nod.xml": "c89908eb4941f670bb5c1e9ad91e3dc6abc93bb6c469ff98681382618341a812",
+    "merge.tll.xml": "439da1907fe3b07a618c05c10aa00f4610090635e611c073dcf9dfd7c6d3765b"
+  }
+}

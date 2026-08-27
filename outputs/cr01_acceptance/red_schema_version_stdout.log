@@ -1,0 +1,29 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____________________ test_short_sumo_run_produces_windows _____________________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr01_acceptance/red_schema_tmp/test_short_sumo_run_produces_w0')
+
+    def test_short_sumo_run_produces_windows(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None, "CR-05 requires explicit frozen-network preflight"
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        result = run_experiment(_short_config(180), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+        assert result.valid is True
+        assert len(result.window_records) >= 5
+        assert (result.output_dir / "windows.csv").exists()
+        first = result.window_records[0]
+>       assert first.metric_schema_version == "cr01-window-v1"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'WindowRecord' object has no attribute 'metric_schema_version'
+
+tests\test_env_runner.py:43: AttributeError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #100.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 25 ACT 24 BUF 0)                   
+Step #180.00 (1ms ~= 1000.00*RT, ~41000.00UPS, TraCI: 5ms, vehicles TOT 43 ACT 41 BUF 0)  
+
+
+=========================== short test summary info ===========================
+FAILED tests/test_env_runner.py::test_short_sumo_run_produces_windows - Attri...
+1 failed in 1.15s

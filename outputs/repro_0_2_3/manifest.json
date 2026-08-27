@@ -1,0 +1,47 @@
+{
+  "task": "0.2-3",
+  "entry": "scan_demand.scan_demand",
+  "scenario": {
+    "simulation_duration_s": 180,
+    "metrics_interval_s": 30,
+    "mainline_range": [1200, 1200, 1],
+    "ramp_range": [120, 120, 1],
+    "seeds": [0],
+    "controllers": ["none", "alinea"],
+    "resume": true
+  },
+  "runs": [
+    {
+      "scan_dir": "scan/20260807_154414",
+      "run_index": "scan/20260807_154414/run_index.csv",
+      "classification": "scan/20260807_154414/demand_classification.csv",
+      "run_index_lines": 3,
+      "config_snapshot_count": 2,
+      "run_index_sha256": "BC0D54B17F2BCA151A6912C422943270F94DEEFA0AFE83DD9B6BAB2A4BF12992",
+      "classification_label": "free_flow"
+    },
+    {
+      "scan_dir": "scan/20260807_154416",
+      "run_index": "scan/20260807_154416/run_index.csv",
+      "classification": "scan/20260807_154416/demand_classification.csv",
+      "run_index_lines": 3,
+      "config_snapshot_count": 2,
+      "run_index_sha256": "4482F2F01D6D39200A32CA49351CEEC8B4056F28B86C14F852D05F97166AEBF9",
+      "classification_label": "free_flow"
+    }
+  ],
+  "conclusion": {
+    "resume_parameter_is_consumed": false,
+    "existing_scan_directory_is_reused": false,
+    "completed_runs_are_skipped": false,
+    "directory_naming": "output_root/YYYYMMDD_HHMMSS",
+    "config_matching_against_existing_runs": false,
+    "current_matching": "within the new in-memory summaries list by controller and mainline/ramp demand; seed pairing is delegated to classify_demand_pair"
+  },
+  "issues_registered": [
+    "resume=True produced a new timestamp directory on the second run and repeated both planned runs.",
+    "The timestamp directory name contains no configuration digest, seed, controller, or run completion state.",
+    "No existing run_index.csv or config.json is read to match or skip prior work.",
+    "The two run_index files differ only because their output_dir paths contain different timestamps; experiment IDs are otherwise identical."
+  ]
+}

@@ -1,0 +1,2 @@
+experiment_id,controller,seed,time_s,mainline_vph,ramp_vph,mean_speed_mps,upstream_speed_mps,bottleneck_flow_veh,bottleneck_occupancy,ramp_queue_veh,alinea_requested_rate_vph,alinea_applied_rate_vph,departed_veh,arrived_veh,teleports,metric_schema_version,estimator_id,window_step_observations,main_speed_vehicle_observations,upstream_speed_vehicle_observations,ramp_vehicle_mean_veh,ramp_vehicle_max_veh,ramp_halting_mean_veh,ramp_halting_max_veh
+empty,none,0,30,1200,120,,,0,0.0,0,900.0,900.0,0,0,0,cr01-window-v1,traci-1s-step-complete-window,30,0,0,0.0,0,0.0,0

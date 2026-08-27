@@ -1,0 +1,382 @@
+.FFFFF..........F.....FFF                                                [100%]
+================================== FAILURES ===================================
+____________________ test_short_sumo_run_produces_windows _____________________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_short_sumo_run_produces_w0')
+
+    def test_short_sumo_run_produces_windows(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None, "CR-05 requires explicit frozen-network preflight"
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        result = run_experiment(_short_config(180), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+        assert result.valid is True
+        assert len(result.window_records) >= 5
+        assert (result.output_dir / "windows.csv").exists()
+        first = result.window_records[0]
+        assert first.metric_schema_version == "cr02-window-v1"
+        assert first.window_step_observations == 30
+        assert first.estimator_id == "traci-1s-step-complete-window"
+        assert first.main_speed_vehicle_observations > 0
+        assert first.ramp_vehicle_mean_veh <= first.ramp_vehicle_max_veh
+        assert first.ramp_halting_mean_veh <= first.ramp_halting_max_veh
+        assert len(list((result.output_dir / "native").glob("*.xml"))) == 8
+        assert first.loaded_veh >= first.departed_veh >= first.arrived_veh
+        assert first.pending_veh >= 0 and first.in_network_veh >= 0
+        exposure_path = result.output_dir / "system_exposure.json"
+        assert exposure_path.exists()
+        exposure = json.loads(exposure_path.read_text(encoding="utf-8"))
+        assert exposure["schema_version"] == "cr02-system-exposure-v1"
+        assert exposure["terminal"]["in_network_ids"] == sorted(exposure["terminal"]["in_network_ids"])
+        with (result.output_dir / "summary.csv").open(newline="", encoding="utf-8") as handle:
+            summary_header = next(csv.reader(handle))
+        assert "tts_system_s" in summary_header
+        assert "legacy_total_time_spent_s" in summary_header
+>       attempt = json.loads((result.output_dir / "attempt.json").read_text(encoding="utf-8"))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env_runner.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_short_sumo_run_produces_w0/runs/main1200_ramp120_none_seed0_1e3043f3/attempt_0001/attempt.json')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\red_tmp\\test_short_sumo_run_produces_w0\\runs\\main1200_ramp120_none_seed0_1e3043f3\\attempt_0001\\attempt.json'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #100.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 25 ACT 24 BUF 0)                   
+Step #180.00 (0ms ?*RT. ?UPS, TraCI: 6ms, vehicles TOT 43 ACT 41 BUF 0)                   
+
+
+____________ test_network_preflight_failure_writes_invalid_attempt ____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_network_preflight_failure0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF8756A0>
+
+    def test_network_preflight_failure_writes_invalid_attempt(tmp_path, monkeypatch):
+        monkeypatch.setattr(
+            env_module,
+            "preflight_network",
+            lambda path: (_ for _ in ()).throw(RuntimeError("injected network_preflight")),
+        )
+    
+>       result = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, tmp_path / "runs")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env_runner.py:118: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env.py:50: in run_experiment
+    frozen_network = preflight_network(output_root / "_preflight" / "merge.net.xml")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_env_runner.py:115: in <lambda>
+    lambda path: (_ for _ in ()).throw(RuntimeError("injected network_preflight")),
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x00000200FF875420>
+
+>       lambda path: (_ for _ in ()).throw(RuntimeError("injected network_preflight")),
+    )
+E   RuntimeError: injected network_preflight
+
+tests\test_env_runner.py:115: RuntimeError
+______________ test_traci_import_failure_writes_invalid_attempt _______________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_traci_import_failure_writ0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF84DDC0>
+
+    def test_traci_import_failure_writes_invalid_attempt(tmp_path, monkeypatch):
+        frozen = _fake_frozen(tmp_path, monkeypatch)
+        monkeypatch.setattr(
+            env_module,
+            "_import_traci",
+            lambda: (_ for _ in ()).throw(RuntimeError("injected traci_import")),
+        )
+    
+>       result = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, tmp_path / "runs", frozen_network=frozen)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env_runner.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+env.py:62: in run_experiment
+    traci = _import_traci()
+            ^^^^^^^^^^^^^^^
+tests\test_env_runner.py:130: in <lambda>
+    lambda: (_ for _ in ()).throw(RuntimeError("injected traci_import")),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x00000200FF84FFD0>
+
+>       lambda: (_ for _ in ()).throw(RuntimeError("injected traci_import")),
+    )
+E   RuntimeError: injected traci_import
+
+tests\test_env_runner.py:130: RuntimeError
+_________ test_sumo_start_failure_writes_attempt_without_global_close _________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_sumo_start_failure_writes0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF87E630>
+
+    def test_sumo_start_failure_writes_attempt_without_global_close(tmp_path, monkeypatch):
+        frozen = _fake_frozen(tmp_path, monkeypatch)
+        fake_traci = SimpleNamespace(
+            start=lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("injected sumo_start")),
+            close=lambda: (_ for _ in ()).throw(AssertionError("global traci.close must not be called")),
+        )
+        monkeypatch.setattr(env_module, "_import_traci", lambda: fake_traci)
+    
+        result = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, tmp_path / "runs", frozen_network=frozen)
+    
+        assert result.valid is False
+>       attempt, summary = _read_failure_artifacts(tmp_path / "runs")
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_env_runner.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+output_root = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_sumo_start_failure_writes0/runs')
+
+    def _read_failure_artifacts(output_root):
+        attempts = list(Path(output_root).rglob("attempt.json"))
+        summaries = list(Path(output_root).rglob("summary.csv"))
+>       assert len(attempts) == len(summaries) == 1
+E       AssertionError: assert 0 == 1
+E        +  where 0 = len([])
+E        +  and   1 = len([WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_sumo_start_failure_writes0/runs/main1200_ramp120_none_seed0_8bc00193/attempt_0001/summary.csv')])
+
+tests\test_env_runner.py:41: AssertionError
+____________ test_run_loop_failure_closes_only_acquired_connection ____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_run_loop_failure_closes_o0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF87F4A0>
+
+    def test_run_loop_failure_closes_only_acquired_connection(tmp_path, monkeypatch):
+        frozen = _fake_frozen(tmp_path, monkeypatch)
+        closed = []
+    
+        class FakeConnection:
+            def simulationStep(self):
+                raise RuntimeError("injected run_loop")
+    
+            def close(self):
+                closed.append("connection")
+    
+        connection = FakeConnection()
+        fake_traci = SimpleNamespace(
+            start=lambda *args, **kwargs: None,
+            getConnection=lambda label: connection,
+            close=lambda: (_ for _ in ()).throw(AssertionError("global traci.close must not be called")),
+        )
+        monkeypatch.setattr(env_module, "_import_traci", lambda: fake_traci)
+        monkeypatch.setattr(env_module, "_detector_occupancy", lambda conn, detector_id: 0.0)
+        monkeypatch.setattr(env_module, "_ramp_queue", lambda conn: 0)
+        monkeypatch.setattr(env_module, "_apply_ramp_signal", lambda *args: None)
+    
+        result = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, tmp_path / "runs", frozen_network=frozen)
+    
+        assert result.valid is False
+>       assert closed == ["connection"]
+E       AssertionError: assert [] == ['connection']
+E         
+E         Right contains one more item: 'connection'
+E         Use -v to get more diff
+
+tests\test_env_runner.py:180: AssertionError
+____ test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates ____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_frozen_mismatch_after_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF8C3770>
+
+    def test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates(tmp_path, monkeypatch):
+        frozen = build_network_module.preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        real_verify = env_module.verify_frozen_network
+        calls = {"count": 0}
+    
+        def fail_second_verification(value):
+            calls["count"] += 1
+            if calls["count"] == 2:
+                raise build_network_module.FrozenNetworkMismatchError("injected post-run frozen mismatch")
+            return real_verify(value)
+    
+        monkeypatch.setattr(env_module, "verify_frozen_network", fail_second_verification)
+        with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="post-run"):
+            env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+    
+        summaries = list((tmp_path / "runs").rglob("summary.csv"))
+        assert len(summaries) == 1
+        with summaries[0].open(encoding="utf-8", newline="") as handle:
+            row = next(csv.DictReader(handle))
+        assert row["valid"] == "False"
+        assert "post-run frozen mismatch" in row["failure_reason"]
+        attempts = list((tmp_path / "runs").rglob("attempt.json"))
+>       assert len(attempts) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests\test_env_runner.py:489: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 3ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+______ test_scan_records_ordinary_run_failure_and_continues_planned_runs ______
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_scan_records_ordinary_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF8C1EE0>
+
+    def test_scan_records_ordinary_run_failure_and_continues_planned_runs(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            if len(calls) == 1:
+                raise RuntimeError("injected ordinary run failure")
+            summary = EpisodeSummary(
+                experiment_id="fake", controller=controller, seed=seed,
+                mainline_vph=demand.mainline_vph, ramp_vph=demand.ramp_vph,
+                valid=True, failure_reason="", total_time_spent_s=0.0,
+                mean_speed_mps=30.0, bottleneck_throughput_veh=0,
+                max_ramp_queue_veh=0, breakdown_start_s=0,
+                congestion_duration_s=0, recovered=True, teleports=0,
+            )
+            return SimpleNamespace(
+                experiment_id="fake", valid=True, output_dir=Path(output_root) / "attempt_0001",
+                failure_reason="", summary=summary,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+>       scan_dir = scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scan_demand.py:36: in scan_demand
+    result = run_experiment(config, demand, controller, seed, output_root=scan_dir / "runs", use_gui=use_gui, frozen_network=frozen_network)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+config = ExperimentConfig(simulation_duration_s=3600, step_length_s=1.0, metrics_interval_s=30, mainline_range=(1200, 1200, 1),...al_rate_vph=900.0, min_rate_vph=240.0, max_rate_vph=1200.0, cycle_s=30, queue_override_ratio=0.8, ramp_storage_veh=80))
+demand = DemandPoint(mainline_vph=1200, ramp_vph=120), controller = 'none'
+seed = 0
+output_root = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_scan_records_ordinary_run0/scan/20260807_192132/runs')
+use_gui = False, frozen_network = <object object at 0x00000200DFEBBE30>
+
+    def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+        calls.append(controller)
+        if len(calls) == 1:
+>           raise RuntimeError("injected ordinary run failure")
+E           RuntimeError: injected ordinary run failure
+
+tests\test_scan_demand.py:136: RuntimeError
+__ test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_scan_writes_failure_ledge0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF852ED0>
+
+    def test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+        monkeypatch.setattr(
+            scan_demand_module,
+            "run_experiment",
+            lambda *args, **kwargs: (_ for _ in ()).throw(OSError("attempt mkdir denied")),
+        )
+    
+>       scan_dir = scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scan_demand.py:36: in scan_demand
+    result = run_experiment(config, demand, controller, seed, output_root=scan_dir / "runs", use_gui=use_gui, frozen_network=frozen_network)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_scan_demand.py:172: in <lambda>
+    lambda *args, **kwargs: (_ for _ in ()).throw(OSError("attempt mkdir denied")),
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+.0 = <tuple_iterator object at 0x00000200FF8518D0>
+
+>       lambda *args, **kwargs: (_ for _ in ()).throw(OSError("attempt mkdir denied")),
+    )
+E   OSError: attempt mkdir denied
+
+tests\test_scan_demand.py:172: OSError
+_______ test_batch_preflight_failure_writes_scan_ledger_then_propagates _______
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_batch_preflight_failure_w0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000200FF91ADE0>
+
+    def test_batch_preflight_failure_writes_scan_ledger_then_propagates(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(
+            scan_demand_module,
+            "preflight_network",
+            lambda path: (_ for _ in ()).throw(RuntimeError("shared preflight failed")),
+        )
+    
+        with pytest.raises(RuntimeError, match="shared preflight failed"):
+            scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none",), resume=False)
+    
+        scan_dirs = list((tmp_path / "scan").iterdir())
+        assert len(scan_dirs) == 1
+>       with (scan_dirs[0] / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:203: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/red_tmp/test_batch_preflight_failure_w0/scan/20260807_192132/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\red_tmp\\test_batch_preflight_failure_w0\\scan\\20260807_192132\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_env_runner.py::test_short_sumo_run_produces_windows - FileN...
+FAILED tests/test_env_runner.py::test_network_preflight_failure_writes_invalid_attempt
+FAILED tests/test_env_runner.py::test_traci_import_failure_writes_invalid_attempt
+FAILED tests/test_env_runner.py::test_sumo_start_failure_writes_attempt_without_global_close
+FAILED tests/test_env_runner.py::test_run_loop_failure_closes_only_acquired_connection
+FAILED tests/test_env_runner.py::test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates
+FAILED tests/test_scan_demand.py::test_scan_records_ordinary_run_failure_and_continues_planned_runs
+FAILED tests/test_scan_demand.py::test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created
+FAILED tests/test_scan_demand.py::test_batch_preflight_failure_writes_scan_ledger_then_propagates
+9 failed, 16 passed in 6.98s

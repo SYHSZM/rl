@@ -1,0 +1,12 @@
+{
+  "captured_utc": "2026-08-07T12:25:14.783009+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_scan_demand.py::test_unmanifested_attempt_file_is_invalid_and_retried_on_resume",
+    "-q"
+  ],
+  "exit_code": 1
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_8bc00193",
+  "failure_message": "",
+  "failure_stage": "",
+  "failure_type": "",
+  "finished_at": "2026-08-07T11:25:26.319161+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\pytest_sandbox\\full_tmp\\test_same_root_same_id_runs_al0\\runs\\main1200_ramp120_none_seed0_8bc00193\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:25:25.707569+00:00",
+  "status": "success",
+  "valid": false
+}

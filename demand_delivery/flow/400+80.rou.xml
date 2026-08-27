@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="Heavy_Vehicle" vClass="truck" carFollowModel="IDM" color="green" accel="1.45" decel="4.00" emergencyDecel="9.00" delta="3.65" tau="1.80" sigma="0.20" length="11.20" minGap="4.09" maxSpeed="25.00" speedFactor="1.20" speedDev="0.05" lcAssertive="0.30" lcKeepRight="0.50" lcPushy="0.0" lcImpatience="0.0" minGapLat="0.8" maxSpeedLat="0.8" />
+    <vType id="Car" vClass="passenger" carFollowModel="IDM" color="blue" accel="1.02" decel="4.50" emergencyDecel="9.00" delta="2.07" tau="1.80" sigma="0.35" length="4.70" minGap="4.87" maxSpeed="33.3" speedFactor="0.8" speedDev="0.10" lcAssertive="0.60" lcKeepRight="0.50" lcPushy="0.0" lcImpatience="0.0" minGapLat="0.6" maxSpeedLat="1.0" />
+    <flow id="mainline_flow" type="Car" begin="0" end="3600" from="776458555" to="E1" vehsPerHour="400" departLane="best" departSpeed="max" arrivalPos="max" />
+    <flow id="ramp_flow" type="Car" begin="0" end="3600" from="E2" to="E1" vehsPerHour="80" departLane="best" departSpeed="max" arrivalPos="max" />
+</routes>

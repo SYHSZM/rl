@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_8bc00193",
+  "failure_message": "injected traci_import",
+  "failure_stage": "traci_import",
+  "failure_type": "RuntimeError",
+  "finished_at": "2026-08-07T11:42:03.162463+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction2_green_tmp\\test_traci_import_failure_writ0\\runs\\main1200_ramp120_none_seed0_8bc00193\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:42:03.158468+00:00",
+  "status": "failed",
+  "valid": false
+}

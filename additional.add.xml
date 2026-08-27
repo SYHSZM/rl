@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-26 00:33:52 by Eclipse SUMO netedit Version 1.24.0
+-->
+
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+    <!-- Detectors -->
+    <inductionLoop id="D1-1" lane="1060166442#2.272_1" pos="200.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="D1-2" lane="1060166442#2.272_2" pos="200.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="M1" lane="1060166442#2_2" pos="135.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="M2" lane="1060166442#2_3" pos="135.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="Ma" lane="1060166442#2_1" pos="135.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="R" lane="712593561#2.441_1" pos="9.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U0-1" lane="712595827_1" pos="900.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U0-2" lane="712595827_2" pos="900.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U1-1" lane="712595827_1" pos="720.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U1-2" lane="712595827_2" pos="720.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U2-1" lane="712595827_1" pos="300.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U2-2" lane="712595827_2" pos="300.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U3-1" lane="834084466_1" pos="685.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U3-2" lane="834084466_2" pos="685.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U4-1" lane="240470423_1" pos="865.00" period="30.00" file="test.xml"/>
+    <inductionLoop id="U4-2" lane="240470423_2" pos="865.00" period="30.00" file="test.xml"/>
+    <laneAreaDetector id="e2_0" lanes="E0_1 712593561#1_1 712593561#2_1 712593561#2.441_1" pos="16.11" endPos="13.10" period="30.00" file="test.xml"/>
+</additional>

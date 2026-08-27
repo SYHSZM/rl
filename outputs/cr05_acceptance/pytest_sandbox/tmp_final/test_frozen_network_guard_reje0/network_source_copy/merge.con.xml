@@ -1,0 +1,18 @@
+<connections>
+    <connection from="main_0" to="main_1" fromLane="0" toLane="0"/>
+    <connection from="main_0" to="main_1" fromLane="1" toLane="1"/>
+    <connection from="main_0" to="main_1" fromLane="2" toLane="2"/>
+    <connection from="main_1" to="main_2" fromLane="0" toLane="0"/>
+    <connection from="main_1" to="main_2" fromLane="1" toLane="1"/>
+    <connection from="main_1" to="main_2" fromLane="2" toLane="2"/>
+    <connection from="main_2" to="main_3" fromLane="0" toLane="0"/>
+    <connection from="main_2" to="main_3" fromLane="1" toLane="1"/>
+    <connection from="main_2" to="main_3" fromLane="2" toLane="2"/>
+    <connection from="main_3" to="main_4" fromLane="0" toLane="0" tl="m4" linkIndex="0"/>
+    <connection from="main_3" to="main_4" fromLane="1" toLane="1" tl="m4" linkIndex="1"/>
+    <connection from="main_3" to="main_4" fromLane="2" toLane="2" tl="m4" linkIndex="2"/>
+    <connection from="ramp_0" to="main_4" fromLane="0" toLane="0" tl="m4" linkIndex="3"/>
+    <connection from="main_4" to="main_5" fromLane="0" toLane="0"/>
+    <connection from="main_4" to="main_5" fromLane="1" toLane="1"/>
+    <connection from="main_4" to="main_5" fromLane="2" toLane="2"/>
+</connections>

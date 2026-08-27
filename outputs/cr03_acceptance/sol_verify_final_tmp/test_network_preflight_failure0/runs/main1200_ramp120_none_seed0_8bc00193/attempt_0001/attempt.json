@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_8bc00193",
+  "failure_message": "injected network_preflight",
+  "failure_stage": "network_preflight",
+  "failure_type": "RuntimeError",
+  "finished_at": "2026-08-07T11:51:19.044753+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\sol_verify_final_tmp\\test_network_preflight_failure0\\runs\\main1200_ramp120_none_seed0_8bc00193\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:51:19.042761+00:00",
+  "status": "failed",
+  "valid": false
+}

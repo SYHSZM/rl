@@ -1,0 +1,17 @@
+***Starting server on port 55138 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\outputs\cr02_acceptance\green_tmp\test_two_output_roots_have_dis0\preflight\merge.net.xml' ... done (1ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\cr02_acceptance\green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\run.add.xml' ... done (10ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\outputs\cr02_acceptance\green_tmp\test_two_output_roots_have_dis0\second\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\merge.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 180.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 0.35s
+ TraCI-Duration: 0.29s
+ Real time factor: 508.475
+ UPS: 11059.322034
+Vehicles:
+ Inserted: 43
+ Running: 41
+ Waiting: 0

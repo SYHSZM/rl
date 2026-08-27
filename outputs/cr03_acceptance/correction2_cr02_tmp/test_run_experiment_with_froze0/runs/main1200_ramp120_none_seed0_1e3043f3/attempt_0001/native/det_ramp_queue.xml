@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-07T19:42:24.917693+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\preflight\merge.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\runs\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\merge.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\runs\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\run.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\runs\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="180"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\runs\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\correction2_cr02_tmp\test_run_experiment_with_froze0\runs\main1200_ramp120_none_seed0_1e3043f3\attempt_0001\sumo_error.log"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="63348"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="0"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e2_file.xsd">
+   <interval begin="0.00" end="30.00" id="det_ramp_queue" sampledSeconds="13.22" nVehEntered="1" nVehLeft="1" nVehSeen="1" meanSpeed="22.68" meanTimeLoss="0.35" meanOccupancy="0.72" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.47" maxVehicleNumber="1" />
+   <interval begin="30.00" end="60.00" id="det_ramp_queue" sampledSeconds="12.00" nVehEntered="1" nVehLeft="0" nVehSeen="1" meanSpeed="20.39" meanTimeLoss="0.18" meanOccupancy="0.67" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.40" maxVehicleNumber="1" />
+   <interval begin="60.00" end="90.00" id="det_ramp_queue" sampledSeconds="2.77" nVehEntered="0" nVehLeft="1" nVehSeen="1" meanSpeed="19.94" meanTimeLoss="0.10" meanOccupancy="0.11" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.10" maxVehicleNumber="1" />
+   <interval begin="90.00" end="120.00" id="det_ramp_queue" sampledSeconds="18.20" nVehEntered="1" nVehLeft="1" nVehSeen="1" meanSpeed="16.48" meanTimeLoss="0.19" meanOccupancy="0.98" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.63" maxVehicleNumber="1" />
+   <interval begin="120.00" end="150.00" id="det_ramp_queue" sampledSeconds="10.00" nVehEntered="1" nVehLeft="0" nVehSeen="1" meanSpeed="22.47" meanTimeLoss="0.18" meanOccupancy="0.56" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.33" maxVehicleNumber="1" />
+   <interval begin="150.00" end="180.00" id="det_ramp_queue" sampledSeconds="3.44" nVehEntered="0" nVehLeft="1" nVehSeen="1" meanSpeed="21.84" meanTimeLoss="0.16" meanOccupancy="0.17" maxOccupancy="1.67" meanMaxJamLengthInVehicles="0.00" meanMaxJamLengthInMeters="0.00" maxJamLengthInVehicles="0" maxJamLengthInMeters="0.00" jamLengthInVehiclesSum="0" jamLengthInMetersSum="0.00" meanHaltingDuration="0.00" maxHaltingDuration="0.00" haltingDurationSum="0.00" meanIntervalHaltingDuration="0.00" maxIntervalHaltingDuration="0.00" intervalHaltingDurationSum="0.00" startedHalts="0.00" meanVehicleNumber="0.13" maxVehicleNumber="1" />
+</detector>

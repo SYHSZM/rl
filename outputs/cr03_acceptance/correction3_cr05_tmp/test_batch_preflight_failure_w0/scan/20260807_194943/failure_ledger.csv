@@ -1,0 +1,2 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+,,,,network_preflight,RuntimeError,shared preflight failed,False,2026-08-07T11:49:43.918295+00:00

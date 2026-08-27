@@ -1,0 +1,2 @@
+experiment_id,controller,seed,mainline_vph,ramp_vph,valid,failure_reason,total_time_spent_s,mean_speed_mps,bottleneck_throughput_veh,max_ramp_queue_veh,breakdown_start_s,congestion_duration_s,recovered,teleports
+main1200_ramp120_none_seed0_8bc00193,none,0,1200,120,True,,240.0,0.0,0,0,0,0,False,0

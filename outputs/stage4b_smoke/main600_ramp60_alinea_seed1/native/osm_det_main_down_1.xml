@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-24T15:49:12.254622+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\osm.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\demand_delivery\fixed\600+60.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\stage4b_smoke\main600_ramp60_alinea_seed1\runtime_osm_control.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\stage4b_smoke\main600_ramp60_alinea_seed1\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="600"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <collision.action value="warn"/>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\stage4b_smoke\main600_ramp60_alinea_seed1\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\stage4b_smoke\main600_ramp60_alinea_seed1\sumo_error.log"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="52223"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="1"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="30.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="30.00" end="60.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="60.00" end="90.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="90.00" end="120.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="120.00" end="150.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="150.00" end="180.00" id="osm_det_main_down_1" nVehContrib="1" flow="120.00" occupancy="0.53" speed="32.17" harmonicMeanSpeed="32.17" length="4.70" nVehEntered="2"/>
+    <interval begin="180.00" end="210.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="2.94" speed="26.75" harmonicMeanSpeed="26.24" length="4.70" nVehEntered="4"/>
+    <interval begin="210.00" end="240.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.18" speed="26.50" harmonicMeanSpeed="26.49" length="4.70" nVehEntered="2"/>
+    <interval begin="240.00" end="270.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.36" speed="23.31" harmonicMeanSpeed="23.11" length="4.70" nVehEntered="2"/>
+    <interval begin="270.00" end="300.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.43" speed="21.86" harmonicMeanSpeed="21.84" length="4.70" nVehEntered="2"/>
+    <interval begin="300.00" end="330.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.45" speed="22.74" harmonicMeanSpeed="22.73" length="4.70" nVehEntered="5"/>
+    <interval begin="330.00" end="360.00" id="osm_det_main_down_1" nVehContrib="1" flow="120.00" occupancy="0.75" speed="20.90" harmonicMeanSpeed="20.90" length="4.70" nVehEntered="1"/>
+    <interval begin="360.00" end="390.00" id="osm_det_main_down_1" nVehContrib="1" flow="120.00" occupancy="0.63" speed="24.71" harmonicMeanSpeed="24.71" length="4.70" nVehEntered="1"/>
+    <interval begin="390.00" end="420.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.45" speed="21.67" harmonicMeanSpeed="21.67" length="4.70" nVehEntered="2"/>
+    <interval begin="420.00" end="450.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.81" speed="22.30" harmonicMeanSpeed="22.27" length="4.70" nVehEntered="4"/>
+    <interval begin="450.00" end="480.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.44" speed="21.78" harmonicMeanSpeed="21.78" length="4.70" nVehEntered="2"/>
+    <interval begin="480.00" end="510.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.39" speed="26.60" harmonicMeanSpeed="26.24" length="4.70" nVehEntered="4"/>
+    <interval begin="510.00" end="540.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="2.27" speed="20.72" harmonicMeanSpeed="20.71" length="4.70" nVehEntered="3"/>
+    <interval begin="540.00" end="570.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.31" speed="27.17" harmonicMeanSpeed="27.10" length="4.70" nVehEntered="4"/>
+    <interval begin="570.00" end="600.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.16" speed="27.03" harmonicMeanSpeed="27.00" length="4.70" nVehEntered="2"/>
+</detector>

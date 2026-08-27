@@ -1,0 +1,1316 @@
+.............................FFFFFFFFFFFFFFF.                            [100%]
+================================== FAILURES ===================================
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[empty_object-None] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF0C16A0>
+corruption = 'empty_object', overrides = None
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte0/scan/20260807_194755/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte0\\scan\\20260807_194755\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[wrong_schema-overrides1] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF063EF0>
+corruption = 'wrong_schema', overrides = {'schema_version': 'cr03-attempt-v0'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte1/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte1\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[experiment_mismatch-overrides2] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF132C60>
+corruption = 'experiment_mismatch'
+overrides = {'experiment_id': 'wrong_experiment'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte2/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte2\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[attempt_number_mismatch-overrides3] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF133CE0>
+corruption = 'attempt_number_mismatch', overrides = {'attempt': 2}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte3/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte3\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[output_dir_mismatch-overrides4] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF130110>
+corruption = 'output_dir_mismatch'
+overrides = {'output_dir': 'wrong/output/directory'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte4/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte4\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[invalid_status-overrides5] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF1326F0>
+corruption = 'invalid_status', overrides = {'status': 'unknown'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte5/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte5\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[valid_not_bool-overrides6] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF1331D0>
+corruption = 'valid_not_bool', overrides = {'valid': 'true'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte6/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte6\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[retryable_not_bool-overrides7] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF0C3F50>
+corruption = 'retryable_not_bool', overrides = {'retryable': 1}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte7/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte7\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[attempt_is_bool-overrides8] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF087B60>
+corruption = 'attempt_is_bool', overrides = {'attempt': True}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte8/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte8\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[naive_started_at-overrides9] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF159BB0>
+corruption = 'naive_started_at'
+overrides = {'started_at': '2026-08-07T00:00:00'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte9/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte9\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[finished_before_started-overrides10] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte10')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF159910>
+corruption = 'finished_before_started'
+overrides = {'started_at': '2026-08-07T00:00:02+00:00', 'finished_at': '2026-08-07T00:00:01+00:00'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte10/scan/20260807_194756/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte10\\scan\\20260807_194756\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[failed_but_valid-overrides11] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte11')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF15A1E0>
+corruption = 'failed_but_valid'
+overrides = {'status': 'failed', 'valid': True, 'failure_stage': 'run_loop', 'failure_type': 'RuntimeError', ...}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte11/scan/20260807_194757/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte11\\scan\\20260807_194757\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[failed_without_metadata-overrides12] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte12')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF087650>
+corruption = 'failed_without_metadata'
+overrides = {'status': 'failed', 'valid': False}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte12/scan/20260807_194757/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte12\\scan\\20260807_194757\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[success_with_failure-overrides13] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte13')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231ED182840>
+corruption = 'success_with_failure'
+overrides = {'failure_stage': 'run_loop', 'failure_type': 'RuntimeError', 'failure_message': 'unexpected'}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte13/scan/20260807_194757/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte13\\scan\\20260807_194757\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_ test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[success_retryable-overrides14] _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte14')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000231FF130E90>
+corruption = 'success_retryable', overrides = {'retryable': True}
+
+    @pytest.mark.parametrize(
+        ("corruption", "overrides"),
+        [
+            ("empty_object", None),
+            ("wrong_schema", {"schema_version": "cr03-attempt-v0"}),
+            ("experiment_mismatch", {"experiment_id": "wrong_experiment"}),
+            ("attempt_number_mismatch", {"attempt": 2}),
+            ("output_dir_mismatch", {"output_dir": "wrong/output/directory"}),
+            ("invalid_status", {"status": "unknown"}),
+            ("valid_not_bool", {"valid": "true"}),
+            ("retryable_not_bool", {"retryable": 1}),
+            ("attempt_is_bool", {"attempt": True}),
+            ("naive_started_at", {"started_at": "2026-08-07T00:00:00"}),
+            (
+                "finished_before_started",
+                {
+                    "started_at": "2026-08-07T00:00:02+00:00",
+                    "finished_at": "2026-08-07T00:00:01+00:00",
+                },
+            ),
+            ("failed_but_valid", {"status": "failed", "valid": True, "failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "failed"}),
+            ("failed_without_metadata", {"status": "failed", "valid": False}),
+            ("success_with_failure", {"failure_stage": "run_loop", "failure_type": "RuntimeError", "failure_message": "unexpected"}),
+            ("success_retryable", {"retryable": True}),
+        ],
+    )
+    def test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues(
+        tmp_path, monkeypatch, corruption, overrides,
+    ):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            result_experiment_id = f"strict_{controller}"
+            output_dir = Path(output_root) / result_experiment_id / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none" and corruption == "empty_object":
+                (output_dir / "attempt.json").write_text("{}", encoding="utf-8")
+            else:
+                _write_attempt(output_dir, overrides=overrides if controller == "none" else None)
+            return SimpleNamespace(
+                experiment_id=result_experiment_id, valid=True, output_dir=output_dir,
+                failure_reason="", summary=_summary(demand, controller, seed),
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:445: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction3_red_tmp/test_semantically_invalid_atte14/scan/20260807_194757/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_red_tmp\\test_semantically_invalid_atte14\\scan\\20260807_194757\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[empty_object-None]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[wrong_schema-overrides1]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[experiment_mismatch-overrides2]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[attempt_number_mismatch-overrides3]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[output_dir_mismatch-overrides4]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[invalid_status-overrides5]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[valid_not_bool-overrides6]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[retryable_not_bool-overrides7]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[attempt_is_bool-overrides8]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[naive_started_at-overrides9]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[finished_before_started-overrides10]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[failed_but_valid-overrides11]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[failed_without_metadata-overrides12]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[success_with_failure-overrides13]
+FAILED tests/test_scan_demand.py::test_semantically_invalid_attempt_record_is_hard_output_parse_and_scan_continues[success_retryable-overrides14]
+15 failed, 30 passed in 9.40s

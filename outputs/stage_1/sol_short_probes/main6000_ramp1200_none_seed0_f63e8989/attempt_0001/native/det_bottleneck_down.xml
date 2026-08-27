@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-07T20:42:29.537636+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_preflight\merge.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\merge.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\run.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="360"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\stage_1\sol_short_probes\main6000_ramp1200_none_seed0_f63e8989\attempt_0001\sumo_error.log"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="63582"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="0"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="30.00" id="det_bottleneck_down" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="30.00" end="60.00" id="det_bottleneck_down" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="60.00" end="90.00" id="det_bottleneck_down" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="90.00" end="120.00" id="det_bottleneck_down" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="120.00" end="150.00" id="det_bottleneck_down" nVehContrib="8" flow="960.00" occupancy="4.29" speed="31.10" harmonicMeanSpeed="31.06" length="5.00" nVehEntered="8"/>
+    <interval begin="150.00" end="180.00" id="det_bottleneck_down" nVehContrib="5" flow="600.00" occupancy="2.67" speed="31.28" harmonicMeanSpeed="31.26" length="5.00" nVehEntered="5"/>
+    <interval begin="180.00" end="210.00" id="det_bottleneck_down" nVehContrib="8" flow="960.00" occupancy="4.87" speed="27.40" harmonicMeanSpeed="27.38" length="5.00" nVehEntered="8"/>
+    <interval begin="210.00" end="240.00" id="det_bottleneck_down" nVehContrib="13" flow="1560.00" occupancy="8.27" speed="26.20" harmonicMeanSpeed="26.20" length="5.00" nVehEntered="13"/>
+    <interval begin="240.00" end="270.00" id="det_bottleneck_down" nVehContrib="10" flow="1200.00" occupancy="6.40" speed="26.04" harmonicMeanSpeed="26.03" length="5.00" nVehEntered="10"/>
+    <interval begin="270.00" end="300.00" id="det_bottleneck_down" nVehContrib="11" flow="1320.00" occupancy="6.75" speed="27.18" harmonicMeanSpeed="27.18" length="5.00" nVehEntered="11"/>
+    <interval begin="300.00" end="330.00" id="det_bottleneck_down" nVehContrib="10" flow="1200.00" occupancy="5.76" speed="28.92" harmonicMeanSpeed="28.91" length="5.00" nVehEntered="10"/>
+    <interval begin="330.00" end="360.00" id="det_bottleneck_down" nVehContrib="9" flow="1080.00" occupancy="5.38" speed="27.93" harmonicMeanSpeed="27.90" length="5.00" nVehEntered="9"/>
+</detector>

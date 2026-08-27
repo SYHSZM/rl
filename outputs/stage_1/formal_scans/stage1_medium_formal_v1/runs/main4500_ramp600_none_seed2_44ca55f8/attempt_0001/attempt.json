@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main4500_ramp600_none_seed2_44ca55f8",
+  "failure_message": "",
+  "failure_stage": "",
+  "failure_type": "",
+  "finished_at": "2026-08-07T13:03:26.323384+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage_1\\formal_scans\\stage1_medium_formal_v1\\runs\\main4500_ramp600_none_seed2_44ca55f8\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T13:03:04.209734+00:00",
+  "status": "success",
+  "valid": true
+}

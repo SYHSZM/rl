@@ -1,0 +1,17 @@
+***Starting server on port 63810 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\network\merge.net.xml' ... done (2ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\audit_0_3\audit.add.xml' ... done (4ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\outputs\audit_0_3\audit.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 360.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 0.68s
+ TraCI-Duration: 0.54s
+ Real time factor: 532.544
+ UPS: 27835.798817
+Vehicles:
+ Inserted: 132
+ Running: 73
+ Waiting: 0

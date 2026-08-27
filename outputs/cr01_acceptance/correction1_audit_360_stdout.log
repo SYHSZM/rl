@@ -1,0 +1,51 @@
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #100.00 (1ms ~= 1000.00*RT, ~37000.00UPS, TraCI: 0ms, vehicles TOT 38 ACT 37 BUF 0)  
+Step #200.00 (1ms ~= 1000.00*RT, ~67000.00UPS, TraCI: 1ms, vehicles TOT 74 ACT 67 BUF 0)  
+Step #300.00 (1ms ~= 1000.00*RT, ~73000.00UPS, TraCI: 1ms, vehicles TOT 112 ACT 73 BUF 0) 
+Step #360.00 (1ms ~= 1000.00*RT, ~73000.00UPS, TraCI: 5ms, vehicles TOT 132 ACT 73 BUF 0) 
+
+{
+  "expected_semantically_comparable": {
+    "bottleneck_flow_veh": 0,
+    "bottleneck_occupancy": 0.0,
+    "mean_speed_mps": 33.1209244658,
+    "ramp_vehicle_max_veh": 1,
+    "ramp_vehicle_mean_veh": 0.4666666666666667,
+    "upstream_speed_mps": null
+  },
+  "first_window": {
+    "alinea_applied_rate_vph": 1200.0,
+    "alinea_requested_rate_vph": 1200.0,
+    "arrived_veh": 0,
+    "bottleneck_flow_veh": 0,
+    "bottleneck_occupancy": 0.0,
+    "controller": "none",
+    "departed_veh": 11,
+    "estimator_id": "traci-1s-step-complete-window",
+    "experiment_id": "main1200_ramp120_none_seed0_f63e8989",
+    "main_speed_vehicle_observations": 2,
+    "mainline_vph": 1200,
+    "mean_speed_mps": 33.1209244658188,
+    "metric_schema_version": "cr01-window-v1",
+    "ramp_halting_max_veh": 0,
+    "ramp_halting_mean_veh": 0.0,
+    "ramp_queue_veh": 1,
+    "ramp_vehicle_max_veh": 1,
+    "ramp_vehicle_mean_veh": 0.4666666666666667,
+    "ramp_vph": 120,
+    "seed": 0,
+    "teleports": 0,
+    "time_s": 30,
+    "upstream_speed_mps": null,
+    "upstream_speed_vehicle_observations": 0,
+    "window_step_observations": 30
+  },
+  "first_window_matches_task1_trace": true,
+  "legacy_tts_actual_s": 19530.0,
+  "legacy_tts_expected_s": 19530.0,
+  "native_xml_count": 8,
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr01_acceptance\\audit_360_run\\main1200_ramp120_none_seed0_f63e8989\\attempt_0002",
+  "real_workspace_network_unchanged": true,
+  "run_valid": true,
+  "window_count": 12
+}

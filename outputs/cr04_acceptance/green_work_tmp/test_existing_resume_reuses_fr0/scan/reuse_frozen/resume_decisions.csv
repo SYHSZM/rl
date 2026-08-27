@@ -1,0 +1,2 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main1200_ramp120_none_seed0_ebd06a7c,1200,120,none,0,skip,complete_matching_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\green_work_tmp\test_existing_resume_reuses_fr0\scan\reuse_frozen\runs\main1200_ramp120_none_seed0_ebd06a7c\attempt_0001

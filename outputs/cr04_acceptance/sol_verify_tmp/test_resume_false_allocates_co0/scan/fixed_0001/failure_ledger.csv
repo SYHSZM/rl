@@ -1,0 +1,2 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+1200,120,none,0,output_parse,FileNotFoundError,[Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr04_acceptance\\sol_verify_tmp\\test_resume_false_allocates_co0\\scan\\fixed_0001\\runs\\fake\\attempt.json',False,2026-08-07T12:30:51.109191+00:00

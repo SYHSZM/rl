@@ -1,0 +1,62 @@
+{
+  "task": "0.2-2",
+  "scenario": {
+    "simulation_duration_s": 180,
+    "metrics_interval_s": 30,
+    "mainline_vph": 1200,
+    "ramp_vph": 120,
+    "controller": "none",
+    "nominal_demand_same_across_seeds": true
+  },
+  "runs": [
+    {
+      "name": "repeat_a",
+      "seed": 0,
+      "experiment_id": "main1200_ramp120_none_seed0_1e3043f3",
+      "config": "repeat_a/main1200_ramp120_none_seed0_1e3043f3/config.json",
+      "route": "repeat_a/main1200_ramp120_none_seed0_1e3043f3/merge.rou.xml",
+      "summary": "repeat_a/main1200_ramp120_none_seed0_1e3043f3/summary.csv",
+      "config_sha256": "FE75988247F4809837875258A41ED79B8EB8532BCF46BC9A878D09E1991AD637",
+      "route_sha256": "08F28A53400229BA9812BA5E79995DE6519DCED3E3D7D341BD49E1C62EA2AB10",
+      "summary_sha256": "525C924E0D28CD813A045F68C4D84D1EC1B8807C023A332697C72FBD4E13A43E",
+      "summary_values": {"total_time_spent_s": 4500.0, "mean_speed_mps": 10.441456072594908, "bottleneck_throughput_veh": 0, "max_ramp_queue_veh": 1}
+    },
+    {
+      "name": "repeat_b",
+      "seed": 0,
+      "experiment_id": "main1200_ramp120_none_seed0_1e3043f3",
+      "config": "repeat_b/main1200_ramp120_none_seed0_1e3043f3/config.json",
+      "route": "repeat_b/main1200_ramp120_none_seed0_1e3043f3/merge.rou.xml",
+      "summary": "repeat_b/main1200_ramp120_none_seed0_1e3043f3/summary.csv",
+      "config_sha256": "FE75988247F4809837875258A41ED79B8EB8532BCF46BC9A878D09E1991AD637",
+      "route_sha256": "08F28A53400229BA9812BA5E79995DE6519DCED3E3D7D341BD49E1C62EA2AB10",
+      "summary_sha256": "525C924E0D28CD813A045F68C4D84D1EC1B8807C023A332697C72FBD4E13A43E",
+      "summary_values": {"total_time_spent_s": 4500.0, "mean_speed_mps": 10.441456072594908, "bottleneck_throughput_veh": 0, "max_ramp_queue_veh": 1}
+    },
+    {
+      "name": "seed1",
+      "seed": 1,
+      "experiment_id": "main1200_ramp120_none_seed1_1e3043f3",
+      "config": "seed1/main1200_ramp120_none_seed1_1e3043f3/config.json",
+      "route": "seed1/main1200_ramp120_none_seed1_1e3043f3/merge.rou.xml",
+      "summary": "seed1/main1200_ramp120_none_seed1_1e3043f3/summary.csv",
+      "config_sha256": "C1C9431D45795F33FE6C55246767A76E7993B8C314CA0BAB22FEB2F8DC6F33D3",
+      "route_sha256": "08F28A53400229BA9812BA5E79995DE6519DCED3E3D7D341BD49E1C62EA2AB10",
+      "summary_sha256": "AF961F41E1E709C5B5546AAE1EDBBF9C79163EA2EB0E23A72C96FCBA060591BD",
+      "summary_values": {"total_time_spent_s": 4470.0, "mean_speed_mps": 5.343485621769356, "bottleneck_throughput_veh": 0, "max_ramp_queue_veh": 1}
+    }
+  ],
+  "conclusion": {
+    "same_config_same_seed_same_experiment_id": true,
+    "same_config_same_seed_same_route_file": true,
+    "same_config_same_seed_same_statistics_file": true,
+    "different_seed_changes_experiment_id": true,
+    "different_seed_changes_route_file": false,
+    "different_seed_changes_statistics": true,
+    "different_seed_preserves_nominal_demand": true
+  },
+  "issues_registered": [
+    "The temporary runner initially failed without PYTHONPATH because it was stored under outputs; the rerun with the repository root on PYTHONPATH succeeded.",
+    "Different seeds changed stochastic simulation statistics while the generated nominal demand route XML remained byte-identical."
+  ]
+}

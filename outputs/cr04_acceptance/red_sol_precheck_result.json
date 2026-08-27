@@ -1,0 +1,15 @@
+{
+  "captured_utc": "2026-08-07T12:21:07.241662+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_scan_demand.py::test_artifact_manifest_write_failure_does_not_mask_frozen_mismatch",
+    "tests/test_scan_demand.py::test_artifact_manifest_write_failure_does_not_mask_ordinary_run_failure",
+    "tests/test_scan_demand.py::test_incomplete_windows_time_grid_is_invalid_and_retried_on_resume",
+    "tests/test_scan_demand.py::test_resume_preserves_all_cr02_episode_summary_fields",
+    "-q"
+  ],
+  "exit_code": 1
+}

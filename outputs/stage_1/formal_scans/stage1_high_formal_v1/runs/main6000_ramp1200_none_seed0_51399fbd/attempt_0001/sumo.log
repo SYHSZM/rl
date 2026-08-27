@@ -1,0 +1,17 @@
+***Starting server on port 53870 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\preflight\merge.net.xml' ... done (3ms).
+Loading additional-files from 'outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed0_51399fbd\attempt_0001\run.add.xml' ... done (13ms).
+Loading route-files incrementally from 'outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed0_51399fbd\attempt_0001\merge.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 3600.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 27.16s
+ TraCI-Duration: 12.79s
+ Real time factor: 132.538
+ UPS: 35412.119873
+Vehicles:
+ Inserted: 3456 (Loaded: 6062)
+ Running: 267
+ Waiting: 2177

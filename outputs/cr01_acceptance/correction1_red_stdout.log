@@ -1,0 +1,81 @@
+..FFFF............                                                       [100%]
+================================== FAILURES ===================================
+__ test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences __
+
+    def test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences():
+        records = [
+            make_record(30, 10.0, 10.0, 99),
+            make_record(60, None, None, 99),
+            make_record(90, 30.0, 10.0, 99),
+            make_record(120, 20.0, 10.0, 99),
+        ]
+        for record, explicit_max in zip(records, [3, 7, 4, 5]):
+            record.ramp_vehicle_max_veh = explicit_max
+    
+        summary = summarize_episode(
+            records,
+            free_flow_speed_mps=33.33,
+            congestion_speed_ratio=0.65,
+            congestion_min_duration_s=60,
+        )
+    
+        assert summary.mean_speed_mps == 20.0
+        assert summary.breakdown_start_s == 90
+>       assert summary.congestion_duration_s == 60
+E       AssertionError: assert 90 == 60
+E        +  where 90 = EpisodeSummary(experiment_id='x', controller='none', seed=0, mainline_vph=4200, ramp_vph=750, valid=True, failure_reas..._throughput_veh=80, max_ramp_queue_veh=7, breakdown_start_s=90, congestion_duration_s=90, recovered=False, teleports=0).congestion_duration_s
+
+tests\test_metrics.py:63: AssertionError
+__________ test_summary_sums_only_separate_qualified_low_speed_runs ___________
+
+    def test_summary_sums_only_separate_qualified_low_speed_runs():
+        records = [
+            make_record(30, 20.0, 10.0, 0),
+            make_record(60, 20.0, 10.0, 0),
+            make_record(90, 20.0, 30.0, 0),
+            make_record(120, 20.0, 10.0, 0),
+            make_record(150, 20.0, 30.0, 0),
+            make_record(180, 20.0, 10.0, 0),
+            make_record(210, 20.0, 10.0, 0),
+        ]
+    
+        summary = summarize_episode(records, 33.33, 0.65, 60)
+    
+        assert summary.breakdown_start_s == 30
+>       assert summary.congestion_duration_s == 120
+E       AssertionError: assert 150 == 120
+E        +  where 150 = EpisodeSummary(experiment_id='x', controller='none', seed=0, mainline_vph=4200, ramp_vph=750, valid=True, failure_reas...hroughput_veh=140, max_ramp_queue_veh=0, breakdown_start_s=30, congestion_duration_s=150, recovered=False, teleports=0).congestion_duration_s
+
+tests\test_metrics.py:82: AssertionError
+_____ test_summary_without_main_speed_is_invalid_and_classification_safe ______
+
+    def test_summary_without_main_speed_is_invalid_and_classification_safe():
+        records = [make_record(30, None, 30.0, 4), make_record(60, None, 30.0, 5)]
+        records[0].ramp_vehicle_max_veh = 4
+        records[1].ramp_vehicle_max_veh = 5
+    
+        summary = summarize_episode(records, 33.33, 0.65, 60)
+    
+>       assert summary.valid is False
+E       AssertionError: assert True is False
+E        +  where True = EpisodeSummary(experiment_id='x', controller='none', seed=0, mainline_vph=4200, ramp_vph=750, valid=True, failure_reas...eck_throughput_veh=40, max_ramp_queue_veh=5, breakdown_start_s=0, congestion_duration_s=0, recovered=True, teleports=0).valid
+
+tests\test_metrics.py:92: AssertionError
+___ test_summary_without_upstream_speed_is_invalid_and_classification_safe ____
+
+    def test_summary_without_upstream_speed_is_invalid_and_classification_safe():
+        records = [make_record(30, 30.0, None, 1), make_record(60, 31.0, None, 2)]
+    
+        summary = summarize_episode(records, 33.33, 0.65, 60)
+    
+>       assert summary.valid is False
+E       AssertionError: assert True is False
+E        +  where True = EpisodeSummary(experiment_id='x', controller='none', seed=0, mainline_vph=4200, ramp_vph=750, valid=True, failure_reas...ck_throughput_veh=40, max_ramp_queue_veh=0, breakdown_start_s=0, congestion_duration_s=0, recovered=False, teleports=0).valid
+
+tests\test_metrics.py:105: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_metrics.py::test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences
+FAILED tests/test_metrics.py::test_summary_sums_only_separate_qualified_low_speed_runs
+FAILED tests/test_metrics.py::test_summary_without_main_speed_is_invalid_and_classification_safe
+FAILED tests/test_metrics.py::test_summary_without_upstream_speed_is_invalid_and_classification_safe
+4 failed, 14 passed in 6.05s

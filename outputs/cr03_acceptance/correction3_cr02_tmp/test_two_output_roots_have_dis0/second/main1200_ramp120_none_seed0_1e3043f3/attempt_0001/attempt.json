@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_1e3043f3",
+  "failure_message": "",
+  "failure_stage": "",
+  "failure_type": "",
+  "finished_at": "2026-08-07T11:49:39.223950+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_cr02_tmp\\test_two_output_roots_have_dis0\\second\\main1200_ramp120_none_seed0_1e3043f3\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:49:38.300669+00:00",
+  "status": "success",
+  "valid": true
+}

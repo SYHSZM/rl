@@ -1,0 +1,5 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main1200_ramp120_none_seed0_e7df340d,1200,120,none,0,skip,complete_matching_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\subset_tmp\test_resume_skips_only_complet0\scan\resume_case\runs\main1200_ramp120_none_seed0_e7df340d\attempt_0001
+main1200_ramp120_none_seed1_e7df340d,1200,120,none,1,skip,complete_matching_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\subset_tmp\test_resume_skips_only_complet0\scan\resume_case\runs\main1200_ramp120_none_seed1_e7df340d\attempt_0002
+main1200_ramp120_none_seed2_e7df340d,1200,120,none,2,skip,complete_matching_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\subset_tmp\test_resume_skips_only_complet0\scan\resume_case\runs\main1200_ramp120_none_seed2_e7df340d\attempt_0002
+main1200_ramp120_none_seed3_e7df340d,1200,120,none,3,skip,complete_matching_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\subset_tmp\test_resume_skips_only_complet0\scan\resume_case\runs\main1200_ramp120_none_seed3_e7df340d\attempt_0002

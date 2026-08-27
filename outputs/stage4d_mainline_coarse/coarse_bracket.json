@@ -1,0 +1,7 @@
+{
+  "highest_uncongested_vph": 1900,
+  "first_congested_vph": 2000,
+  "bracket_found": true,
+  "monotonicity_valid": true,
+  "status": "bracket_found"
+}

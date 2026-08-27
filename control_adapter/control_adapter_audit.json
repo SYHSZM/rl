@@ -1,0 +1,44 @@
+{
+  "schema_version": "stage4a-osm-control-adapter-v1",
+  "net_sha256": "856D22EC0E5D7FD13021557EBEBD2A3CD3BABD03385A208A2E801D3265B7FD99",
+  "profile": {
+    "tls_id": "J5",
+    "controlled_link_indices": [
+      0,
+      1
+    ],
+    "controlled_from_edge": "712593561#2",
+    "controlled_to_edge": "712593561#2.441",
+    "green_state": "GG",
+    "red_state": "rr",
+    "ramp_queue_lane_id": "712593561#2_1",
+    "ramp_merge_edge": "712593561#2.441",
+    "mainline_merge_edge": "712595827",
+    "downstream_edge": "1060166442#2",
+    "downstream_lane_ids": [
+      "1060166442#2_1",
+      "1060166442#2_2"
+    ],
+    "mainline_detector_ids": [
+      "osm_det_main_down_1",
+      "osm_det_main_down_2"
+    ],
+    "ramp_queue_detector_id": "osm_det_ramp_queue",
+    "ramp_arrival_detector_id": "osm_det_ramp_arrival"
+  },
+  "checks": {
+    "tls_junction": "PASS",
+    "tls_logic": "PASS",
+    "controlled_connections": "PASS",
+    "passenger_lanes": "PASS",
+    "merge_topology": "PASS",
+    "ramp_path_uses_control": "PASS",
+    "mainline_path_avoids_controlled_entry": "PASS"
+  },
+  "detector_file": "osm_control.add.xml",
+  "detector_sha256": "52844C6A95E17F2C10F44E52B3CED9ABE5A0C3FEC8ED13CE4674A3EC7B01362D",
+  "errors": [],
+  "generation_timestamp": "2026-08-24T07:19:44.849383+00:00",
+  "valid": true,
+  "core_sha256": "8B48B582DF4214B364F87DF6F672FB229BB6CD98DD58E3925A5C5C244B242D07"
+}

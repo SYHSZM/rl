@@ -1,0 +1,2 @@
+experiment_id,controller,seed,time_s,mainline_vph,ramp_vph,mean_speed_mps,upstream_speed_mps,bottleneck_flow_veh,bottleneck_occupancy,ramp_queue_veh,alinea_requested_rate_vph,alinea_applied_rate_vph,departed_veh,arrived_veh,teleports
+main1200_ramp120_none_seed0_8bc00193,none,0,30,1200,120,0.0,-1.0,0,0.0,0,1200.0,1200.0,8,0,0

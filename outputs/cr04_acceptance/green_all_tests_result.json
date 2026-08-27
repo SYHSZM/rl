@@ -1,0 +1,12 @@
+{
+  "captured_utc": "2026-08-07T12:26:28.351279+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "tests",
+    "-q"
+  ],
+  "exit_code": 0
+}

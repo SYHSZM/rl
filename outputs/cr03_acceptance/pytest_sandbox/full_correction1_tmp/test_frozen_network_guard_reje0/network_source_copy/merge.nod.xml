@@ -1,0 +1,10 @@
+<nodes>
+    <node id="m0" x="0" y="0" type="priority"/>
+    <node id="m1" x="1000" y="0" type="priority"/>
+    <node id="m2" x="2000" y="0" type="priority"/>
+    <node id="m3" x="3000" y="0" type="priority"/>
+    <node id="m4" x="4000" y="0" type="traffic_light"/>
+    <node id="m5" x="5000" y="0" type="priority"/>
+    <node id="m6" x="6000" y="0" type="priority"/>
+    <node id="r0" x="3600" y="-350" type="priority"/>
+</nodes>

@@ -1,0 +1,333 @@
+{
+  "counts": {
+    "arrived": 2,
+    "departed": 43,
+    "loaded": 43
+  },
+  "per_id": {
+    "main_0.0": {
+      "in_network_s": 180.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 180.0
+    },
+    "main_0.1": {
+      "in_network_s": 175.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 175.0
+    },
+    "main_0.10": {
+      "in_network_s": 133.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 133.0
+    },
+    "main_0.11": {
+      "in_network_s": 129.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 129.0
+    },
+    "main_0.12": {
+      "in_network_s": 124.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 124.0
+    },
+    "main_0.13": {
+      "in_network_s": 120.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 120.0
+    },
+    "main_0.14": {
+      "in_network_s": 115.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 115.0
+    },
+    "main_0.15": {
+      "in_network_s": 110.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 110.0
+    },
+    "main_0.16": {
+      "in_network_s": 106.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 106.0
+    },
+    "main_0.17": {
+      "in_network_s": 101.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 101.0
+    },
+    "main_0.18": {
+      "in_network_s": 96.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 96.0
+    },
+    "main_0.19": {
+      "in_network_s": 92.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 92.0
+    },
+    "main_0.2": {
+      "in_network_s": 170.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 170.0
+    },
+    "main_0.20": {
+      "in_network_s": 87.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 87.0
+    },
+    "main_0.21": {
+      "in_network_s": 83.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 83.0
+    },
+    "main_0.22": {
+      "in_network_s": 78.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 78.0
+    },
+    "main_0.23": {
+      "in_network_s": 73.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 73.0
+    },
+    "main_0.24": {
+      "in_network_s": 69.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 69.0
+    },
+    "main_0.25": {
+      "in_network_s": 64.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 64.0
+    },
+    "main_0.26": {
+      "in_network_s": 60.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 60.0
+    },
+    "main_0.27": {
+      "in_network_s": 55.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 55.0
+    },
+    "main_0.28": {
+      "in_network_s": 50.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 50.0
+    },
+    "main_0.29": {
+      "in_network_s": 46.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 46.0
+    },
+    "main_0.3": {
+      "in_network_s": 166.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 166.0
+    },
+    "main_0.30": {
+      "in_network_s": 41.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 41.0
+    },
+    "main_0.31": {
+      "in_network_s": 36.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 36.0
+    },
+    "main_0.32": {
+      "in_network_s": 32.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 32.0
+    },
+    "main_0.33": {
+      "in_network_s": 27.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 27.0
+    },
+    "main_0.34": {
+      "in_network_s": 23.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 23.0
+    },
+    "main_0.35": {
+      "in_network_s": 18.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 18.0
+    },
+    "main_0.36": {
+      "in_network_s": 13.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 13.0
+    },
+    "main_0.37": {
+      "in_network_s": 9.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 9.0
+    },
+    "main_0.38": {
+      "in_network_s": 4.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 4.0
+    },
+    "main_0.4": {
+      "in_network_s": 161.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 161.0
+    },
+    "main_0.5": {
+      "in_network_s": 156.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 156.0
+    },
+    "main_0.6": {
+      "in_network_s": 152.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 152.0
+    },
+    "main_0.7": {
+      "in_network_s": 147.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 147.0
+    },
+    "main_0.8": {
+      "in_network_s": 143.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 143.0
+    },
+    "main_0.9": {
+      "in_network_s": 138.0,
+      "origin": "mainline",
+      "pending_s": 0.0,
+      "system_s": 138.0
+    },
+    "ramp_0.0": {
+      "in_network_s": 100.0,
+      "origin": "ramp",
+      "pending_s": 0.0,
+      "system_s": 100.0
+    },
+    "ramp_0.1": {
+      "in_network_s": 105.0,
+      "origin": "ramp",
+      "pending_s": 0.0,
+      "system_s": 105.0
+    },
+    "ramp_0.2": {
+      "in_network_s": 87.0,
+      "origin": "ramp",
+      "pending_s": 0.0,
+      "system_s": 87.0
+    },
+    "ramp_0.3": {
+      "in_network_s": 41.0,
+      "origin": "ramp",
+      "pending_s": 0.0,
+      "system_s": 41.0
+    }
+  },
+  "ratios": {
+    "actual_departure": 1.0,
+    "completion": 0.046511627906976744
+  },
+  "schema_version": "cr02-system-exposure-v1",
+  "terminal": {
+    "censoring": true,
+    "in_network_count": 41,
+    "in_network_exposure_s": 3710.0,
+    "in_network_ids": [
+      "main_0.0",
+      "main_0.1",
+      "main_0.10",
+      "main_0.11",
+      "main_0.12",
+      "main_0.13",
+      "main_0.14",
+      "main_0.15",
+      "main_0.16",
+      "main_0.17",
+      "main_0.18",
+      "main_0.19",
+      "main_0.2",
+      "main_0.20",
+      "main_0.21",
+      "main_0.22",
+      "main_0.23",
+      "main_0.24",
+      "main_0.25",
+      "main_0.26",
+      "main_0.27",
+      "main_0.28",
+      "main_0.29",
+      "main_0.3",
+      "main_0.30",
+      "main_0.31",
+      "main_0.32",
+      "main_0.33",
+      "main_0.34",
+      "main_0.35",
+      "main_0.36",
+      "main_0.37",
+      "main_0.38",
+      "main_0.4",
+      "main_0.5",
+      "main_0.6",
+      "main_0.7",
+      "main_0.8",
+      "main_0.9",
+      "ramp_0.2",
+      "ramp_0.3"
+    ],
+    "pending_count": 0,
+    "pending_exposure_s": 0,
+    "pending_ids": []
+  },
+  "tts": {
+    "completed_vehicle_s": 205.0,
+    "in_network_s": 3915.0,
+    "mainline_s": 3582.0,
+    "pending_s": 0.0,
+    "ramp_s": 333.0,
+    "system_s": 3915.0,
+    "unknown_s": 0
+  },
+  "unknown_ids": []
+}

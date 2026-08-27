@@ -1,0 +1,175 @@
+.FFFFF.F.......................                                          [100%]
+================================== FAILURES ===================================
+_ test_resume_skips_only_complete_matching_attempts_and_rebuilds_stable_index _
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_resume_skips_only_complet0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B257C0>
+
+    def test_resume_skips_only_complete_matching_attempts_and_rebuilds_stable_index(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0, 1, 2, 3)
+        preflight_calls = []
+        run_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        monkeypatch.setattr(
+            scan_demand_module,
+            "run_experiment",
+            _complete_runner(
+                {
+                    ("none", 1): {"valid": False},
+                    ("none", 2): {"omit_tripinfo": True},
+                    ("none", 3): {"foreign_config": True},
+                },
+                run_calls,
+            ),
+        )
+    
+>       scan_dir = scan_demand_module.scan_demand(
+            config,
+            tmp_path / "scan",
+            controllers=("none",),
+            resume=False,
+            scan_id="resume_case",
+        )
+E       TypeError: scan_demand() got an unexpected keyword argument 'scan_id'
+
+tests\test_scan_demand.py:250: TypeError
+______________ test_automatic_scan_identity_changes_with_config _______________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_automatic_scan_identity_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B278C0>
+
+    def test_automatic_scan_identity_changes_with_config(tmp_path, monkeypatch):
+        preflight_calls = []
+        run_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        monkeypatch.setattr(scan_demand_module, "run_experiment", _complete_runner({}, run_calls))
+        first_config = default_config()
+        first_config.mainline_range = (1200, 1200, 1)
+        first_config.ramp_range = (120, 120, 1)
+        first_config.seeds = (0,)
+        second_config = default_config()
+        second_config.mainline_range = (1200, 1200, 1)
+        second_config.ramp_range = (120, 120, 1)
+        second_config.seeds = (0,)
+        second_config.free_flow_speed_mps = 31.0
+    
+        first = scan_demand_module.scan_demand(first_config, tmp_path / "scan", controllers=("none",), resume=True)
+        second = scan_demand_module.scan_demand(second_config, tmp_path / "scan", controllers=("none",), resume=True)
+    
+        assert first != second
+>       assert first.name.startswith("scan_") and second.name.startswith("scan_")
+E       AssertionError: assert (False)
+E        +  where False = <built-in method startswith of str object at 0x0000025859B2FBB0>('scan_')
+E        +    where <built-in method startswith of str object at 0x0000025859B2FBB0> = '20260807_200356'.startswith
+E        +      where '20260807_200356' = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_automatic_scan_identity_c0/scan/20260807_200356').name
+
+tests\test_scan_demand.py:314: AssertionError
+__ test_explicit_scan_id_rejects_identity_mismatch_without_mutating_manifest __
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_explicit_scan_id_rejects_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B256A0>
+
+    def test_explicit_scan_id_rejects_identity_mismatch_without_mutating_manifest(tmp_path, monkeypatch):
+        preflight_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        monkeypatch.setattr(scan_demand_module, "run_experiment", _complete_runner({}, []))
+        first_config = default_config()
+        first_config.mainline_range = (1200, 1200, 1)
+        first_config.ramp_range = (120, 120, 1)
+        first_config.seeds = (0,)
+        second_config = default_config()
+        second_config.mainline_range = (1200, 1200, 1)
+        second_config.ramp_range = (120, 120, 1)
+        second_config.seeds = (0,)
+        second_config.free_flow_speed_mps = 31.0
+    
+>       scan_dir = scan_demand_module.scan_demand(
+            first_config, tmp_path / "scan", controllers=("none",), resume=True, scan_id="fixed_scan",
+        )
+E       TypeError: scan_demand() got an unexpected keyword argument 'scan_id'
+
+tests\test_scan_demand.py:332: TypeError
+________ test_existing_resume_reuses_frozen_network_without_preflight _________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_existing_resume_reuses_fr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B26A80>
+
+    def test_existing_resume_reuses_frozen_network_without_preflight(tmp_path, monkeypatch):
+        preflight_calls = []
+        run_calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, preflight_calls))
+        monkeypatch.setattr(scan_demand_module, "run_experiment", _complete_runner({}, run_calls))
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+>       first = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=True, scan_id="reuse_frozen",
+        )
+E       TypeError: scan_demand() got an unexpected keyword argument 'scan_id'
+
+tests\test_scan_demand.py:355: TypeError
+____ test_scan_and_artifact_manifests_are_complete_and_atomically_written _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_scan_and_artifact_manifes0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B271D0>
+
+    def test_scan_and_artifact_manifests_are_complete_and_atomically_written(tmp_path, monkeypatch):
+        monkeypatch.setattr(scan_demand_module, "preflight_network", _fake_preflight(tmp_path, []))
+        monkeypatch.setattr(scan_demand_module, "run_experiment", _complete_runner({}, []))
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+    
+>       scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none",), resume=True, scan_id="manifest_case",
+        )
+E       TypeError: scan_demand() got an unexpected keyword argument 'scan_id'
+
+tests\test_scan_demand.py:382: TypeError
+_____ test_resume_false_allocates_collision_safe_suffix_for_same_identity _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr04_acceptance/red_tmp/test_resume_false_allocates_co0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025859B27C80>
+
+    def test_resume_false_allocates_collision_safe_suffix_for_same_identity(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        frozen = build_network_module.FrozenNetwork(
+            net_path=tmp_path / "net.xml", net_sha256="fake",
+            source_dir=tmp_path, source_sha256={},
+        )
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            summary = EpisodeSummary(
+                experiment_id="fake", controller=controller, seed=seed,
+                mainline_vph=demand.mainline_vph, ramp_vph=demand.ramp_vph,
+                valid=True, failure_reason="", total_time_spent_s=0.0,
+                mean_speed_mps=0.0, bottleneck_throughput_veh=0,
+                max_ramp_queue_veh=0, breakdown_start_s=0,
+                congestion_duration_s=0, recovered=True, teleports=0,
+            )
+            return SimpleNamespace(experiment_id="fake", valid=True, output_dir=Path(output_root) / "fake", failure_reason="", summary=summary)
+    
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: frozen)
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+>       first = scan_demand_module.scan_demand(
+            config, output_root=tmp_path / "scan", controllers=("none",), resume=False, scan_id="fixed",
+        )
+E       TypeError: scan_demand() got an unexpected keyword argument 'scan_id'
+
+tests\test_scan_demand.py:482: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_scan_demand.py::test_resume_skips_only_complete_matching_attempts_and_rebuilds_stable_index
+FAILED tests/test_scan_demand.py::test_automatic_scan_identity_changes_with_config
+FAILED tests/test_scan_demand.py::test_explicit_scan_id_rejects_identity_mismatch_without_mutating_manifest
+FAILED tests/test_scan_demand.py::test_existing_resume_reuses_frozen_network_without_preflight
+FAILED tests/test_scan_demand.py::test_scan_and_artifact_manifests_are_complete_and_atomically_written
+FAILED tests/test_scan_demand.py::test_resume_false_allocates_collision_safe_suffix_for_same_identity
+6 failed, 25 passed in 1.55s

@@ -1,0 +1,6 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main6000_ramp1200_none_seed0_51399fbd,6000,1200,none,0,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed0_51399fbd\attempt_0001
+main6000_ramp1200_none_seed1_51399fbd,6000,1200,none,1,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed1_51399fbd\attempt_0001
+main6000_ramp1200_none_seed2_51399fbd,6000,1200,none,2,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed2_51399fbd\attempt_0001
+main6000_ramp1200_none_seed3_51399fbd,6000,1200,none,3,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed3_51399fbd\attempt_0001
+main6000_ramp1200_none_seed4_51399fbd,6000,1200,none,4,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed4_51399fbd\attempt_0001

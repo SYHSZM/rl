@@ -1,0 +1,126 @@
+...FF.FFFF.F                                                             [100%]
+================================== FAILURES ===================================
+______________ test_preflight_builds_and_verifies_frozen_network ______________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_preflight_builds_and_veri0')
+
+    def test_preflight_builds_and_verifies_frozen_network(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        verify_frozen_network = getattr(build_network_module, "verify_frozen_network", None)
+>       assert preflight_network is not None, "CR-05 requires preflight_network"
+E       AssertionError: CR-05 requires preflight_network
+E       assert None is not None
+
+tests\test_build_network.py:43: AssertionError
+_________ test_frozen_network_guard_rejects_temporary_source_mutation _________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_frozen_network_guard_reje0')
+
+    def test_frozen_network_guard_rejects_temporary_source_mutation(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        verify_frozen_network = getattr(build_network_module, "verify_frozen_network", None)
+        mismatch_error = getattr(build_network_module, "FrozenNetworkMismatchError", None)
+>       assert preflight_network is not None and verify_frozen_network is not None and mismatch_error is not None
+E       assert (None is not None)
+
+tests\test_build_network.py:64: AssertionError
+____________________ test_short_sumo_run_produces_windows _____________________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_short_sumo_run_produces_w0')
+
+    def test_short_sumo_run_produces_windows(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+>       assert preflight_network is not None, "CR-05 requires explicit frozen-network preflight"
+E       AssertionError: CR-05 requires explicit frozen-network preflight
+E       assert None is not None
+
+tests\test_env_runner.py:32: AssertionError
+__ test_run_local_additional_preserves_detector_layout_and_redirects_outputs __
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_run_local_additional_pres0')
+
+    def test_run_local_additional_preserves_detector_layout_and_redirects_outputs(tmp_path):
+        create_run_additional = getattr(env_module, "create_run_additional", None)
+>       assert create_run_additional is not None, "CR-05 requires run-local additional XML"
+E       AssertionError: CR-05 requires run-local additional XML
+E       assert None is not None
+
+tests\test_env_runner.py:42: AssertionError
+____ test_run_experiment_with_frozen_network_never_rebuilds_shared_network ____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_run_experiment_with_froze0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000281F55765D0>
+
+    def test_run_experiment_with_frozen_network_never_rebuilds_shared_network(tmp_path, monkeypatch):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+>       assert preflight_network is not None
+E       assert None is not None
+
+tests\test_env_runner.py:69: AssertionError
+_____________ test_two_output_roots_have_disjoint_generated_files _____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_two_output_roots_have_dis0')
+
+    def test_two_output_roots_have_disjoint_generated_files(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+>       assert preflight_network is not None
+E       assert None is not None
+
+tests\test_env_runner.py:89: AssertionError
+__________ test_scan_demand_builds_one_batch_preflight_and_reuses_it __________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr05_acceptance/red_tmp/test_scan_demand_builds_one_ba0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000281F5575670>
+
+    def test_scan_demand_builds_one_batch_preflight_and_reuses_it(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        frozen = object()
+        preflight_paths = []
+        received_frozen = []
+    
+        def fake_preflight(path):
+            preflight_paths.append(path)
+            return frozen
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            received_frozen.append(frozen_network)
+            summary = EpisodeSummary(
+                experiment_id="fake",
+                controller=controller,
+                seed=seed,
+                mainline_vph=demand.mainline_vph,
+                ramp_vph=demand.ramp_vph,
+                valid=True,
+                failure_reason="",
+                total_time_spent_s=0.0,
+                mean_speed_mps=0.0,
+                bottleneck_throughput_veh=0,
+                max_ramp_queue_veh=0,
+                breakdown_start_s=0,
+                congestion_duration_s=0,
+                recovered=True,
+                teleports=0,
+            )
+            return SimpleNamespace(experiment_id="fake", valid=True, output_dir=tmp_path / "fake", failure_reason="", summary=summary)
+    
+        monkeypatch.setattr(scan_demand_module, "preflight_network", fake_preflight, raising=False)
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(config, output_root=tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+    
+>       assert len(preflight_paths) == 1
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests\test_scan_demand.py:58: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_build_network.py::test_preflight_builds_and_verifies_frozen_network
+FAILED tests/test_build_network.py::test_frozen_network_guard_rejects_temporary_source_mutation
+FAILED tests/test_env_runner.py::test_short_sumo_run_produces_windows - Asser...
+FAILED tests/test_env_runner.py::test_run_local_additional_preserves_detector_layout_and_redirects_outputs
+FAILED tests/test_env_runner.py::test_run_experiment_with_frozen_network_never_rebuilds_shared_network
+FAILED tests/test_env_runner.py::test_two_output_roots_have_disjoint_generated_files
+FAILED tests/test_scan_demand.py::test_scan_demand_builds_one_batch_preflight_and_reuses_it
+7 failed, 5 passed in 0.20s

@@ -1,0 +1,27 @@
+{
+  "archived_files": [
+    {
+      "bytes": 101,
+      "path": "pytest_stdout.log",
+      "sha256": "a6d0d8eae3e37ec78fc3503413bb43fd9b1f56f3cb92c44f4a8b80de28b25902"
+    },
+    {
+      "bytes": 0,
+      "path": "pytest_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 2295,
+      "path": "pytest_junit.xml",
+      "sha256": "2e90e394023eda8d8c353236d6135e7d80760a75cfbc5d563582b25cde23c126"
+    },
+    {
+      "bytes": 298,
+      "path": "pytest_result.json",
+      "sha256": "b194071508f755e3566a1b70abae73e4d9321f05bcd4744b8b1c4a2695cb3027"
+    }
+  ],
+  "baseline_limitation": "original bytes were not backed up, so restoration cannot be proven; no deletion or guessed restoration is attempted",
+  "incident": "fix round 1 ran pytest with cwd=PROJECT_ROOT; the existing integration test invoked unpatched env.run_experiment and rewrote eight pre-existing network/det_*.xml files plus network/merge.net.xml",
+  "tracked_production_code_diff": "none observed"
+}

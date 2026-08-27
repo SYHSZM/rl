@@ -1,0 +1,19 @@
+***Starting server on port 53738 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_high_formal_v1\preflight\merge.net.xml' ... done (3ms).
+Loading additional-files from 'outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed2_51399fbd\attempt_0001\run.add.xml' ... done (19ms).
+Loading route-files incrementally from 'outputs\stage_1\formal_scans\stage1_high_formal_v1\runs\main6000_ramp1200_none_seed2_51399fbd\attempt_0001\merge.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Warning: Vehicle 'main_1.1653' performs emergency braking on lane 'main_3_0' with decel=9.00, wished=4.50, severity=1.00, time=2581.00.
+Simulation ended at time: 3600.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 29.68s
+ TraCI-Duration: 14.10s
+ Real time factor: 121.298
+ UPS: 32493.075912
+Vehicles:
+ Inserted: 3466 (Loaded: 6062)
+ Running: 262
+ Waiting: 2172
+ Emergency Braking: 1

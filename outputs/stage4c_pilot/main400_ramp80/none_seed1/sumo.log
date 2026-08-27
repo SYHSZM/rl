@@ -1,0 +1,26 @@
+***Starting server on port 56731 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\osm.net.xml' ... done (13ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\stage4c_pilot\main400_ramp80\none_seed1\runtime_osm_control.add.xml' ... done (5ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\demand_delivery\fixed\400+80.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 4068.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 3.94s
+ TraCI-Duration: 2.73s
+ Real time factor: 1033.27
+ UPS: 47753.873508
+Vehicles:
+ Inserted: 480
+ Running: 0
+ Waiting: 0
+Statistics (avg of 480):
+ RouteLength: 6906.29
+ Speed: 22.20
+ Duration: 391.68
+ WaitingTime: 80.89
+ TimeLoss: 121.95
+ DepartDelay: 0.00
+DijkstraRouter answered 480 queries and explored 11.33 edges on average.
+DijkstraRouter spent 0.00s answering queries (0.01ms on average).

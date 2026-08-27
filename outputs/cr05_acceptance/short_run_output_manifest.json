@@ -1,0 +1,90 @@
+{
+  "files": [
+    {
+      "bytes": 1016,
+      "path": "config.json",
+      "sha256": "b0cc8b385894cc52746a546d5283969bea61ddc9c7119ef59d86d9cbbee39c01"
+    },
+    {
+      "bytes": 811,
+      "path": "merge.rou.xml",
+      "sha256": "f5c28857a0639de287c91795a4321e3259107fff6a06e9173f9b38bf19c888c5"
+    },
+    {
+      "bytes": 2185,
+      "path": "native/det_bottleneck_down.xml",
+      "sha256": "c4dc176d12b47ae56eb74d0e0cf831a6e34bce412f8914d52a94c4d8be653efc"
+    },
+    {
+      "bytes": 2169,
+      "path": "native/det_main_0.xml",
+      "sha256": "58b784695ae775def6de4323c3b8f16b2b89ce0fc1275fe02078960644628049"
+    },
+    {
+      "bytes": 2168,
+      "path": "native/det_main_1.xml",
+      "sha256": "6484d5c2ee21d28abfb3ae906b334f2043911ed213311072068702d99a3677bf"
+    },
+    {
+      "bytes": 2167,
+      "path": "native/det_main_2.xml",
+      "sha256": "d9ea0503fdbe0a1bc842fd2af45b34e5b8df83e7a7add245983035b8e4ae558f"
+    },
+    {
+      "bytes": 2167,
+      "path": "native/det_main_3.xml",
+      "sha256": "9af9583b0e5b63eab2781e1536028425c52e92fc7e2d24ff587628049eb652b8"
+    },
+    {
+      "bytes": 2167,
+      "path": "native/det_main_4.xml",
+      "sha256": "20a3f623492f61981601c82484d49412fc54466092e6a0a94a53e39a5e1bc1d0"
+    },
+    {
+      "bytes": 2181,
+      "path": "native/det_ramp_arrival.xml",
+      "sha256": "2231a986435da940e04eddac9afab8f8c1e13755bb146d8f2f680c2a78478570"
+    },
+    {
+      "bytes": 3079,
+      "path": "native/det_ramp_queue.xml",
+      "sha256": "c62b27df5d72455961f0e13bc975382f0178b3d02597c27ac3ca31f121d80d41"
+    },
+    {
+      "bytes": 739,
+      "path": "network_snapshot.json",
+      "sha256": "4c101f546b81acaf019edc430b2347e9766b36464e4e5dcdc7d1e231fe0d0137"
+    },
+    {
+      "bytes": 950,
+      "path": "run.add.xml",
+      "sha256": "5d0f5faca5d08396ae28e9d3446c3075658ae424144d4cd25eb874b02480a9b9"
+    },
+    {
+      "bytes": 299,
+      "path": "summary.csv",
+      "sha256": "c8b67a665a8f4b462f0dd0d46c62176c8ff4ccc6658fc4262ee6afd7a496e51a"
+    },
+    {
+      "bytes": 790,
+      "path": "sumo.log",
+      "sha256": "eb8037ab84490076e88c3b76c0a3fff005df92bf21e0ac9c9249d8cfed36481e"
+    },
+    {
+      "bytes": 0,
+      "path": "sumo_error.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1822,
+      "path": "tripinfo.xml",
+      "sha256": "adac200802219f89ebd8d4eba56186042777ee6abfe431d3c08c6d72ad02bff2"
+    },
+    {
+      "bytes": 425,
+      "path": "windows.csv",
+      "sha256": "8944e1dfdfa6f7ec00b835cc5721e59048b74f21c0b1de76d9659a04d9c4c11a"
+    }
+  ],
+  "root": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\short_run_root\\main1200_ramp120_none_seed0_320ff2bc"
+}

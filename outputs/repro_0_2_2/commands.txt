@@ -1,0 +1,3 @@
+﻿$env:PYTHONPATH='D:\python_install\py\rl\0325\0325'; & 'C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' outputs\repro_0_2_2\repeat_runner.py outputs\repro_0_2_2\repeat_a 0 none
+$env:PYTHONPATH='D:\python_install\py\rl\0325\0325'; & 'C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' outputs\repro_0_2_2\repeat_runner.py outputs\repro_0_2_2\repeat_b 0 none
+$env:PYTHONPATH='D:\python_install\py\rl\0325\0325'; & 'C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' outputs\repro_0_2_2\repeat_runner.py outputs\repro_0_2_2\seed1 1 none

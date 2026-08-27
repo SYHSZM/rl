@@ -1,0 +1,19 @@
+{
+  "captured_utc": "2026-08-07T11:50:24.427267+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "git",
+    "-c",
+    "safe.directory=D:/python_install/py",
+    "-C",
+    "D:/python_install/py",
+    "diff",
+    "--check",
+    "--",
+    "rl/0325/0325/env.py",
+    "rl/0325/0325/scan_demand.py",
+    "rl/0325/0325/tests/test_env_runner.py",
+    "rl/0325/0325/tests/test_scan_demand.py"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_8bc00193",
+  "failure_message": "injected run_loop",
+  "failure_stage": "run_loop",
+  "failure_type": "RuntimeError",
+  "finished_at": "2026-08-07T11:42:23.515297+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction2_cr02_tmp\\test_run_loop_failure_closes_o0\\runs\\main1200_ramp120_none_seed0_8bc00193\\attempt_0001",
+  "retryable": true,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:42:23.509801+00:00",
+  "status": "failed",
+  "valid": false
+}

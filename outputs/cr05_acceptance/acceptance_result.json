@@ -1,0 +1,12 @@
+{
+  "first_valid": true,
+  "first_windows": 2,
+  "native_counts": [
+    8,
+    8
+  ],
+  "network_source_unchanged": true,
+  "second_valid": true,
+  "second_windows": 2,
+  "two_run_isolated": true
+}

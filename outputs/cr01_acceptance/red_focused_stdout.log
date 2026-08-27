@@ -1,0 +1,121 @@
+..FF.FF........                                                          [100%]
+================================== FAILURES ===================================
+_____ test_empty_speed_window_writes_blank_with_zero_vehicle_observations _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr01_acceptance/red_tmp/test_empty_speed_window_writes0')
+
+    def test_empty_speed_window_writes_blank_with_zero_vehicle_observations(tmp_path):
+        record = make_record(30, None, None, 0)
+        record.main_speed_vehicle_observations = 0
+        record.upstream_speed_vehicle_observations = 0
+        path = tmp_path / "windows.csv"
+    
+        write_window_csv(path, [record])
+    
+        with path.open(newline="", encoding="utf-8") as handle:
+            row = next(csv.DictReader(handle))
+        assert row["mean_speed_mps"] == ""
+        assert row["upstream_speed_mps"] == ""
+>       assert row["main_speed_vehicle_observations"] == "0"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'main_speed_vehicle_observations'
+
+tests\test_metrics.py:55: KeyError
+__ test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences __
+
+    def test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences():
+        records = [
+            make_record(30, 10.0, 10.0, 99),
+            make_record(60, None, None, 99),
+            make_record(90, 30.0, 10.0, 99),
+            make_record(120, 20.0, 10.0, 99),
+        ]
+        for record, explicit_max in zip(records, [3, 7, 4, 5]):
+            record.ramp_vehicle_max_veh = explicit_max
+    
+>       summary = summarize_episode(
+            records,
+            free_flow_speed_mps=33.33,
+            congestion_speed_ratio=0.65,
+            congestion_min_duration_s=60,
+        )
+
+tests\test_metrics.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+records = [WindowRecord(experiment_id='x', controller='none', seed=0, time_s=30, mainline_vph=4200, ramp_vph=750, mean_speed_mps...p_queue_veh=99, alinea_requested_rate_vph=0, alinea_applied_rate_vph=0, departed_veh=100, arrived_veh=90, teleports=0)]
+free_flow_speed_mps = 33.33, congestion_speed_ratio = 0.65
+congestion_min_duration_s = 60
+
+    def summarize_episode(
+        records: list[WindowRecord],
+        free_flow_speed_mps: float,
+        congestion_speed_ratio: float,
+        congestion_min_duration_s: int,
+    ) -> EpisodeSummary:
+        if not records:
+            return EpisodeSummary(
+                experiment_id="",
+                controller="",
+                seed=0,
+                mainline_vph=0,
+                ramp_vph=0,
+                valid=False,
+                failure_reason="no_window_records",
+                total_time_spent_s=0.0,
+                mean_speed_mps=0.0,
+                bottleneck_throughput_veh=0,
+                max_ramp_queue_veh=0,
+                breakdown_start_s=0,
+                congestion_duration_s=0,
+                recovered=False,
+                teleports=0,
+            )
+    
+        interval_s = _infer_interval_s(records)
+        low_speed_threshold = free_flow_speed_mps * congestion_speed_ratio
+        min_windows = max(1, congestion_min_duration_s // interval_s)
+>       low_flags = [record.upstream_speed_mps < low_speed_threshold for record in records]
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: '<' not supported between instances of 'NoneType' and 'float'
+
+metrics.py:75: TypeError
+____________________ test_short_sumo_run_produces_windows _____________________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr01_acceptance/red_tmp/test_short_sumo_run_produces_w0')
+
+    def test_short_sumo_run_produces_windows(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None, "CR-05 requires explicit frozen-network preflight"
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        result = run_experiment(_short_config(180), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+        assert result.valid is True
+        assert len(result.window_records) >= 5
+        assert (result.output_dir / "windows.csv").exists()
+        first = result.window_records[0]
+>       assert first.window_step_observations == 30
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'WindowRecord' object has no attribute 'window_step_observations'
+
+tests\test_env_runner.py:43: AttributeError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (1ms ~= 1000.00*RT, ~2000.00UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)       
+Step #100.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 25 ACT 24 BUF 0)                   
+Step #180.00 (0ms ?*RT. ?UPS, TraCI: 4ms, vehicles TOT 43 ACT 41 BUF 0)                   
+
+
+_____ test_complete_window_accumulator_uses_all_thirty_post_step_samples ______
+
+    def test_complete_window_accumulator_uses_all_thirty_post_step_samples():
+        accumulator_type = getattr(env_module, "_WindowAccumulator", None)
+>       assert accumulator_type is not None, "CR-01 requires a complete-window accumulator"
+E       AssertionError: CR-01 requires a complete-window accumulator
+E       assert None is not None
+
+tests\test_env_runner.py:53: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_metrics.py::test_empty_speed_window_writes_blank_with_zero_vehicle_observations
+FAILED tests/test_metrics.py::test_summary_ignores_missing_speeds_and_missing_upstream_breaks_sequences
+FAILED tests/test_env_runner.py::test_short_sumo_run_produces_windows - Attri...
+FAILED tests/test_env_runner.py::test_complete_window_accumulator_uses_all_thirty_post_step_samples
+4 failed, 11 passed in 5.85s

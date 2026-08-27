@@ -1,0 +1,182 @@
+{
+  "files": [
+    {
+      "bytes": 539,
+      "path": "attempt.json",
+      "sha256": "5fcffaf407b8ed7a277330dccc730f20f6a35006fb8c9569813f023e31c57050"
+    },
+    {
+      "bytes": 1249,
+      "path": "config.json",
+      "sha256": "d532a7689f848caec313f4ed62bb6c3a3dc4349c10be32666426fb0c193a4fab"
+    },
+    {
+      "bytes": 1426,
+      "path": "merge.rou.xml",
+      "sha256": "03bb538f01585dabfafb8d351f1b22fb2c1eb399a3eb3dc1f00919a6f3e78e51"
+    },
+    {
+      "bytes": 24658,
+      "path": "native/det_bottleneck_down.xml",
+      "sha256": "9330eff8cf224d262ee18064e8d7d0199105a16fa853c308134d73c6a669d9fb"
+    },
+    {
+      "bytes": 23530,
+      "path": "native/det_main_0.xml",
+      "sha256": "d9aeade7393ad51d7acd97ed9a50b20223593b65d30d30f8d688ce0a9bd18748"
+    },
+    {
+      "bytes": 23576,
+      "path": "native/det_main_1.xml",
+      "sha256": "daddc8da946464025aa59aa94ced936f17885814595bf139cf445de2ff579a54"
+    },
+    {
+      "bytes": 23585,
+      "path": "native/det_main_2.xml",
+      "sha256": "c388b1d1fe9bc93d334168deabfa6eb2f04acb4599312ef470dcbf5f310212f0"
+    },
+    {
+      "bytes": 23574,
+      "path": "native/det_main_3.xml",
+      "sha256": "742de3db134c22a7e4e1b3b00fda6f5753ca0a098cc9400203cd1bf5f2a78c06"
+    },
+    {
+      "bytes": 23568,
+      "path": "native/det_main_4.xml",
+      "sha256": "4f6e07e5b9edeeb73cc92facb3796589a2e793c1c1583bdc7049b46773313721"
+    },
+    {
+      "bytes": 24151,
+      "path": "native/det_ramp_arrival.xml",
+      "sha256": "3dba84f6f2a9a48be63ffde5d4b2b2c7a906ec74d0a2a3ba58657739149807a7"
+    },
+    {
+      "bytes": 81660,
+      "path": "native/det_ramp_queue.xml",
+      "sha256": "92febcf2bb9c89048b63ec78ee3783ae629af75f6a99ecbc30ada0a874f1830f"
+    },
+    {
+      "bytes": 771,
+      "path": "network_snapshot.json",
+      "sha256": "df23f90fe445a5fc8a108dabed396dd8f80fe92d4a6d17259b06013dfeac0b3c"
+    },
+    {
+      "bytes": 2078,
+      "path": "run.add.xml",
+      "sha256": "23df82288a394f9b156b9e0e8fb69ab249847c4f04db82a2a3af15735f1bcddd"
+    },
+    {
+      "bytes": 32980,
+      "path": "summary.csv",
+      "sha256": "81f4e58b2b785969aff7025e8ecee715213f2712b9880f54d067ac05289d9df3"
+    },
+    {
+      "bytes": 841,
+      "path": "sumo.log",
+      "sha256": "fd0c39951e8f6bc335f90f700cbebf2669bab276cf1e5e866a5a817e62f069c3"
+    },
+    {
+      "bytes": 0,
+      "path": "sumo_error.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 904806,
+      "path": "system_exposure.json",
+      "sha256": "96f2ab298ce093990207dc232476efe4f2470dc33623a5f64dbefd4bd9544c23"
+    },
+    {
+      "bytes": 1308562,
+      "path": "tripinfo.xml",
+      "sha256": "7f68b3edac1acc39700aa4a35345af2ed06d6fe208769dbde6153ddc34992198"
+    },
+    {
+      "bytes": 36573,
+      "path": "windows.csv",
+      "sha256": "29948f779abda05149fa11afa203c3408c6ef8ab044e9bc2530009d1e8bfa000"
+    }
+  ],
+  "planned_identity": {
+    "code_sha256": "667683ccaac4c97fd8b308632ec0689ed194d0c2aed06bb224ec769548838abf",
+    "config": {
+      "alinea": {
+        "cycle_s": 30,
+        "gain": 70.0,
+        "initial_rate_vph": 900.0,
+        "max_rate_vph": 1200.0,
+        "min_rate_vph": 240.0,
+        "queue_override_ratio": 0.8,
+        "ramp_storage_veh": 80,
+        "target_occupancy": 0.22
+      },
+      "congestion_min_duration_s": 300,
+      "congestion_speed_ratio": 0.65,
+      "controllable_improvement_threshold": 0.05,
+      "demand_phases": [
+        {
+          "begin_s": 0,
+          "end_s": 600,
+          "multiplier": 0.65
+        },
+        {
+          "begin_s": 600,
+          "end_s": 2400,
+          "multiplier": 1.0
+        },
+        {
+          "begin_s": 2400,
+          "end_s": 3600,
+          "multiplier": 0.7
+        }
+      ],
+      "free_flow_speed_mps": 33.33,
+      "free_flow_speed_ratio": 0.85,
+      "mainline_range": [
+        6000,
+        6000,
+        1
+      ],
+      "metrics_interval_s": 30,
+      "no_control_congestion_threshold": 0.8,
+      "ramp_range": [
+        1200,
+        1200,
+        1
+      ],
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "simulation_duration_s": 3600,
+      "step_length_s": 1.0
+    },
+    "config_sha256": "ddf8277e25eb4b5cf289fc34fa44534a8e2f9f045824c1d9e69122d01efd6c37",
+    "controller": "none",
+    "demand": {
+      "mainline_vph": 6000,
+      "ramp_vph": 1200
+    },
+    "experiment_id": "main6000_ramp1200_none_seed1_51399fbd",
+    "protocol": {
+      "path": "docs/experiment_protocol_v1.0.md",
+      "sha256": "31b9f6eec310b3d71b2333175759405bba398ab2e76c9415c99f443f07bef137",
+      "version": "1.0"
+    },
+    "scan_id": "stage1_high_formal_v1",
+    "scan_identity_sha256": "98f90be098ec66d19e733f86c31c0efe6ace7054d2c04d8e7987543523916c2d",
+    "scene_sha256": "13ac8a6c8fb3fc4d1e6b1b934f9c00120606c6875e79662c405c15aab1ee07c3",
+    "schemas": {
+      "artifact_manifest": "cr04-artifact-manifest-v1",
+      "attempt": "cr03-attempt-v1",
+      "scan_manifest": "cr04-scan-manifest-v1",
+      "summary": "cr02-summary-v1",
+      "system_exposure": "cr02-system-exposure-v1",
+      "window": "cr02-window-v1"
+    },
+    "seed": 1
+  },
+  "schema_version": "cr04-artifact-manifest-v1"
+}

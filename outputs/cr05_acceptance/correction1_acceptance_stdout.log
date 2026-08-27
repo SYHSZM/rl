@@ -1,0 +1,73 @@
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #60.00 (0ms ?*RT. ?UPS, TraCI: 5ms, vehicles TOT 22 ACT 22 BUF 0)                    
+
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #60.00 (0ms ?*RT. ?UPS, TraCI: 6ms, vehicles TOT 22 ACT 22 BUF 0)                    
+
+{
+  "SUMO_HOME": "D:\\sumo-1.25.0",
+  "attempt_names": [
+    "attempt_0001",
+    "attempt_0002"
+  ],
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr05_acceptance\\correction1_acceptance_runner.py"
+  ],
+  "config": {
+    "alinea": {
+      "cycle_s": 30,
+      "gain": 70.0,
+      "initial_rate_vph": 900.0,
+      "max_rate_vph": 1200.0,
+      "min_rate_vph": 240.0,
+      "queue_override_ratio": 0.8,
+      "ramp_storage_veh": 80,
+      "target_occupancy": 0.22
+    },
+    "congestion_min_duration_s": 300,
+    "congestion_speed_ratio": 0.65,
+    "controllable_improvement_threshold": 0.05,
+    "demand_phases": [
+      {
+        "begin_s": 0,
+        "end_s": 60,
+        "multiplier": 1.0
+      }
+    ],
+    "free_flow_speed_mps": 33.33,
+    "free_flow_speed_ratio": 0.85,
+    "mainline_range": [
+      3000,
+      6000,
+      300
+    ],
+    "metrics_interval_s": 30,
+    "no_control_congestion_threshold": 0.8,
+    "ramp_range": [
+      300,
+      1200,
+      150
+    ],
+    "seeds": [
+      0
+    ],
+    "simulation_duration_s": 60,
+    "step_length_s": 1.0
+  },
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "demand": {
+    "mainline_vph": 1200,
+    "ramp_vph": 120
+  },
+  "first_attempt_unchanged_after_second": true,
+  "first_valid": true,
+  "native_counts": [
+    8,
+    8
+  ],
+  "real_workspace_network_unchanged": true,
+  "same_experiment_parent": true,
+  "second_valid": true,
+  "shared_generated_files": []
+}

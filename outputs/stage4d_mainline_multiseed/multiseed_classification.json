@@ -1,0 +1,352 @@
+{
+  "1900": {
+    "mainline_vph": 1900,
+    "valid_runs": 5,
+    "expected_runs": 5,
+    "congested_runs": 0,
+    "seed_results": [
+      {
+        "seed": 1,
+        "valid": true,
+        "status": "uncongested_seed1",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 22.82846501615391,
+        "tts": 900837.0,
+        "timeLoss": 379351.42,
+        "evaluation_throughput": 1783,
+        "terminal_throughput": 1900
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "status": "uncongested_seed2",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 22.462094036833108,
+        "tts": 944095.0,
+        "timeLoss": 418694.44,
+        "evaluation_throughput": 1788,
+        "terminal_throughput": 1900
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "status": "uncongested_seed3",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 23.426867323200135,
+        "tts": 886918.0,
+        "timeLoss": 366394.92,
+        "evaluation_throughput": 1783,
+        "terminal_throughput": 1900
+      },
+      {
+        "seed": 4,
+        "valid": true,
+        "status": "uncongested_seed4",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 23.195268683755938,
+        "tts": 887664.0,
+        "timeLoss": 367299.05,
+        "evaluation_throughput": 1779,
+        "terminal_throughput": 1900
+      },
+      {
+        "seed": 5,
+        "valid": true,
+        "status": "uncongested_seed5",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 23.192934120112252,
+        "tts": 906235.0,
+        "timeLoss": 385107.73,
+        "evaluation_throughput": 1784,
+        "terminal_throughput": 1900
+      }
+    ],
+    "mean_congestion_duration_s": 0.0,
+    "mean_downstream_window_speed_mps": 23.02112583601107,
+    "mean_tts": 905149.8,
+    "mean_timeLoss": 383369.512,
+    "mean_evaluation_throughput": 1783.4,
+    "mean_terminal_throughput": 1900.0,
+    "classification": "stable_free_flow_upper_bound_candidate"
+  },
+  "1925": {
+    "mainline_vph": 1925,
+    "valid_runs": 5,
+    "expected_runs": 5,
+    "congested_runs": 0,
+    "seed_results": [
+      {
+        "seed": 1,
+        "valid": true,
+        "status": "uncongested_seed1",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 22.35439879819677,
+        "tts": 956719.0,
+        "timeLoss": 428288.33,
+        "evaluation_throughput": 1802,
+        "terminal_throughput": 1925
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "status": "uncongested_seed2",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 22.011666372354387,
+        "tts": 953907.0,
+        "timeLoss": 421443.56,
+        "evaluation_throughput": 1805,
+        "terminal_throughput": 1925
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "status": "uncongested_seed3",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 23.109702209806457,
+        "tts": 940503.0,
+        "timeLoss": 412964.52,
+        "evaluation_throughput": 1807,
+        "terminal_throughput": 1925
+      },
+      {
+        "seed": 4,
+        "valid": true,
+        "status": "uncongested_seed4",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 23.07252825658247,
+        "tts": 902698.0,
+        "timeLoss": 375488.77,
+        "evaluation_throughput": 1805,
+        "terminal_throughput": 1925
+      },
+      {
+        "seed": 5,
+        "valid": true,
+        "status": "uncongested_seed5",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 22.957565723474204,
+        "tts": 963456.0,
+        "timeLoss": 435255.63,
+        "evaluation_throughput": 1808,
+        "terminal_throughput": 1925
+      }
+    ],
+    "mean_congestion_duration_s": 0.0,
+    "mean_downstream_window_speed_mps": 22.701172272082857,
+    "mean_tts": 943456.6,
+    "mean_timeLoss": 414688.162,
+    "mean_evaluation_throughput": 1805.4,
+    "mean_terminal_throughput": 1925.0,
+    "classification": "stable_free_flow_upper_bound_candidate"
+  },
+  "1950": {
+    "mainline_vph": 1950,
+    "valid_runs": 5,
+    "expected_runs": 5,
+    "congested_runs": 4,
+    "seed_results": [
+      {
+        "seed": 1,
+        "valid": true,
+        "status": "congested_seed1",
+        "congestion_duration_s": 360,
+        "downstream_window_speed_mps": 19.984854427510776,
+        "tts": 1016966.5,
+        "timeLoss": 481435.57,
+        "evaluation_throughput": 1812,
+        "terminal_throughput": 1950
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "status": "congested_seed2",
+        "congestion_duration_s": 780,
+        "downstream_window_speed_mps": 18.936691495882098,
+        "tts": 1060859.5,
+        "timeLoss": 521765.04,
+        "evaluation_throughput": 1799,
+        "terminal_throughput": 1950
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "status": "congested_seed3",
+        "congestion_duration_s": 510,
+        "downstream_window_speed_mps": 20.743235297392847,
+        "tts": 997105.5,
+        "timeLoss": 462589.08,
+        "evaluation_throughput": 1814,
+        "terminal_throughput": 1950
+      },
+      {
+        "seed": 4,
+        "valid": true,
+        "status": "uncongested_seed4",
+        "congestion_duration_s": 0,
+        "downstream_window_speed_mps": 21.46955966349232,
+        "tts": 987351.5,
+        "timeLoss": 453321.29,
+        "evaluation_throughput": 1821,
+        "terminal_throughput": 1950
+      },
+      {
+        "seed": 5,
+        "valid": true,
+        "status": "congested_seed5",
+        "congestion_duration_s": 330,
+        "downstream_window_speed_mps": 20.51609902757404,
+        "tts": 1017463.5,
+        "timeLoss": 482399.8,
+        "evaluation_throughput": 1814,
+        "terminal_throughput": 1950
+      }
+    ],
+    "mean_congestion_duration_s": 396.0,
+    "mean_downstream_window_speed_mps": 20.330087982370415,
+    "mean_tts": 1015949.3,
+    "mean_timeLoss": 480302.15599999996,
+    "mean_evaluation_throughput": 1812.0,
+    "mean_terminal_throughput": 1950.0,
+    "classification": "critical_candidate"
+  },
+  "1975": {
+    "mainline_vph": 1975,
+    "valid_runs": 5,
+    "expected_runs": 5,
+    "congested_runs": 5,
+    "seed_results": [
+      {
+        "seed": 1,
+        "valid": true,
+        "status": "congested_seed1",
+        "congestion_duration_s": 960,
+        "downstream_window_speed_mps": 18.265719670403843,
+        "tts": 1078619.0,
+        "timeLoss": 535776.62,
+        "evaluation_throughput": 1817,
+        "terminal_throughput": 1975
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "status": "congested_seed2",
+        "congestion_duration_s": 1080,
+        "downstream_window_speed_mps": 16.774867660186693,
+        "tts": 1121650.0,
+        "timeLoss": 575447.28,
+        "evaluation_throughput": 1802,
+        "terminal_throughput": 1975
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "status": "congested_seed3",
+        "congestion_duration_s": 990,
+        "downstream_window_speed_mps": 18.615975736126508,
+        "tts": 1056149.0,
+        "timeLoss": 514360.37,
+        "evaluation_throughput": 1819,
+        "terminal_throughput": 1975
+      },
+      {
+        "seed": 4,
+        "valid": true,
+        "status": "congested_seed4",
+        "congestion_duration_s": 990,
+        "downstream_window_speed_mps": 18.806805724167347,
+        "tts": 1047435.0,
+        "timeLoss": 506348.45,
+        "evaluation_throughput": 1819,
+        "terminal_throughput": 1975
+      },
+      {
+        "seed": 5,
+        "valid": true,
+        "status": "congested_seed5",
+        "congestion_duration_s": 990,
+        "downstream_window_speed_mps": 18.221506668813454,
+        "tts": 1078964.0,
+        "timeLoss": 537123.06,
+        "evaluation_throughput": 1814,
+        "terminal_throughput": 1975
+      }
+    ],
+    "mean_congestion_duration_s": 1002.0,
+    "mean_downstream_window_speed_mps": 18.13697509193957,
+    "mean_tts": 1076563.4,
+    "mean_timeLoss": 533811.1560000001,
+    "mean_evaluation_throughput": 1814.2,
+    "mean_terminal_throughput": 1975.0,
+    "classification": "oversaturated_candidate"
+  },
+  "2000": {
+    "mainline_vph": 2000,
+    "valid_runs": 5,
+    "expected_runs": 5,
+    "congested_runs": 5,
+    "seed_results": [
+      {
+        "seed": 1,
+        "valid": true,
+        "status": "congested_seed1",
+        "congestion_duration_s": 1020,
+        "downstream_window_speed_mps": 17.85648202377532,
+        "tts": 1142178.0,
+        "timeLoss": 592897.52,
+        "evaluation_throughput": 1813,
+        "terminal_throughput": 2000
+      },
+      {
+        "seed": 2,
+        "valid": true,
+        "status": "congested_seed2",
+        "congestion_duration_s": 1080,
+        "downstream_window_speed_mps": 17.328812257028318,
+        "tts": 1141287.0,
+        "timeLoss": 588628.89,
+        "evaluation_throughput": 1810,
+        "terminal_throughput": 2000
+      },
+      {
+        "seed": 3,
+        "valid": true,
+        "status": "congested_seed3",
+        "congestion_duration_s": 990,
+        "downstream_window_speed_mps": 17.47461768100644,
+        "tts": 1117031.0,
+        "timeLoss": 568332.78,
+        "evaluation_throughput": 1820,
+        "terminal_throughput": 2000
+      },
+      {
+        "seed": 4,
+        "valid": true,
+        "status": "congested_seed4",
+        "congestion_duration_s": 1050,
+        "downstream_window_speed_mps": 18.274222560918282,
+        "tts": 1096822.0,
+        "timeLoss": 549188.83,
+        "evaluation_throughput": 1820,
+        "terminal_throughput": 2000
+      },
+      {
+        "seed": 5,
+        "valid": true,
+        "status": "congested_seed5",
+        "congestion_duration_s": 1530,
+        "downstream_window_speed_mps": 16.232112593676096,
+        "tts": 1137383.0,
+        "timeLoss": 589063.44,
+        "evaluation_throughput": 1813,
+        "terminal_throughput": 2000
+      }
+    ],
+    "mean_congestion_duration_s": 1134.0,
+    "mean_downstream_window_speed_mps": 17.43324942328089,
+    "mean_tts": 1126940.2,
+    "mean_timeLoss": 577622.292,
+    "mean_evaluation_throughput": 1815.2,
+    "mean_terminal_throughput": 2000.0,
+    "classification": "oversaturated_candidate"
+  }
+}

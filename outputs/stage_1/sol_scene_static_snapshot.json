@@ -1,0 +1,629 @@
+{
+  "detectors": [
+    {
+      "file": "det_main_0.xml",
+      "freq": "30",
+      "id": "det_main_0",
+      "lane": "main_0_1",
+      "pos": "500",
+      "type": "inductionLoop"
+    },
+    {
+      "file": "det_main_1.xml",
+      "freq": "30",
+      "id": "det_main_1",
+      "lane": "main_1_1",
+      "pos": "500",
+      "type": "inductionLoop"
+    },
+    {
+      "file": "det_main_2.xml",
+      "freq": "30",
+      "id": "det_main_2",
+      "lane": "main_2_1",
+      "pos": "500",
+      "type": "inductionLoop"
+    },
+    {
+      "file": "det_main_3.xml",
+      "freq": "30",
+      "id": "det_main_3",
+      "lane": "main_3_1",
+      "pos": "500",
+      "type": "inductionLoop"
+    },
+    {
+      "file": "det_main_4.xml",
+      "freq": "30",
+      "id": "det_main_4",
+      "lane": "main_4_1",
+      "pos": "500",
+      "type": "inductionLoop"
+    },
+    {
+      "file": "det_bottleneck_down.xml",
+      "freq": "30",
+      "id": "det_bottleneck_down",
+      "lane": "main_4_1",
+      "pos": "150",
+      "type": "inductionLoop"
+    },
+    {
+      "endPos": "300",
+      "file": "det_ramp_queue.xml",
+      "freq": "30",
+      "id": "det_ramp_queue",
+      "lane": "ramp_0_0",
+      "pos": "0",
+      "type": "laneAreaDetector"
+    },
+    {
+      "file": "det_ramp_arrival.xml",
+      "freq": "30",
+      "id": "det_ramp_arrival",
+      "lane": "ramp_0_0",
+      "pos": "40",
+      "type": "inductionLoop"
+    }
+  ],
+  "generated_edges": [
+    {
+      "from": "",
+      "id": ":m1_0",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m1_0_0",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m1_0_1",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m1_0_2",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "",
+      "id": ":m2_0",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m2_0_0",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m2_0_1",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m2_0_2",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "",
+      "id": ":m3_0",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m3_0_0",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m3_0_1",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m3_0_2",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "",
+      "id": ":m4_0",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m4_0_0",
+          "length_m": 7.79,
+          "speed_mps": 9.9
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "",
+      "id": ":m4_1",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m4_1_0",
+          "length_m": 7.87,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m4_1_1",
+          "length_m": 7.87,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m4_1_2",
+          "length_m": 7.87,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "",
+      "id": ":m5_0",
+      "kind": "internal",
+      "lanes": [
+        {
+          "id": ":m5_0_0",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m5_0_1",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        },
+        {
+          "id": ":m5_0_2",
+          "length_m": 0.1,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": ""
+    },
+    {
+      "from": "m0",
+      "id": "main_0",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_0_0",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_0_1",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_0_2",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m1"
+    },
+    {
+      "from": "m1",
+      "id": "main_1",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_1_0",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_1_1",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_1_2",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m2"
+    },
+    {
+      "from": "m2",
+      "id": "main_2",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_2_0",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_2_1",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_2_2",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m3"
+    },
+    {
+      "from": "m3",
+      "id": "main_3",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_3_0",
+          "length_m": 987.53,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_3_1",
+          "length_m": 987.53,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_3_2",
+          "length_m": 987.53,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m4"
+    },
+    {
+      "from": "m4",
+      "id": "main_4",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_4_0",
+          "length_m": 1004.61,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_4_1",
+          "length_m": 1004.61,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_4_2",
+          "length_m": 1004.61,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m5"
+    },
+    {
+      "from": "m5",
+      "id": "main_5",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "main_5_0",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_5_1",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        },
+        {
+          "id": "main_5_2",
+          "length_m": 1000.0,
+          "speed_mps": 33.33
+        }
+      ],
+      "to": "m6"
+    },
+    {
+      "from": "r0",
+      "id": "ramp_0",
+      "kind": "external",
+      "lanes": [
+        {
+          "id": "ramp_0_0",
+          "length_m": 515.43,
+          "speed_mps": 22.22
+        }
+      ],
+      "to": "m4"
+    }
+  ],
+  "generated_signal_connections": [
+    {
+      "dir": "s",
+      "from": "main_3",
+      "fromLane": "0",
+      "linkIndex": "1",
+      "state": "O",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "0",
+      "via": ":m4_1_0"
+    },
+    {
+      "dir": "s",
+      "from": "main_3",
+      "fromLane": "1",
+      "linkIndex": "2",
+      "state": "O",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "1",
+      "via": ":m4_1_1"
+    },
+    {
+      "dir": "s",
+      "from": "main_3",
+      "fromLane": "2",
+      "linkIndex": "3",
+      "state": "O",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "2",
+      "via": ":m4_1_2"
+    },
+    {
+      "dir": "s",
+      "from": "ramp_0",
+      "fromLane": "0",
+      "linkIndex": "0",
+      "state": "o",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "0",
+      "via": ":m4_0_0"
+    }
+  ],
+  "generated_signal_programs": [
+    {
+      "id": "m4",
+      "phases": [
+        {
+          "duration": "30",
+          "state": "gGGG"
+        }
+      ],
+      "programID": "0",
+      "type": "static"
+    }
+  ],
+  "source_connections": [
+    {
+      "from": "main_0",
+      "fromLane": "0",
+      "to": "main_1",
+      "toLane": "0"
+    },
+    {
+      "from": "main_0",
+      "fromLane": "1",
+      "to": "main_1",
+      "toLane": "1"
+    },
+    {
+      "from": "main_0",
+      "fromLane": "2",
+      "to": "main_1",
+      "toLane": "2"
+    },
+    {
+      "from": "main_1",
+      "fromLane": "0",
+      "to": "main_2",
+      "toLane": "0"
+    },
+    {
+      "from": "main_1",
+      "fromLane": "1",
+      "to": "main_2",
+      "toLane": "1"
+    },
+    {
+      "from": "main_1",
+      "fromLane": "2",
+      "to": "main_2",
+      "toLane": "2"
+    },
+    {
+      "from": "main_2",
+      "fromLane": "0",
+      "to": "main_3",
+      "toLane": "0"
+    },
+    {
+      "from": "main_2",
+      "fromLane": "1",
+      "to": "main_3",
+      "toLane": "1"
+    },
+    {
+      "from": "main_2",
+      "fromLane": "2",
+      "to": "main_3",
+      "toLane": "2"
+    },
+    {
+      "from": "main_3",
+      "fromLane": "0",
+      "linkIndex": "0",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "0"
+    },
+    {
+      "from": "main_3",
+      "fromLane": "1",
+      "linkIndex": "1",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "1"
+    },
+    {
+      "from": "main_3",
+      "fromLane": "2",
+      "linkIndex": "2",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "2"
+    },
+    {
+      "from": "ramp_0",
+      "fromLane": "0",
+      "linkIndex": "3",
+      "tl": "m4",
+      "to": "main_4",
+      "toLane": "0"
+    },
+    {
+      "from": "main_4",
+      "fromLane": "0",
+      "to": "main_5",
+      "toLane": "0"
+    },
+    {
+      "from": "main_4",
+      "fromLane": "1",
+      "to": "main_5",
+      "toLane": "1"
+    },
+    {
+      "from": "main_4",
+      "fromLane": "2",
+      "to": "main_5",
+      "toLane": "2"
+    }
+  ],
+  "source_edges": [
+    {
+      "from": "m0",
+      "id": "main_0",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m1"
+    },
+    {
+      "from": "m1",
+      "id": "main_1",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m2"
+    },
+    {
+      "from": "m2",
+      "id": "main_2",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m3"
+    },
+    {
+      "from": "m3",
+      "id": "main_3",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m4"
+    },
+    {
+      "from": "m4",
+      "id": "main_4",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m5"
+    },
+    {
+      "from": "m5",
+      "id": "main_5",
+      "numLanes": "3",
+      "speed": "33.33",
+      "to": "m6"
+    },
+    {
+      "from": "r0",
+      "id": "ramp_0",
+      "numLanes": "1",
+      "speed": "22.22",
+      "to": "m4"
+    }
+  ],
+  "source_nodes": [
+    {
+      "id": "m0",
+      "type": "priority",
+      "x": "0",
+      "y": "0"
+    },
+    {
+      "id": "m1",
+      "type": "priority",
+      "x": "1000",
+      "y": "0"
+    },
+    {
+      "id": "m2",
+      "type": "priority",
+      "x": "2000",
+      "y": "0"
+    },
+    {
+      "id": "m3",
+      "type": "priority",
+      "x": "3000",
+      "y": "0"
+    },
+    {
+      "id": "m4",
+      "type": "traffic_light",
+      "x": "4000",
+      "y": "0"
+    },
+    {
+      "id": "m5",
+      "type": "priority",
+      "x": "5000",
+      "y": "0"
+    },
+    {
+      "id": "m6",
+      "type": "priority",
+      "x": "6000",
+      "y": "0"
+    },
+    {
+      "id": "r0",
+      "type": "priority",
+      "x": "3600",
+      "y": "-350"
+    }
+  ],
+  "source_signal_programs": [
+    {
+      "id": "m4",
+      "phases": [
+        {
+          "duration": "30",
+          "state": "gGGG"
+        }
+      ],
+      "programID": "0",
+      "type": "static"
+    }
+  ]
+}

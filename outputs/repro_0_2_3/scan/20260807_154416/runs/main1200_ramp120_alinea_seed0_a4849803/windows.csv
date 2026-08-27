@@ -1,0 +1,7 @@
+experiment_id,controller,seed,time_s,mainline_vph,ramp_vph,mean_speed_mps,upstream_speed_mps,bottleneck_flow_veh,bottleneck_occupancy,ramp_queue_veh,alinea_requested_rate_vph,alinea_applied_rate_vph,departed_veh,arrived_veh,teleports
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,30,1200,120,0.0,-1.0,0,0.0,0,915.4,915.4,8,0,0
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,60,1200,120,0.0,-1.0,0,0.0,1,930.8,930.8,15,0,0
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,90,1200,120,0.0,-1.0,0,0.0,0,946.1999999999999,946.1999999999999,22,0,0
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,120,1200,120,0.0,-1.0,0,0.0,0,961.5999999999999,961.5999999999999,29,1,0
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,150,1200,120,32.08576183978719,32.08576183978719,0,0.0,1,976.9999999999999,976.9999999999999,37,1,0
+main1200_ramp120_alinea_seed0_a4849803,alinea,0,180,1200,120,30.563003698886455,-1.0,0,0.0,0,992.3999999999999,992.3999999999999,43,2,0

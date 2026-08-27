@@ -1,0 +1,3 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main1200_ramp120_none_seed0_ebd06a7c,1200,120,none,0,run,no_existing_attempt,
+main1200_ramp120_alinea_seed0_ebd06a7c,1200,120,alinea,0,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\sol_scan_verify_tmp\test_semantically_invalid_atte11\scan\scan_3b5569df9ee68991\runs\main1200_ramp120_alinea_seed0_ebd06a7c\attempt_0001

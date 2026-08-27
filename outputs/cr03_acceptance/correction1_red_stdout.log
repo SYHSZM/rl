@@ -1,0 +1,360 @@
+......F..........F....FFFFFF.                                            [100%]
+================================== FAILURES ===================================
+___ test_permanent_attempt_record_failure_preserves_original_output_context ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_permanent_attempt_record_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5D67EF0>
+
+    def test_permanent_attempt_record_failure_preserves_original_output_context(tmp_path, monkeypatch):
+        frozen = build_network_module.preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        monkeypatch.setattr(
+            env_module,
+            "write_window_csv",
+            lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError("original output write failed")),
+        )
+        monkeypatch.setattr(
+            env_module,
+            "_write_attempt_record",
+            lambda *args, **kwargs: (_ for _ in ()).throw(OSError("attempt record permanently unavailable")),
+        )
+    
+        with pytest.raises(Exception) as caught:
+            env_module.run_experiment(
+                _short_config(), DemandPoint(1200, 120), "none", 0,
+                tmp_path / "runs", frozen_network=frozen,
+            )
+    
+        context = getattr(caught.value, "failure_context", None)
+>       assert context is not None
+E       assert None is not None
+
+tests\test_env_runner.py:205: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 4ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+____ test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates ____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_frozen_mismatch_after_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DFF8C0>
+
+    def test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates(tmp_path, monkeypatch):
+        frozen = build_network_module.preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        real_verify = env_module.verify_frozen_network
+        calls = {"count": 0}
+    
+        def fail_second_verification(value):
+            calls["count"] += 1
+            if calls["count"] == 2:
+                raise build_network_module.FrozenNetworkMismatchError("injected post-run frozen mismatch")
+            return real_verify(value)
+    
+        monkeypatch.setattr(env_module, "verify_frozen_network", fail_second_verification)
+        with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="post-run") as caught:
+            env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+    
+        summaries = list((tmp_path / "runs").rglob("summary.csv"))
+        assert len(summaries) == 1
+        with summaries[0].open(encoding="utf-8", newline="") as handle:
+            row = next(csv.DictReader(handle))
+        assert row["valid"] == "False"
+        assert "post-run frozen mismatch" in row["failure_reason"]
+        attempts = list((tmp_path / "runs").rglob("attempt.json"))
+        assert len(attempts) == 1
+        attempt = json.loads(attempts[0].read_text(encoding="utf-8"))
+        assert attempt["failure_stage"] == "post_run_verify"
+        assert attempt["failure_type"] == "FrozenNetworkMismatchError"
+        assert attempt["retryable"] is False
+        context = getattr(caught.value, "failure_context", None)
+>       assert context is not None
+E       assert None is not None
+
+tests\test_env_runner.py:523: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 4ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+____________ test_scan_aborts_batch_immediately_on_frozen_mismatch ____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_aborts_batch_immedia0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DFD880>
+
+    def test_scan_aborts_batch_immediately_on_frozen_mismatch(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def mismatch(*args, **kwargs):
+            calls.append((args, kwargs))
+            raise build_network_module.FrozenNetworkMismatchError("stop batch")
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", mismatch)
+        with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="stop batch"):
+            scan_demand_module.scan_demand(config, output_root=tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+    
+        assert len(calls) == 1
+        scan_dir = next((tmp_path / "scan").iterdir())
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_aborts_batch_immedia0/scan/20260807_193315/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction1_red_tmp\\test_scan_aborts_batch_immedia0\\scan\\20260807_193315\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+_____ test_scan_ledgers_and_indexes_post_run_frozen_mismatch_before_abort _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_ledgers_and_indexes_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DAB0E0>
+
+    def test_scan_ledgers_and_indexes_post_run_frozen_mismatch_before_abort(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def mismatch(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            output_dir = Path(output_root) / f"fake_{controller}_{seed}" / "attempt_0001"
+            _write_attempt(
+                output_dir, status="failed", valid=False, stage="post_run_verify",
+                failure_type="FrozenNetworkMismatchError", message="post-run mismatch",
+            )
+            exc = build_network_module.FrozenNetworkMismatchError("post-run mismatch")
+            exc.failure_context = {
+                "failure_stage": "post_run_verify", "failure_type": "FrozenNetworkMismatchError",
+                "failure_message": "post-run mismatch", "retryable": False,
+                "output_dir": str(output_dir), "attempt": 1,
+                "experiment_id": f"fake_{controller}_{seed}",
+            }
+            raise exc
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", mismatch)
+        with pytest.raises(build_network_module.FrozenNetworkMismatchError, match="post-run mismatch"):
+            scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+    
+        scan_dir = next((tmp_path / "scan").iterdir())
+>       with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_scan_demand.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_ledgers_and_indexes_0/scan/20260807_193315/failure_ledger.csv')
+mode = 'r', buffering = -1, encoding = 'utf-8', errors = None, newline = ''
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction1_red_tmp\\test_scan_ledgers_and_indexes_0\\scan\\20260807_193315\\failure_ledger.csv'
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+______ test_scan_records_ordinary_run_failure_and_continues_planned_runs ______
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_records_ordinary_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DAB350>
+
+    def test_scan_records_ordinary_run_failure_and_continues_planned_runs(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            if len(calls) == 1:
+                raise RuntimeError("injected ordinary run failure")
+            summary = _summary(demand, controller, seed)
+            output_dir = Path(output_root) / "fake" / "attempt_0001"
+            _write_attempt(output_dir)
+            return SimpleNamespace(
+                experiment_id="fake", valid=True, output_dir=output_dir,
+                failure_reason="", summary=summary,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+        assert len(rows) == 2
+>       assert rows[0]["status"] == "invalid"
+E       AssertionError: assert 'failed' == 'invalid'
+E         
+E         - invalid
+E         + failed
+
+tests\test_scan_demand.py:234: AssertionError
+__ test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_scan_writes_failure_ledge0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DFC4D0>
+
+    def test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+        def fail_attempt(*args, **kwargs):
+            raise _contextual_error("attempt mkdir denied", "prepare_output", error_type="OSError")
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fail_attempt)
+    
+        scan_dir = scan_demand_module.scan_demand(config, tmp_path / "scan", controllers=("none", "alinea"), resume=False)
+    
+        with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+            ledger = list(csv.DictReader(handle))
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+        assert len(ledger) == len(index) == 2
+>       assert {row["failure_stage"] for row in ledger} == {"prepare_output"}
+E       AssertionError: assert {'run_experiment'} == {'prepare_output'}
+E         
+E         Extra items in the left set:
+E         'run_experiment'
+E         Extra items in the right set:
+E         'prepare_output'
+E         Use -v to get more diff
+
+tests\test_scan_demand.py:260: AssertionError
+__ test_all_escaped_runs_still_emit_insufficient_valid_demand_classification __
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_all_escaped_runs_still_em0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DFE330>
+
+    def test_all_escaped_runs_still_emit_insufficient_valid_demand_classification(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fail_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            raise _contextual_error(f"{controller} run escaped", "run_loop")
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fail_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+        with (scan_dir / "demand_classification.csv").open(newline="", encoding="utf-8") as handle:
+            classifications = list(csv.DictReader(handle))
+        assert len(index) == 2
+>       assert {row["status"] for row in index} == {"invalid"}
+E       AssertionError: assert {'failed'} == {'invalid'}
+E         
+E         Extra items in the left set:
+E         'failed'
+E         Extra items in the right set:
+E         'invalid'
+E         Use -v to get more diff
+
+tests\test_scan_demand.py:285: AssertionError
+__ test_malformed_attempt_record_is_output_parse_failure_and_scan_continues ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction1_red_tmp/test_malformed_attempt_record_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000025FE5DFE1E0>
+
+    def test_malformed_attempt_record_is_output_parse_failure_and_scan_continues(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            output_dir = Path(output_root) / f"fake_{controller}" / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none":
+                (output_dir / "attempt.json").write_text("{malformed", encoding="utf-8")
+            else:
+                _write_attempt(output_dir)
+            summary = _summary(demand, controller, seed)
+            return SimpleNamespace(
+                experiment_id=f"fake_{controller}", valid=True, output_dir=output_dir,
+                failure_reason="", summary=summary,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+>       scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+
+tests\test_scan_demand.py:316: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+scan_demand.py:78: in scan_demand
+    attempt = _read_attempt_record(result.output_dir)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scan_demand.py:166: in _read_attempt_record
+    return json.loads(path.read_text(encoding="utf-8"))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\__init__.py:346: in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <json.decoder.JSONDecoder object at 0x0000025FBA583650>, s = '{malformed'
+idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+>           obj, end = self.scan_once(s, idx)
+                       ^^^^^^^^^^^^^^^^^^^^^^
+E           json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\decoder.py:354: JSONDecodeError
+=========================== short test summary info ===========================
+FAILED tests/test_env_runner.py::test_permanent_attempt_record_failure_preserves_original_output_context
+FAILED tests/test_env_runner.py::test_frozen_mismatch_after_run_writes_invalid_summary_then_propagates
+FAILED tests/test_scan_demand.py::test_scan_aborts_batch_immediately_on_frozen_mismatch
+FAILED tests/test_scan_demand.py::test_scan_ledgers_and_indexes_post_run_frozen_mismatch_before_abort
+FAILED tests/test_scan_demand.py::test_scan_records_ordinary_run_failure_and_continues_planned_runs
+FAILED tests/test_scan_demand.py::test_scan_writes_failure_ledger_when_attempt_directory_cannot_be_created
+FAILED tests/test_scan_demand.py::test_all_escaped_runs_still_emit_insufficient_valid_demand_classification
+FAILED tests/test_scan_demand.py::test_malformed_attempt_record_is_output_parse_failure_and_scan_continues
+8 failed, 21 passed in 8.24s

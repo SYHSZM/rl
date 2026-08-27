@@ -1,0 +1,6 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main3000_ramp300_none_seed0_189a3f3c,3000,300,none,0,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_low_formal_v1\runs\main3000_ramp300_none_seed0_189a3f3c\attempt_0001
+main3000_ramp300_none_seed1_189a3f3c,3000,300,none,1,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_low_formal_v1\runs\main3000_ramp300_none_seed1_189a3f3c\attempt_0001
+main3000_ramp300_none_seed2_189a3f3c,3000,300,none,2,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_low_formal_v1\runs\main3000_ramp300_none_seed2_189a3f3c\attempt_0001
+main3000_ramp300_none_seed3_189a3f3c,3000,300,none,3,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_low_formal_v1\runs\main3000_ramp300_none_seed3_189a3f3c\attempt_0001
+main3000_ramp300_none_seed4_189a3f3c,3000,300,none,4,run,no_existing_attempt,D:\python_install\py\rl\0325\0325\outputs\stage_1\formal_scans\stage1_low_formal_v1\runs\main3000_ramp300_none_seed4_189a3f3c\attempt_0001

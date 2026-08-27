@@ -1,0 +1,105 @@
+...........................FF.                                           [100%]
+================================== FAILURES ===================================
+__ test_malformed_attempt_record_is_output_parse_failure_and_scan_continues ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction2_red_tmp/test_malformed_attempt_record_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000027C639C3890>
+
+    def test_malformed_attempt_record_is_output_parse_failure_and_scan_continues(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        calls = []
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            calls.append(controller)
+            output_dir = Path(output_root) / f"fake_{controller}" / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            if controller == "none":
+                (output_dir / "attempt.json").write_text("{malformed", encoding="utf-8")
+            else:
+                _write_attempt(output_dir)
+            summary = _summary(demand, controller, seed)
+            return SimpleNamespace(
+                experiment_id=f"fake_{controller}", valid=True, output_dir=output_dir,
+                failure_reason="", summary=summary,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        assert calls == ["none", "alinea"]
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+        with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+            ledger = list(csv.DictReader(handle))
+        with (scan_dir / "demand_classification.csv").open(newline="", encoding="utf-8") as handle:
+            classifications = list(csv.DictReader(handle))
+        assert len(index) == 2
+        assert index[0]["status"] == "invalid"
+        assert index[0]["attempt_status"] == "failed"
+        assert index[0]["failure_stage"] == "output_parse"
+        assert index[0]["failure_type"] == "JSONDecodeError"
+        assert index[1]["status"] == "valid"
+        assert index[1]["attempt_status"] == "success"
+        assert len(ledger) == 1
+        assert ledger[0]["failure_stage"] == "output_parse"
+>       assert ledger[0]["retryable"] == "False"
+E       AssertionError: assert 'True' == 'False'
+E         
+E         - False
+E         + True
+
+tests\test_scan_demand.py:336: AssertionError
+_____ test_all_missing_attempt_records_still_classify_without_valid_pairs _____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr03_acceptance/correction2_red_tmp/test_all_missing_attempt_recor0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000027C638FFDD0>
+
+    def test_all_missing_attempt_records_still_classify_without_valid_pairs(tmp_path, monkeypatch):
+        config = default_config()
+        config.mainline_range = (1200, 1200, 1)
+        config.ramp_range = (120, 120, 1)
+        config.seeds = (0,)
+        monkeypatch.setattr(scan_demand_module, "preflight_network", lambda path: object())
+    
+        def fake_run(config, demand, controller, seed, output_root, use_gui, frozen_network=None):
+            output_dir = Path(output_root) / f"missing_{controller}" / "attempt_0001"
+            output_dir.mkdir(parents=True, exist_ok=True)
+            summary = _summary(demand, controller, seed)
+            return SimpleNamespace(
+                experiment_id=f"missing_{controller}", valid=True, output_dir=output_dir,
+                failure_reason="", summary=summary,
+            )
+    
+        monkeypatch.setattr(scan_demand_module, "run_experiment", fake_run)
+        scan_dir = scan_demand_module.scan_demand(
+            config, tmp_path / "scan", controllers=("none", "alinea"), resume=False,
+        )
+    
+        with (scan_dir / "run_index.csv").open(newline="", encoding="utf-8") as handle:
+            index = list(csv.DictReader(handle))
+        with (scan_dir / "failure_ledger.csv").open(newline="", encoding="utf-8") as handle:
+            ledger = list(csv.DictReader(handle))
+        with (scan_dir / "demand_classification.csv").open(newline="", encoding="utf-8") as handle:
+            classifications = list(csv.DictReader(handle))
+        assert len(index) == len(ledger) == 2
+        assert {row["failure_stage"] for row in index} == {"output_parse"}
+>       assert {row["retryable"] for row in index} == {"False"}
+E       AssertionError: assert {'True'} == {'False'}
+E         
+E         Extra items in the left set:
+E         'True'
+E         Extra items in the right set:
+E         'False'
+E         Use -v to get more diff
+
+tests\test_scan_demand.py:373: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_scan_demand.py::test_malformed_attempt_record_is_output_parse_failure_and_scan_continues
+FAILED tests/test_scan_demand.py::test_all_missing_attempt_records_still_classify_without_valid_pairs
+2 failed, 28 passed in 8.41s

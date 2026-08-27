@@ -1,0 +1,88 @@
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- ===================== -->
+    <!-- Vehicle Types -->
+    <!-- ===================== -->
+
+    <!-- Heavy vehicle (conservative lane-changing) -->
+    <vType accel="1.45" carFollowModel="IDM" color="green" decel="4.00" delta="3.65" emergencyDecel="9.00"
+           id="Heavy_Vehicle"
+           lcAssertive="0.30"
+           lcKeepRight="0.50"
+           lcPushy="0.0"
+           lcImpatience="0.0"
+           minGapLat="0.8"
+           maxSpeedLat="0.8"
+           length="11.20" maxSpeed="25.00"
+           minGap="4.09" probability="1.00"
+           sigma="0.20" speedDev="0.05" speedFactor="1.20" tau="1.80"
+           vClass="truck"/>
+
+    <!-- Car (conservative lane-changing) -->
+    <vType accel="1.02" carFollowModel="IDM" color="blue" decel="4.50" delta="2.07" emergencyDecel="9.00"
+           id="Car"
+           lcAssertive="0.60"
+           lcKeepRight="0.50"
+           lcPushy="0.0"
+           lcImpatience="0.0"
+           minGapLat="0.6"
+           maxSpeedLat="1.0"
+           length="4.70" maxSpeed="33.3"
+           minGap="4.87" probability="1.00"
+           sigma="0.35" speedDev="0.10" speedFactor="0.8" tau="1.80"
+           vClass="passenger"/>
+
+    <!-- White incident car -->
+    <vType accel="1.02" carFollowModel="IDM" color="white" decel="4.50" delta="2.07" emergencyDecel="9.00"
+           id="Incident_Car"
+           lcAssertive="0.30"
+           lcKeepRight="0.20"
+           lcPushy="0.0"
+           lcImpatience="0.0"
+           minGapLat="0.6"
+           maxSpeedLat="0.8"
+           length="4.70" maxSpeed="33.3"
+           minGap="4.87" probability="1.00"
+           sigma="0.00" speedDev="0.00" speedFactor="1.0" tau="1.80"
+           vClass="passenger"/>
+
+    <!-- ===================== -->
+    <!-- Normal Traffic Flow -->
+    <!-- ===================== -->
+
+    <flow id="car_flow"
+          type="Car"
+          begin="0"
+          end="5400"
+          from="777610425.204"
+          to="259337593#2"
+          vehsPerHour="1300"
+          departLane="best"
+          departSpeed="max"
+          arrivalPos="max"/>
+
+    <flow id="heavy_flow"
+          type="Heavy_Vehicle"
+          begin="0"
+          end="5400"
+          from="777610425.204"
+          to="259337593#2"
+          vehsPerHour="120"
+          departLane="best"
+          departSpeed="max"
+          arrivalPos="max"/>
+
+    <!-- ===================== -->
+    <!-- Incident Vehicle -->
+    <!-- ===================== -->
+
+    <trip id="incidentVeh"
+          type="Incident_Car"
+          depart="50"
+          from="777610425.204"
+          to="259337593#2"
+          departLane="best"
+          departSpeed="max"/>
+
+</routes>

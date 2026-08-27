@@ -1,0 +1,146 @@
+{
+  "schema": "stage4d-a-osm-mainline-coarse-v1",
+  "valid": true,
+  "errors": [],
+  "formal_sumo_start_count": 6,
+  "runs_completed": 6,
+  "sumo_version": "Eclipse SUMO sumo 1.25.0\n Build features: Windows-10.0.17763 AMD64 MSVC 19.29.30133.0 Release FMI Proj GUI FMT Intl SWIG Parquet Eigen\n Copyright (C) 2001-2025 German Aerospace Center (DLR) and others; https://sumo.dlr.de\n\nEclipse SUMO sumo 1.25.0 is part of SUMO.\nThis program and the accompanying materials\nare made available under the terms of the Eclipse Public License v2.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v20.html\nThis program may also be made available under the following Secondary\nLicenses when the conditions for such availability set forth in the Eclipse\nPublic License 2.0 are satisfied: GNU General Public License, version 2\nor later which is available at\nhttps://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html\nSPDX-License-Identifier: EPL-2.0 OR GPL-2.0-or-later",
+  "traci_version": "22",
+  "traci_version_source": "traci.constants.TRACI_VERSION",
+  "input_hashes": {
+    "osm.net.xml": "856D22EC0E5D7FD13021557EBEBD2A3CD3BABD03385A208A2E801D3265B7FD99",
+    "control_adapter/osm_control.add.xml": "52844C6A95E17F2C10F44E52B3CED9ABE5A0C3FEC8ED13CE4674A3EC7B01362D",
+    "osm.rou.xml": "5E6BA3D54F9B484C3584F2232A516AAFCC964B305D27F85967F059AB542B6584"
+  },
+  "route_hashes": {
+    "1200": "42A61437D613A1258207673E040B4055DBF5EB740FFDF08EC446042B25D1E84E",
+    "1600": "C67A49D519B8E214A9BFDBD0250BA3113A4A6F064503ADE2709E8BFB0E50EBE8",
+    "1750": "47192D75D5755D64D40176CF22B6C73F148C0897F58937591374C52D0E24F9DC",
+    "1850": "300B005798AF81B879A4563FA1082C7C781395DB6E5AC541CA2336CB75042228",
+    "1900": "DD550A71A2204963AF851E6AC1E29918B36A97832D282A95BF20A687C24DD424",
+    "2000": "6827B94FF147CFC803D06B2DA4427049EBC49E02E611F13C512C73214F1B31A5"
+  },
+  "matrix": [
+    {
+      "scenario": {
+        "name": "1200+0",
+        "mainline_vph": 1200,
+        "ramp_vph": 0,
+        "nominal_veh": 1200,
+        "route_sha256": "42A61437D613A1258207673E040B4055DBF5EB740FFDF08EC446042B25D1E84E"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main1200_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main1200_ramp0\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1600+0",
+        "mainline_vph": 1600,
+        "ramp_vph": 0,
+        "nominal_veh": 1600,
+        "route_sha256": "C67A49D519B8E214A9BFDBD0250BA3113A4A6F064503ADE2709E8BFB0E50EBE8"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main1600_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main1600_ramp0\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1750+0",
+        "mainline_vph": 1750,
+        "ramp_vph": 0,
+        "nominal_veh": 1750,
+        "route_sha256": "47192D75D5755D64D40176CF22B6C73F148C0897F58937591374C52D0E24F9DC"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main1750_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main1750_ramp0\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1850+0",
+        "mainline_vph": 1850,
+        "ramp_vph": 0,
+        "nominal_veh": 1850,
+        "route_sha256": "300B005798AF81B879A4563FA1082C7C781395DB6E5AC541CA2336CB75042228"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main1850_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main1850_ramp0\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "1900+0",
+        "mainline_vph": 1900,
+        "ramp_vph": 0,
+        "nominal_veh": 1900,
+        "route_sha256": "DD550A71A2204963AF851E6AC1E29918B36A97832D282A95BF20A687C24DD424"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main1900_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main1900_ramp0\\none_seed1"
+    },
+    {
+      "scenario": {
+        "name": "2000+0",
+        "mainline_vph": 2000,
+        "ramp_vph": 0,
+        "nominal_veh": 2000,
+        "route_sha256": "6827B94FF147CFC803D06B2DA4427049EBC49E02E611F13C512C73214F1B31A5"
+      },
+      "controller": "none",
+      "seed": 1,
+      "route_path": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\routes\\main2000_ramp0.rou.xml",
+      "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\stage4d_mainline_coarse\\main2000_ramp0\\none_seed1"
+    }
+  ],
+  "run_order": [
+    {
+      "mainline_vph": 1200,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "mainline_vph": 1600,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "mainline_vph": 1750,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "mainline_vph": 1850,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "mainline_vph": 1900,
+      "valid": true,
+      "status": "valid"
+    },
+    {
+      "mainline_vph": 2000,
+      "valid": true,
+      "status": "valid"
+    }
+  ],
+  "protection_errors": [],
+  "bracket": {
+    "highest_uncongested_vph": 1900,
+    "first_congested_vph": 2000,
+    "bracket_found": true,
+    "monotonicity_valid": true,
+    "status": "bracket_found"
+  },
+  "bottleneck_throughput_source": "native_inductionloop_nVehContrib",
+  "bottleneck_throughput_horizon": "[0,3600)",
+  "mainline_vehicle_observations_definition": "per_step_vehicle_observations_may_repeat"
+}

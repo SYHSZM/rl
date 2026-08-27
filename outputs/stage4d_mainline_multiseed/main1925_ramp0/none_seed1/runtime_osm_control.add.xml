@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<additional>
+    <inductionLoop id="osm_det_main_down_1" lane="1060166442#2_1" pos="150" freq="30" file="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_multiseed\main1925_ramp0\none_seed1\native\osm_det_main_down_1.xml" />
+    <inductionLoop id="osm_det_main_down_2" lane="1060166442#2_2" pos="150" freq="30" file="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_multiseed\main1925_ramp0\none_seed1\native\osm_det_main_down_2.xml" />
+    <laneAreaDetector id="osm_det_ramp_queue" lane="712593561#2_1" pos="0" endPos="430" freq="30" file="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_multiseed\main1925_ramp0\none_seed1\native\osm_det_ramp_queue.xml" />
+    <inductionLoop id="osm_det_ramp_arrival" lane="712593561#2_1" pos="20" freq="30" file="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_multiseed\main1925_ramp0\none_seed1\native\osm_det_ramp_arrival.xml" />
+</additional>

@@ -1,0 +1,133 @@
+{
+  "schema_version": "cr04-evidence-manifest-v1",
+  "generated_at": "2026-08-07T12:30:00+00:00",
+  "workspace": "D:\\python_install\\py\\rl\\0325\\0325",
+  "scope": {
+    "tracked_changes": [
+      "scan_demand.py",
+      "tests/test_scan_demand.py"
+    ],
+    "evidence_root": "outputs/cr04_acceptance",
+    "commit": "none"
+  },
+  "deliverables": [
+    {
+      "path": "scan_demand.py",
+      "bytes": 42185,
+      "sha256": "04589cd233630dc787ed76f6ebacb4dab02dabcef53ab84c507560d049156cc0"
+    },
+    {
+      "path": "tests/test_scan_demand.py",
+      "bytes": 43895,
+      "sha256": "3f9d15e967dfa7ec98b4931b3245a658803de9b55046600144d34c503efdc7d9"
+    },
+    {
+      "path": "outputs/cr04_acceptance/implementation-plan.md",
+      "bytes": 6416,
+      "sha256": "256ed6329c45c662cb1edc51902ba2da82fb7796754016506987ea31a2d239b2"
+    },
+    {
+      "path": "outputs/cr04_acceptance/task-report.md",
+      "bytes": 2224,
+      "sha256": "406bd45878d37383a2b8453c18b8996b1ae0b7738e49ac22b56565423d4f2811"
+    }
+  ],
+  "red": [
+    {
+      "id": "initial-focused",
+      "result": "6 failed, 25 passed",
+      "exit_code": 1,
+      "files": [
+        {
+          "path": "outputs/cr04_acceptance/red_focused_result.json",
+          "bytes": 396,
+          "sha256": "33473e7609286fc2b7fdbafe891180a6bf7a41de3301e86c776ec8675bf3e1d5"
+        },
+        {
+          "path": "outputs/cr04_acceptance/red_focused_stdout.log",
+          "bytes": 9623,
+          "sha256": "2293ed83f1f93abe0ad6c11bb7914d1515440b8d2e920c5fad3bb6c71d9045ab"
+        }
+      ]
+    },
+    {
+      "id": "sol-precheck",
+      "result": "4 failed",
+      "exit_code": 1,
+      "files": [
+        {
+          "path": "outputs/cr04_acceptance/red_sol_precheck_result.json",
+          "bytes": 701,
+          "sha256": "06ee2b01fe4200604c13d434e35c029bfb8fecf962268d643268efb23417571e"
+        },
+        {
+          "path": "outputs/cr04_acceptance/red_sol_precheck_stdout.log",
+          "bytes": 10652,
+          "sha256": "23966674fa99054abeabbde92ccdf3e15beb0524ae519782d7062ebbc77d9263"
+        }
+      ]
+    },
+    {
+      "id": "unmanifested-extra-file",
+      "result": "1 failed",
+      "exit_code": 1,
+      "files": [
+        {
+          "path": "outputs/cr04_acceptance/red_unmanifested_extra_result.json",
+          "bytes": 400,
+          "sha256": "9275cf1f155f18a4644960e80afb94a15e3843c0282572abe853fc044db3ebef"
+        },
+        {
+          "path": "outputs/cr04_acceptance/red_unmanifested_extra_stdout.log",
+          "bytes": 1941,
+          "sha256": "2565a1e0b3c02d996306bd4b64882b023903bdad37a1e54a9637c538d480289c"
+        }
+      ]
+    }
+  ],
+  "green": [
+    {
+      "id": "scan-demand",
+      "command": "python -m pytest tests/test_scan_demand.py -q",
+      "result": "36 passed in 13.20s",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "outputs/cr04_acceptance/green_scan_demand_result.json",
+          "bytes": 335,
+          "sha256": "7b1522a791e6b7a7bbec1b605efc9883096b53e4d51a898711f8f70a22b8131f"
+        },
+        {
+          "path": "outputs/cr04_acceptance/green_scan_demand_stdout.log",
+          "bytes": 102,
+          "sha256": "8ea888dafef5f4d9c641c338d1aef19fcf04d7435ad456b848728ee0ce216bb1"
+        }
+      ]
+    },
+    {
+      "id": "project-tests",
+      "command": "python -m pytest tests -q",
+      "result": "80 passed in 21.97s",
+      "exit_code": 0,
+      "files": [
+        {
+          "path": "outputs/cr04_acceptance/green_all_tests_result.json",
+          "bytes": 315,
+          "sha256": "f4b3822ea7abe406d0b9443f501658a17b629322fe2512e27f636594298f555c"
+        },
+        {
+          "path": "outputs/cr04_acceptance/green_all_tests_stdout.log",
+          "bytes": 183,
+          "sha256": "bf8720202bcff57e420476b188203e9cea1b3953640715194a8cdb7ff6210d34"
+        }
+      ]
+    }
+  ],
+  "additional_verification": {
+    "syntax_compile": "ok",
+    "cli_scan_id": "present",
+    "git_diff_check": "clean",
+    "cr04_tmp_file_count": 0,
+    "historical_acceptance_evidence_modified": false
+  }
+}

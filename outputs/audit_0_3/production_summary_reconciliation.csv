@@ -1,0 +1,16 @@
+field,audit_reproduction_value,production_env_run_experiment_value,match,status
+experiment_id,main1200_ramp120_none_seed0_9587c551,main1200_ramp120_none_seed0_9587c551,YES,CONSISTENT
+controller,none,none,YES,CONSISTENT
+seed,0,0,YES,CONSISTENT
+mainline_vph,1200,1200,YES,CONSISTENT
+ramp_vph,120,120,YES,CONSISTENT
+valid,True,True,YES,CONSISTENT
+failure_reason,,,YES,CONSISTENT
+total_time_spent_s,19530.0,19530.0,YES,CONSISTENT
+mean_speed_mps,15.960705692800042,15.960705692800042,YES,CONSISTENT
+bottleneck_throughput_veh,2,2,YES,CONSISTENT
+max_ramp_queue_veh,0,0,YES,CONSISTENT
+breakdown_start_s,0,0,YES,CONSISTENT
+congestion_duration_s,0,0,YES,CONSISTENT
+recovered,False,False,YES,CONSISTENT
+teleports,0,0,YES,CONSISTENT

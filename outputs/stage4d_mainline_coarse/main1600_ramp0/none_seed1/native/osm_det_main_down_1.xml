@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-08-24T17:45:00.759302+08:00 by Eclipse SUMO sumo 1.25.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="D:\python_install\py\rl\0325\0325\osm.net.xml"/>
+        <route-files value="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_coarse\routes\main1600_ramp0.rou.xml"/>
+        <additional-files value="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_coarse\main1600_ramp0\none_seed1\runtime_osm_control.add.xml"/>
+    </input>
+
+    <output>
+        <tripinfo-output value="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_coarse\main1600_ramp0\none_seed1\tripinfo.xml"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="7200"/>
+        <step-length value="1.0"/>
+    </time>
+
+    <processing>
+        <collision.action value="warn"/>
+        <time-to-teleport value="-1"/>
+        <max-depart-delay value="1800"/>
+    </processing>
+
+    <report>
+        <log value="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_coarse\main1600_ramp0\none_seed1\sumo.log"/>
+        <error-log value="D:\python_install\py\rl\0325\0325\outputs\stage4d_mainline_coarse\main1600_ramp0\none_seed1\sumo_error.log"/>
+        <duration-log.statistics value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+    <traci_server>
+        <remote-port value="57766"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="1"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<detector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/det_e1_file.xsd">
+    <interval begin="0.00" end="30.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="30.00" end="60.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="60.00" end="90.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="90.00" end="120.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="120.00" end="150.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="150.00" end="180.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.02" speed="30.71" harmonicMeanSpeed="30.64" length="4.70" nVehEntered="2"/>
+    <interval begin="180.00" end="210.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.69" speed="27.84" harmonicMeanSpeed="27.78" length="4.70" nVehEntered="3"/>
+    <interval begin="210.00" end="240.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.82" speed="25.87" harmonicMeanSpeed="25.87" length="4.70" nVehEntered="3"/>
+    <interval begin="240.00" end="270.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="2.09" speed="22.47" harmonicMeanSpeed="22.47" length="4.70" nVehEntered="3"/>
+    <interval begin="270.00" end="300.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.88" speed="22.48" harmonicMeanSpeed="22.48" length="4.70" nVehEntered="7"/>
+    <interval begin="300.00" end="330.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="6.11" speed="20.59" harmonicMeanSpeed="20.52" length="4.70" nVehEntered="8"/>
+    <interval begin="330.00" end="360.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.41" speed="22.26" harmonicMeanSpeed="22.26" length="4.70" nVehEntered="2"/>
+    <interval begin="360.00" end="390.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.63" speed="22.28" harmonicMeanSpeed="22.28" length="4.70" nVehEntered="8"/>
+    <interval begin="390.00" end="420.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="5.01" speed="21.92" harmonicMeanSpeed="21.91" length="4.70" nVehEntered="7"/>
+    <interval begin="420.00" end="450.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.94" speed="22.20" harmonicMeanSpeed="22.19" length="4.70" nVehEntered="7"/>
+    <interval begin="450.00" end="480.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.79" speed="22.92" harmonicMeanSpeed="22.92" length="4.70" nVehEntered="7"/>
+    <interval begin="480.00" end="510.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="2.03" speed="23.21" harmonicMeanSpeed="23.20" length="4.70" nVehEntered="3"/>
+    <interval begin="510.00" end="540.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.26" speed="22.11" harmonicMeanSpeed="22.05" length="4.70" nVehEntered="6"/>
+    <interval begin="540.00" end="570.00" id="osm_det_main_down_1" nVehContrib="10" flow="1200.00" occupancy="7.26" speed="21.58" harmonicMeanSpeed="21.57" length="4.70" nVehEntered="10"/>
+    <interval begin="570.00" end="600.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.41" speed="22.20" harmonicMeanSpeed="22.20" length="4.70" nVehEntered="2"/>
+    <interval begin="600.00" end="630.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.38" speed="23.31" harmonicMeanSpeed="23.31" length="4.70" nVehEntered="8"/>
+    <interval begin="630.00" end="660.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.06" speed="23.27" harmonicMeanSpeed="23.27" length="4.70" nVehEntered="9"/>
+    <interval begin="660.00" end="690.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.32" speed="23.80" harmonicMeanSpeed="23.78" length="4.70" nVehEntered="2"/>
+    <interval begin="690.00" end="720.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.97" speed="22.06" harmonicMeanSpeed="22.06" length="4.70" nVehEntered="7"/>
+    <interval begin="720.00" end="750.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.55" speed="24.58" harmonicMeanSpeed="24.57" length="4.70" nVehEntered="4"/>
+    <interval begin="750.00" end="780.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.17" speed="22.93" harmonicMeanSpeed="22.84" length="4.70" nVehEntered="9"/>
+    <interval begin="780.00" end="810.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.55" speed="24.08" harmonicMeanSpeed="24.08" length="4.70" nVehEntered="7"/>
+    <interval begin="810.00" end="840.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.43" speed="24.76" harmonicMeanSpeed="24.74" length="4.70" nVehEntered="7"/>
+    <interval begin="840.00" end="870.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.83" speed="25.70" harmonicMeanSpeed="25.70" length="4.70" nVehEntered="3"/>
+    <interval begin="870.00" end="900.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.29" speed="23.78" harmonicMeanSpeed="23.78" length="4.70" nVehEntered="5"/>
+    <interval begin="900.00" end="930.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.40" speed="23.12" harmonicMeanSpeed="23.06" length="4.70" nVehEntered="5"/>
+    <interval begin="930.00" end="960.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.41" speed="22.00" harmonicMeanSpeed="21.99" length="4.70" nVehEntered="9"/>
+    <interval begin="960.00" end="990.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.48" speed="22.89" harmonicMeanSpeed="22.88" length="4.70" nVehEntered="8"/>
+    <interval begin="990.00" end="1020.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.62" speed="23.93" harmonicMeanSpeed="23.93" length="4.70" nVehEntered="4"/>
+    <interval begin="1020.00" end="1050.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.23" speed="23.95" harmonicMeanSpeed="23.95" length="4.70" nVehEntered="8"/>
+    <interval begin="1050.00" end="1080.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.93" speed="23.91" harmonicMeanSpeed="23.91" length="4.70" nVehEntered="6"/>
+    <interval begin="1080.00" end="1110.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.16" speed="24.78" harmonicMeanSpeed="24.78" length="4.70" nVehEntered="5"/>
+    <interval begin="1110.00" end="1140.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.07" speed="24.70" harmonicMeanSpeed="24.70" length="4.70" nVehEntered="8"/>
+    <interval begin="1140.00" end="1170.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.78" speed="24.86" harmonicMeanSpeed="24.86" length="4.70" nVehEntered="6"/>
+    <interval begin="1170.00" end="1200.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.74" speed="25.14" harmonicMeanSpeed="25.14" length="4.70" nVehEntered="6"/>
+    <interval begin="1200.00" end="1230.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.28" speed="24.50" harmonicMeanSpeed="24.50" length="4.70" nVehEntered="2"/>
+    <interval begin="1230.00" end="1260.00" id="osm_det_main_down_1" nVehContrib="1" flow="120.00" occupancy="0.74" speed="21.29" harmonicMeanSpeed="21.29" length="4.70" nVehEntered="1"/>
+    <interval begin="1260.00" end="1290.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.89" speed="21.29" harmonicMeanSpeed="21.29" length="4.70" nVehEntered="8"/>
+    <interval begin="1290.00" end="1320.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.66" speed="21.39" harmonicMeanSpeed="21.39" length="4.70" nVehEntered="5"/>
+    <interval begin="1320.00" end="1350.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.87" speed="21.34" harmonicMeanSpeed="21.34" length="4.70" nVehEntered="8"/>
+    <interval begin="1350.00" end="1380.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.41" speed="21.33" harmonicMeanSpeed="21.33" length="4.70" nVehEntered="6"/>
+    <interval begin="1380.00" end="1410.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.59" speed="21.40" harmonicMeanSpeed="21.39" length="4.70" nVehEntered="9"/>
+    <interval begin="1410.00" end="1440.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="2.12" speed="22.30" harmonicMeanSpeed="22.16" length="4.70" nVehEntered="3"/>
+    <interval begin="1440.00" end="1470.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.17" speed="22.56" harmonicMeanSpeed="22.56" length="4.70" nVehEntered="6"/>
+    <interval begin="1470.00" end="1500.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.07" speed="23.08" harmonicMeanSpeed="23.07" length="4.70" nVehEntered="6"/>
+    <interval begin="1500.00" end="1530.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.97" speed="23.68" harmonicMeanSpeed="23.68" length="4.70" nVehEntered="6"/>
+    <interval begin="1530.00" end="1560.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.62" speed="23.75" harmonicMeanSpeed="23.74" length="4.70" nVehEntered="7"/>
+    <interval begin="1560.00" end="1590.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.75" speed="22.86" harmonicMeanSpeed="22.75" length="4.70" nVehEntered="4"/>
+    <interval begin="1590.00" end="1620.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.28" speed="22.01" harmonicMeanSpeed="21.95" length="4.70" nVehEntered="6"/>
+    <interval begin="1620.00" end="1650.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.73" speed="23.00" harmonicMeanSpeed="23.00" length="4.70" nVehEntered="4"/>
+    <interval begin="1650.00" end="1680.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.85" speed="22.00" harmonicMeanSpeed="22.00" length="4.70" nVehEntered="4"/>
+    <interval begin="1680.00" end="1710.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.70" speed="22.00" harmonicMeanSpeed="22.00" length="4.70" nVehEntered="8"/>
+    <interval begin="1710.00" end="1740.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="5.56" speed="19.87" harmonicMeanSpeed="19.73" length="4.70" nVehEntered="7"/>
+    <interval begin="1740.00" end="1770.00" id="osm_det_main_down_1" nVehContrib="10" flow="1200.00" occupancy="7.51" speed="20.87" harmonicMeanSpeed="20.86" length="4.70" nVehEntered="10"/>
+    <interval begin="1770.00" end="1800.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.89" speed="20.46" harmonicMeanSpeed="20.45" length="4.70" nVehEntered="9"/>
+    <interval begin="1800.00" end="1830.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.93" speed="22.31" harmonicMeanSpeed="22.26" length="4.70" nVehEntered="7"/>
+    <interval begin="1830.00" end="1860.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.49" speed="24.44" harmonicMeanSpeed="24.44" length="4.70" nVehEntered="7"/>
+    <interval begin="1860.00" end="1890.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.49" speed="25.23" harmonicMeanSpeed="25.18" length="4.70" nVehEntered="4"/>
+    <interval begin="1890.00" end="1920.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.84" speed="24.52" harmonicMeanSpeed="24.50" length="4.70" nVehEntered="6"/>
+    <interval begin="1920.00" end="1950.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.94" speed="23.89" harmonicMeanSpeed="23.88" length="4.70" nVehEntered="6"/>
+    <interval begin="1950.00" end="1980.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.76" speed="23.10" harmonicMeanSpeed="23.05" length="4.70" nVehEntered="7"/>
+    <interval begin="1980.00" end="2010.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.18" speed="22.84" harmonicMeanSpeed="22.82" length="4.70" nVehEntered="9"/>
+    <interval begin="2010.00" end="2040.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.22" speed="22.30" harmonicMeanSpeed="22.30" length="4.70" nVehEntered="6"/>
+    <interval begin="2040.00" end="2070.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.68" speed="22.11" harmonicMeanSpeed="22.08" length="4.70" nVehEntered="8"/>
+    <interval begin="2070.00" end="2100.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.26" speed="23.88" harmonicMeanSpeed="23.83" length="4.70" nVehEntered="8"/>
+    <interval begin="2100.00" end="2130.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.12" speed="25.15" harmonicMeanSpeed="25.14" length="4.70" nVehEntered="5"/>
+    <interval begin="2130.00" end="2160.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.58" speed="24.33" harmonicMeanSpeed="24.32" length="4.70" nVehEntered="4"/>
+    <interval begin="2160.00" end="2190.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.60" speed="24.15" harmonicMeanSpeed="24.14" length="4.70" nVehEntered="4"/>
+    <interval begin="2190.00" end="2220.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.93" speed="20.40" harmonicMeanSpeed="20.36" length="4.70" nVehEntered="9"/>
+    <interval begin="2220.00" end="2250.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.85" speed="21.44" harmonicMeanSpeed="21.41" length="4.70" nVehEntered="8"/>
+    <interval begin="2250.00" end="2280.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="2.05" speed="22.95" harmonicMeanSpeed="22.95" length="4.70" nVehEntered="3"/>
+    <interval begin="2280.00" end="2310.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.11" speed="22.86" harmonicMeanSpeed="22.86" length="4.70" nVehEntered="6"/>
+    <interval begin="2310.00" end="2340.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.43" speed="22.85" harmonicMeanSpeed="22.85" length="4.70" nVehEntered="5"/>
+    <interval begin="2340.00" end="2370.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.46" speed="22.95" harmonicMeanSpeed="22.95" length="4.70" nVehEntered="8"/>
+    <interval begin="2370.00" end="2400.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.10" speed="22.92" harmonicMeanSpeed="22.92" length="4.70" nVehEntered="6"/>
+    <interval begin="2400.00" end="2430.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="2430.00" end="2460.00" id="osm_det_main_down_1" nVehContrib="2" flow="240.00" occupancy="1.14" speed="27.63" harmonicMeanSpeed="27.40" length="4.70" nVehEntered="2"/>
+    <interval begin="2460.00" end="2490.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.57" speed="30.08" harmonicMeanSpeed="29.98" length="4.70" nVehEntered="3"/>
+    <interval begin="2490.00" end="2520.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.72" speed="27.65" harmonicMeanSpeed="27.37" length="4.70" nVehEntered="3"/>
+    <interval begin="2520.00" end="2550.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="7.07" speed="16.07" harmonicMeanSpeed="15.52" length="4.70" nVehEntered="7"/>
+    <interval begin="2550.00" end="2580.00" id="osm_det_main_down_1" nVehContrib="10" flow="1200.00" occupancy="10.86" speed="14.66" harmonicMeanSpeed="14.66" length="4.70" nVehEntered="11"/>
+    <interval begin="2580.00" end="2610.00" id="osm_det_main_down_1" nVehContrib="11" flow="1320.00" occupancy="11.53" speed="14.83" harmonicMeanSpeed="14.83" length="4.70" nVehEntered="11"/>
+    <interval begin="2610.00" end="2640.00" id="osm_det_main_down_1" nVehContrib="11" flow="1320.00" occupancy="11.44" speed="14.96" harmonicMeanSpeed="14.96" length="4.70" nVehEntered="10"/>
+    <interval begin="2640.00" end="2670.00" id="osm_det_main_down_1" nVehContrib="10" flow="1200.00" occupancy="9.22" speed="17.25" harmonicMeanSpeed="17.00" length="4.70" nVehEntered="10"/>
+    <interval begin="2670.00" end="2700.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.94" speed="20.31" harmonicMeanSpeed="20.31" length="4.70" nVehEntered="9"/>
+    <interval begin="2700.00" end="2730.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="6.52" speed="19.24" harmonicMeanSpeed="19.22" length="4.70" nVehEntered="8"/>
+    <interval begin="2730.00" end="2760.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="6.32" speed="17.41" harmonicMeanSpeed="17.34" length="4.70" nVehEntered="7"/>
+    <interval begin="2760.00" end="2790.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.94" speed="23.89" harmonicMeanSpeed="23.86" length="4.70" nVehEntered="6"/>
+    <interval begin="2790.00" end="2820.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.14" speed="24.94" harmonicMeanSpeed="24.94" length="4.70" nVehEntered="5"/>
+    <interval begin="2820.00" end="2850.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.48" speed="24.48" harmonicMeanSpeed="24.48" length="4.70" nVehEntered="7"/>
+    <interval begin="2850.00" end="2880.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.60" speed="24.11" harmonicMeanSpeed="24.11" length="4.70" nVehEntered="4"/>
+    <interval begin="2880.00" end="2910.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.24" speed="23.92" harmonicMeanSpeed="23.92" length="4.70" nVehEntered="8"/>
+    <interval begin="2910.00" end="2940.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.59" speed="23.91" harmonicMeanSpeed="23.91" length="4.70" nVehEntered="7"/>
+    <interval begin="2940.00" end="2970.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.49" speed="24.44" harmonicMeanSpeed="24.40" length="4.70" nVehEntered="7"/>
+    <interval begin="2970.00" end="3000.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.34" speed="25.27" harmonicMeanSpeed="25.26" length="4.70" nVehEntered="7"/>
+    <interval begin="3000.00" end="3030.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.02" speed="25.92" harmonicMeanSpeed="25.92" length="4.70" nVehEntered="5"/>
+    <interval begin="3030.00" end="3060.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.21" speed="24.49" harmonicMeanSpeed="24.42" length="4.70" nVehEntered="5"/>
+    <interval begin="3060.00" end="3090.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.23" speed="24.30" harmonicMeanSpeed="24.27" length="4.70" nVehEntered="5"/>
+    <interval begin="3090.00" end="3120.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.98" speed="23.64" harmonicMeanSpeed="23.63" length="4.70" nVehEntered="6"/>
+    <interval begin="3120.00" end="3150.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.31" speed="23.73" harmonicMeanSpeed="23.61" length="4.70" nVehEntered="8"/>
+    <interval begin="3150.00" end="3180.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.47" speed="22.88" harmonicMeanSpeed="22.60" length="4.70" nVehEntered="5"/>
+    <interval begin="3180.00" end="3210.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.79" speed="24.82" harmonicMeanSpeed="24.82" length="4.70" nVehEntered="6"/>
+    <interval begin="3210.00" end="3240.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.56" speed="24.49" harmonicMeanSpeed="24.49" length="4.70" nVehEntered="4"/>
+    <interval begin="3240.00" end="3270.00" id="osm_det_main_down_1" nVehContrib="3" flow="360.00" occupancy="1.95" speed="24.08" harmonicMeanSpeed="24.07" length="4.70" nVehEntered="3"/>
+    <interval begin="3270.00" end="3300.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.94" speed="21.35" harmonicMeanSpeed="21.34" length="4.70" nVehEntered="4"/>
+    <interval begin="3300.00" end="3330.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.79" speed="21.64" harmonicMeanSpeed="21.64" length="4.70" nVehEntered="8"/>
+    <interval begin="3330.00" end="3360.00" id="osm_det_main_down_1" nVehContrib="9" flow="1080.00" occupancy="6.52" speed="21.64" harmonicMeanSpeed="21.64" length="4.70" nVehEntered="9"/>
+    <interval begin="3360.00" end="3390.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.87" speed="22.54" harmonicMeanSpeed="22.50" length="4.70" nVehEntered="7"/>
+    <interval begin="3390.00" end="3420.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.17" speed="24.25" harmonicMeanSpeed="24.25" length="4.70" nVehEntered="8"/>
+    <interval begin="3420.00" end="3450.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.82" speed="24.62" harmonicMeanSpeed="24.59" length="4.70" nVehEntered="6"/>
+    <interval begin="3450.00" end="3480.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.31" speed="25.45" harmonicMeanSpeed="25.45" length="4.70" nVehEntered="7"/>
+    <interval begin="3480.00" end="3510.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.72" speed="25.30" harmonicMeanSpeed="25.26" length="4.70" nVehEntered="6"/>
+    <interval begin="3510.00" end="3540.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.22" speed="24.38" harmonicMeanSpeed="24.30" length="4.70" nVehEntered="5"/>
+    <interval begin="3540.00" end="3570.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.31" speed="23.60" harmonicMeanSpeed="23.58" length="4.70" nVehEntered="8"/>
+    <interval begin="3570.00" end="3600.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.43" speed="24.77" harmonicMeanSpeed="24.74" length="4.70" nVehEntered="7"/>
+    <interval begin="3600.00" end="3630.00" id="osm_det_main_down_1" nVehContrib="8" flow="960.00" occupancy="5.28" speed="23.75" harmonicMeanSpeed="23.75" length="4.70" nVehEntered="8"/>
+    <interval begin="3630.00" end="3660.00" id="osm_det_main_down_1" nVehContrib="4" flow="480.00" occupancy="2.54" speed="24.71" harmonicMeanSpeed="24.71" length="4.70" nVehEntered="4"/>
+    <interval begin="3660.00" end="3690.00" id="osm_det_main_down_1" nVehContrib="5" flow="600.00" occupancy="3.36" speed="23.32" harmonicMeanSpeed="23.32" length="4.70" nVehEntered="5"/>
+    <interval begin="3690.00" end="3720.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.70" speed="23.31" harmonicMeanSpeed="23.31" length="4.70" nVehEntered="7"/>
+    <interval begin="3720.00" end="3750.00" id="osm_det_main_down_1" nVehContrib="7" flow="840.00" occupancy="4.74" speed="23.15" harmonicMeanSpeed="23.14" length="4.70" nVehEntered="7"/>
+    <interval begin="3750.00" end="3780.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="3.99" speed="23.58" harmonicMeanSpeed="23.58" length="4.70" nVehEntered="6"/>
+    <interval begin="3780.00" end="3810.00" id="osm_det_main_down_1" nVehContrib="6" flow="720.00" occupancy="4.02" speed="23.42" harmonicMeanSpeed="23.40" length="4.70" nVehEntered="6"/>
+    <interval begin="3810.00" end="3840.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="3840.00" end="3870.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="3870.00" end="3900.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="3900.00" end="3930.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+    <interval begin="3930.00" end="3955.00" id="osm_det_main_down_1" nVehContrib="0" flow="0.00" occupancy="0.00" speed="-1.00" harmonicMeanSpeed="-1.00" length="-1.00" nVehEntered="0"/>
+</detector>

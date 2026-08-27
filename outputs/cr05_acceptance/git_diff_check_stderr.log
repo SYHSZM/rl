@@ -1,0 +1,6 @@
+warning: in the working copy of 'rl/0325/0325/build_network.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'rl/0325/0325/env.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'rl/0325/0325/scan_demand.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'rl/0325/0325/tests/test_build_network.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'rl/0325/0325/tests/test_env_runner.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'rl/0325/0325/tests/test_scan_demand.py', LF will be replaced by CRLF the next time Git touches it

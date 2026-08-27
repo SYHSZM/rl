@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_8bc00193",
+  "failure_message": "injected post-run frozen mismatch",
+  "failure_stage": "post_run_verify",
+  "failure_type": "FrozenNetworkMismatchError",
+  "finished_at": "2026-08-07T11:37:11.156695+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction1_cr05_tmp\\test_frozen_mismatch_after_run0\\runs\\main1200_ramp120_none_seed0_8bc00193\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:37:10.539460+00:00",
+  "status": "failed",
+  "valid": false
+}

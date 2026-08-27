@@ -1,0 +1,4 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+1200,120,none,1,output_parse,ValueError,attempt is not a successful valid candidate,False,2026-08-07T12:30:47.600601+00:00
+1200,120,none,2,output_parse,ValueError,artifact manifest missing required files: tripinfo.xml,False,2026-08-07T12:30:47.766057+00:00
+1200,120,none,3,output_parse,ValueError,config.json planned identity mismatch,False,2026-08-07T12:30:47.985185+00:00

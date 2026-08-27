@@ -1,0 +1,13 @@
+{
+  "captured_utc": "2026-08-07T11:50:12.692168+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\pytest_sandbox\\project",
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "--basetemp",
+    "..\\full_correction3_tmp"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,106 @@
+......FF.F.FFF........                                                   [100%]
+================================== FAILURES ===================================
+______ test_summary_uses_corrected_system_tts_and_preserves_legacy_proxy ______
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr02_acceptance/red_tmp/test_summary_uses_corrected_sy0')
+
+    def test_summary_uses_corrected_system_tts_and_preserves_legacy_proxy(tmp_path):
+        records = [make_record(30, 30.0, 30.0, 1), make_record(60, 30.0, 30.0, 2)]
+        records[0].departed_veh, records[0].arrived_veh = 6, 1
+        records[1].departed_veh, records[1].arrived_veh = 10, 4
+    
+>       summary = summarize_episode(records, 33.33, 0.65, 60, system_exposure=_six_step_exposure())
+                                                                              ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_metrics.py:137: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _six_step_exposure():
+        tracker_type = getattr(env_module, "_SystemExposureTracker", None)
+>       assert tracker_type is not None, "CR-02 requires ID-level system exposure tracking"
+E       AssertionError: CR-02 requires ID-level system exposure tracking
+E       assert None is not None
+
+tests\test_metrics.py:118: AssertionError
+_______ test_classifier_uses_corrected_total_time_spent_without_changes _______
+
+    def test_classifier_uses_corrected_total_time_spent_without_changes():
+        records = [make_record(30, 30.0, 30.0, 0)]
+>       no_control = summarize_episode(records, 33.33, 0.65, 60, system_exposure=_six_step_exposure())
+                                                                                 ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_metrics.py:167: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def _six_step_exposure():
+        tracker_type = getattr(env_module, "_SystemExposureTracker", None)
+>       assert tracker_type is not None, "CR-02 requires ID-level system exposure tracking"
+E       AssertionError: CR-02 requires ID-level system exposure tracking
+E       assert None is not None
+
+tests\test_metrics.py:118: AssertionError
+____________________ test_short_sumo_run_produces_windows _____________________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr02_acceptance/red_tmp/test_short_sumo_run_produces_w0')
+
+    def test_short_sumo_run_produces_windows(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None, "CR-05 requires explicit frozen-network preflight"
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        result = run_experiment(_short_config(180), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "runs", frozen_network=frozen)
+        assert result.valid is True
+        assert len(result.window_records) >= 5
+        assert (result.output_dir / "windows.csv").exists()
+        first = result.window_records[0]
+>       assert first.metric_schema_version == "cr02-window-v1"
+E       AssertionError: assert 'cr01-window-v1' == 'cr02-window-v1'
+E         
+E         - cr02-window-v1
+E         ?    ^
+E         + cr01-window-v1
+E         ?    ^
+
+tests\test_env_runner.py:44: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #100.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 25 ACT 24 BUF 0)                   
+Step #180.00 (0ms ?*RT. ?UPS, TraCI: 4ms, vehicles TOT 43 ACT 41 BUF 0)                   
+
+
+__ test_empty_accumulator_window_writes_blank_speeds_with_zero_observations ___
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr02_acceptance/red_tmp/test_empty_accumulator_window_0')
+
+    def test_empty_accumulator_window_writes_blank_speeds_with_zero_observations(tmp_path):
+        accumulator = env_module._WindowAccumulator()
+        exposure_tracker_type = getattr(env_module, "_SystemExposureTracker", None)
+>       assert exposure_tracker_type is not None, "CR-02 requires ID-level system exposure tracking"
+E       AssertionError: CR-02 requires ID-level system exposure tracking
+E       assert None is not None
+
+tests\test_env_runner.py:116: AssertionError
+_______ test_six_step_id_trajectory_integrates_system_exposure_exactly ________
+
+    def test_six_step_id_trajectory_integrates_system_exposure_exactly():
+        tracker_type = getattr(env_module, "_SystemExposureTracker", None)
+>       assert tracker_type is not None, "CR-02 requires ID-level system exposure tracking"
+E       AssertionError: CR-02 requires ID-level system exposure tracking
+E       assert None is not None
+
+tests\test_env_runner.py:163: AssertionError
+_____________ test_unknown_vehicle_prefix_is_reported_separately ______________
+
+    def test_unknown_vehicle_prefix_is_reported_separately():
+        tracker_type = getattr(env_module, "_SystemExposureTracker", None)
+>       assert tracker_type is not None
+E       assert None is not None
+
+tests\test_env_runner.py:206: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_metrics.py::test_summary_uses_corrected_system_tts_and_preserves_legacy_proxy
+FAILED tests/test_metrics.py::test_classifier_uses_corrected_total_time_spent_without_changes
+FAILED tests/test_env_runner.py::test_short_sumo_run_produces_windows - Asser...
+FAILED tests/test_env_runner.py::test_empty_accumulator_window_writes_blank_speeds_with_zero_observations
+FAILED tests/test_env_runner.py::test_six_step_id_trajectory_integrates_system_exposure_exactly
+FAILED tests/test_env_runner.py::test_unknown_vehicle_prefix_is_reported_separately
+6 failed, 16 passed in 6.56s

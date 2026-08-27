@@ -1,0 +1,2 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,status,attempt_status,valid,output_dir,failure_reason,failure_stage,failure_type,failure_message,retryable,attempt,started_at,finished_at
+fake_none_0,1200,120,none,0,invalid,failed,False,D:\python_install\py\rl\0325\0325\outputs\cr03_acceptance\sol_verify_final_tmp\test_scan_ledgers_and_indexes_0\scan\20260807_195125\runs\fake_none_0\attempt_0001,post-run mismatch,post_run_verify,FrozenNetworkMismatchError,post-run mismatch,False,1,2026-08-07T00:00:00+00:00,2026-08-07T00:00:01+00:00

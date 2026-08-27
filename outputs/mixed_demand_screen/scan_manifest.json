@@ -1,0 +1,115 @@
+{
+  "schema": "mixed-demand-screen-v1",
+  "valid": false,
+  "errors": [
+    "safety or fatal log count is non-zero"
+  ],
+  "formal_sumo_start_count": 5,
+  "planned_sumo_starts": 12,
+  "matrix": [
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 30,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 60,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 90,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1925,
+      "ramp_vph": 30,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1925,
+      "ramp_vph": 60,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1925,
+      "ramp_vph": 90,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1950,
+      "ramp_vph": 30,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1950,
+      "ramp_vph": 60,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1950,
+      "ramp_vph": 90,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1975,
+      "ramp_vph": 30,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1975,
+      "ramp_vph": 60,
+      "controller": "none",
+      "seed": 1
+    },
+    {
+      "mainline_vph": 1975,
+      "ramp_vph": 90,
+      "controller": "none",
+      "seed": 1
+    }
+  ],
+  "run_order": [
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 30,
+      "seed": 1,
+      "valid": true
+    },
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 60,
+      "seed": 1,
+      "valid": true
+    },
+    {
+      "mainline_vph": 1200,
+      "ramp_vph": 90,
+      "seed": 1,
+      "valid": true
+    },
+    {
+      "mainline_vph": 1925,
+      "ramp_vph": 30,
+      "seed": 1,
+      "valid": true
+    },
+    {
+      "mainline_vph": 1925,
+      "ramp_vph": 60,
+      "seed": 1,
+      "valid": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "attempt": 1,
+  "experiment_id": "main1200_ramp120_none_seed0_1e3043f3",
+  "failure_message": "",
+  "failure_stage": "",
+  "failure_type": "",
+  "finished_at": "2026-08-07T11:49:37.704503+00:00",
+  "output_dir": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\cr03_acceptance\\correction3_cr05_tmp\\test_run_experiment_with_froze0\\runs\\main1200_ramp120_none_seed0_1e3043f3\\attempt_0001",
+  "retryable": false,
+  "schema_version": "cr03-attempt-v1",
+  "started_at": "2026-08-07T11:49:36.817274+00:00",
+  "status": "success",
+  "valid": true
+}

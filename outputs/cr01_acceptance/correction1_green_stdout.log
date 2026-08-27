@@ -1,0 +1,67 @@
+...........FF.....                                                       [100%]
+================================== FAILURES ===================================
+____ test_run_experiment_with_frozen_network_never_rebuilds_shared_network ____
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr01_acceptance/correction1_green_tmp/test_run_experiment_with_froze0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000209FE57BB90>
+
+    def test_run_experiment_with_frozen_network_never_rebuilds_shared_network(tmp_path, monkeypatch):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+    
+        def forbidden_rebuild(*args, **kwargs):
+            raise AssertionError("run_experiment must not rebuild a frozen network")
+    
+        monkeypatch.setattr(env_module, "build_network", forbidden_rebuild)
+        result = env_module.run_experiment(
+            _short_config(),
+            DemandPoint(1200, 120),
+            "none",
+            0,
+            output_root=tmp_path / "runs",
+            frozen_network=frozen,
+        )
+>       assert result.valid is True
+E       AssertionError: assert False is True
+E        +  where False = RunResult(experiment_id='main1200_ramp120_none_seed0_8bc00193', output_dir=WindowsPath('D:/python_install/py/rl/0325/0...ck_throughput_veh=0, max_ramp_queue_veh=1, breakdown_start_s=0, congestion_duration_s=0, recovered=False, teleports=0)).valid
+
+tests\test_env_runner.py:184: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (1ms ~= 1000.00*RT, ~2000.00UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 5ms, vehicles TOT 8 ACT 8 BUF 0)                      
+
+
+_____________ test_two_output_roots_have_disjoint_generated_files _____________
+
+tmp_path = WindowsPath('D:/python_install/py/rl/0325/0325/outputs/cr01_acceptance/correction1_green_tmp/test_two_output_roots_have_dis0')
+
+    def test_two_output_roots_have_disjoint_generated_files(tmp_path):
+        preflight_network = getattr(build_network_module, "preflight_network", None)
+        assert preflight_network is not None
+        frozen = preflight_network(tmp_path / "preflight" / "merge.net.xml")
+        source_hashes_before = {
+            path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in build_network_module.NETWORK_DIR.glob("*.xml")
+        }
+        first = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "first", frozen_network=frozen)
+        second = env_module.run_experiment(_short_config(), DemandPoint(1200, 120), "none", 0, output_root=tmp_path / "second", frozen_network=frozen)
+    
+>       assert first.valid is True and second.valid is True
+E       AssertionError: assert (False is True)
+E        +  where False = RunResult(experiment_id='main1200_ramp120_none_seed0_8bc00193', output_dir=WindowsPath('D:/python_install/py/rl/0325/0...ck_throughput_veh=0, max_ramp_queue_veh=1, breakdown_start_s=0, congestion_duration_s=0, recovered=False, teleports=0)).valid
+
+tests\test_env_runner.py:198: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 0ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (0ms ?*RT. ?UPS, TraCI: 10ms, vehicles TOT 8 ACT 8 BUF 0)                     
+
+
+Step #0.00 (0ms ?*RT. ?UPS, TraCI: 1ms, vehicles TOT 2 ACT 2 BUF 0)                       
+Step #30.00 (1ms ~= 1000.00*RT, ~8000.00UPS, TraCI: 8ms, vehicles TOT 8 ACT 8 BUF 0)      
+
+
+=========================== short test summary info ===========================
+FAILED tests/test_env_runner.py::test_run_experiment_with_frozen_network_never_rebuilds_shared_network
+FAILED tests/test_env_runner.py::test_two_output_roots_have_disjoint_generated_files
+2 failed, 16 passed in 5.97s

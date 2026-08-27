@@ -1,0 +1,2 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,status,output_dir,failure_reason
+fake,1200,120,none,0,valid,D:\python_install\py\rl\0325\0325\outputs\cr01_acceptance\correction1_cr05_tmp\test_scan_directory_allocation0\scan\20260807_120000\runs\fake,

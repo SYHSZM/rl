@@ -1,0 +1,2 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,status,attempt_status,valid,output_dir,failure_reason,failure_stage,failure_type,failure_message,retryable,attempt,started_at,finished_at
+main1200_ramp120_none_seed0_ebd06a7c,1200,120,none,0,valid,success,True,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\subset_tmp\test_existing_resume_reuses_fr0\scan\reuse_frozen\runs\main1200_ramp120_none_seed0_ebd06a7c\attempt_0001,,,,,False,1,2026-08-07T00:00:01+00:00,2026-08-07T00:01:01+00:00

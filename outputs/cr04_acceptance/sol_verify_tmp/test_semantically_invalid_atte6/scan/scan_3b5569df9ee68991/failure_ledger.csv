@@ -1,0 +1,2 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+1200,120,none,0,output_parse,ValueError,attempt record valid must be a boolean,False,2026-08-07T12:30:55.774503+00:00

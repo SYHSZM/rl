@@ -1,0 +1,17 @@
+***Starting server on port 56829 ***
+Loading net-file from 'D:\python_install\py\rl\0325\0325\outputs\cr05_acceptance\correction1_frozen\merge.net.xml' ... done (1ms).
+Loading additional-files from 'D:\python_install\py\rl\0325\0325\outputs\cr05_acceptance\correction1_same_root_runs\main1200_ramp120_none_seed0_320ff2bc\attempt_0002\run.add.xml' ... done (10ms).
+Loading route-files incrementally from 'D:\python_install\py\rl\0325\0325\outputs\cr05_acceptance\correction1_same_root_runs\main1200_ramp120_none_seed0_320ff2bc\attempt_0002\merge.rou.xml'
+Loading done.
+Simulation version 1.25.0 started with time: 0.00.
+Simulation ended at time: 60.00.
+Reason: TraCI requested termination.
+Performance:
+ Duration: 0.04s
+ TraCI-Duration: 0.01s
+ Real time factor: 1395.35
+ UPS: 16744.186047
+Vehicles:
+ Inserted: 22
+ Running: 22
+ Waiting: 0

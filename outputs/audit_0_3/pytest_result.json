@@ -1,0 +1,19 @@
+{
+  "command": [
+    "C:\\Users\\Administrator\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-m",
+    "pytest",
+    "-q",
+    "--basetemp",
+    "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_sandbox\\tmp",
+    "--junitxml",
+    "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_junit.xml"
+  ],
+  "exit_code": 0,
+  "pytest_exit_code": 0,
+  "isolated": true,
+  "isolated_cwd": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_sandbox\\project",
+  "copy_manifest": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_sandbox\\copy_manifest.json",
+  "real_workspace_hash_guard": "D:\\python_install\\py\\rl\\0325\\0325\\outputs\\audit_0_3\\pytest_real_workspace_hash_guard.json",
+  "real_workspace_unchanged": true
+}

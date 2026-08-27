@@ -1,0 +1,2 @@
+mainline_vph,ramp_vph,controller,seed,failure_stage,failure_type,failure_message,retryable,timestamp
+1200,120,none,0,output_parse,ValueError,"attempt record missing required fields: attempt, experiment_id, failure_message, failure_stage, failure_type, finished_at, output_dir, retryable, schema_version, started_at, status, valid",False,2026-08-07T12:03:57.110814+00:00

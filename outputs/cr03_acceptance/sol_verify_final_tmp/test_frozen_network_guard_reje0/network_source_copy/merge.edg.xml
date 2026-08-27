@@ -1,0 +1,9 @@
+<edges>
+    <edge id="main_0" from="m0" to="m1" numLanes="3" speed="33.33"/>
+    <edge id="main_1" from="m1" to="m2" numLanes="3" speed="33.33"/>
+    <edge id="main_2" from="m2" to="m3" numLanes="3" speed="33.33"/>
+    <edge id="main_3" from="m3" to="m4" numLanes="3" speed="33.33"/>
+    <edge id="main_4" from="m4" to="m5" numLanes="3" speed="33.33"/>
+    <edge id="main_5" from="m5" to="m6" numLanes="3" speed="33.33"/>
+    <edge id="ramp_0" from="r0" to="m4" numLanes="1" speed="22.22"/>
+</edges>

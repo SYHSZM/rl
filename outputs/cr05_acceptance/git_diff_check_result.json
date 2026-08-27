@@ -1,0 +1,14 @@
+{
+  "captured_utc": "2026-08-07T10:17:23.480650+00:00",
+  "cwd": "D:\\python_install\\py\\rl\\0325\\0325",
+  "command": [
+    "git",
+    "-c",
+    "safe.directory=D:/python_install/py",
+    "-C",
+    "D:/python_install/py",
+    "diff",
+    "--check"
+  ],
+  "exit_code": 0
+}

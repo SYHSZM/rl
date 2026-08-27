@@ -1,0 +1,17 @@
+component,value,unit,definition
+current_summary_tts_s,19530.0,s,30 s right-endpoint integral of departed-arrived; excludes pending
+one_second_in_network_integral_s,18817,s,sum of departed-arrived after each 1 s step
+one_second_waiting_pending_integral_s,0,s,sum of pending-to-depart vehicle count after each 1 s step
+one_second_system_tts_s,18817,s,one-second in-network plus pending integral
+completed_tripinfo_count,59,veh,completed tripinfo records
+completed_tripinfo_duration_s,11302.0,s,sum tripinfo duration for completed vehicles
+completed_tripinfo_time_loss_s,530.26,s,sum tripinfo timeLoss for completed vehicles
+incomplete_in_network_count_at_360_s,73,veh,active vehicle IDs after final step
+incomplete_pending_count_at_360_s,0,veh,pending vehicle IDs after final step
+incomplete_vehicle_count_union_at_360_s,73,veh,union of active and pending IDs
+completed_vehicle_active_exposure_s,11302,s,ID-level active exposure for completed vehicles
+completed_vehicle_pending_exposure_s,0,s,ID-level pending exposure for completed vehicles
+incomplete_vehicle_active_exposure_s,7515,s,ID-level active exposure retained separately
+incomplete_vehicle_pending_exposure_s,0,s,ID-level pending exposure retained separately
+current_minus_one_second_system_tts_s,713.0,s,quantified current proxy difference
+tripinfo_duration_minus_one_second_system_tts_s,-7515.0,s,completed-only tripinfo versus system exposure including incomplete

@@ -1,0 +1,2 @@
+experiment_id,mainline_vph,ramp_vph,controller,seed,decision,reason,selected_output_dir
+main1200_ramp120_none_seed0_ebd06a7c,1200,120,none,0,retry,ValueError: windows.csv time grid must contain exactly one record at each metrics interval through simulation_duration_s,D:\python_install\py\rl\0325\0325\outputs\cr04_acceptance\sol_scan_verify_tmp\test_incomplete_windows_time_g0\scan\window_grid\runs\main1200_ramp120_none_seed0_ebd06a7c\attempt_0002

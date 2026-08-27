@@ -1,0 +1,5 @@
+$env:SUMO_HOME="D:\sumo-1.25.0"
+$env:Path="D:\sumo-1.25.0\bin;"+$env:Path
+& "C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" "D:\python_install\py\rl\0325\0325\outputs\audit_0_3\metric_trace_runner.py"
+& "C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" "D:\python_install\py\rl\0325\0325\outputs\audit_0_3\metric_trace_runner.py" --run-tests
+& "C:\Users\Administrator\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" "D:\python_install\py\rl\0325\0325\outputs\audit_0_3\metric_trace_runner.py" --refresh-manifest
